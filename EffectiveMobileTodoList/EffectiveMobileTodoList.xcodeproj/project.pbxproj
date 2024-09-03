@@ -13,6 +13,7 @@
 		4FB051D22C8732FE004CEB29 /* TodoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051D12C8732FE004CEB29 /* TodoTask.swift */; };
 		4FB051D52C8788D1004CEB29 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051D42C8788D1004CEB29 /* URLSessionHTTPClientTests.swift */; };
 		4FB051D82C87893E004CEB29 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051D72C87893E004CEB29 /* URLProtocolStub.swift */; };
+		4FB051DB2C878B09004CEB29 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051DA2C878B09004CEB29 /* SharedTestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		4FB051D12C8732FE004CEB29 /* TodoTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTask.swift; sourceTree = "<group>"; };
 		4FB051D42C8788D1004CEB29 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		4FB051D72C87893E004CEB29 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
+		4FB051DA2C878B09004CEB29 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		4F620EA72C86F62400F38AC9 /* EffectiveMobileTodoListTests */ = {
 			isa = PBXGroup;
 			children = (
+				4FB051D92C878AFA004CEB29 /* Helpers */,
 				4FB051D32C8788AC004CEB29 /* Shared API Infra */,
 			);
 			path = EffectiveMobileTodoListTests;
@@ -111,6 +114,14 @@
 			isa = PBXGroup;
 			children = (
 				4FB051D72C87893E004CEB29 /* URLProtocolStub.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4FB051D92C878AFA004CEB29 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4FB051DA2C878B09004CEB29 /* SharedTestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -237,6 +248,7 @@
 			files = (
 				4FB051D82C87893E004CEB29 /* URLProtocolStub.swift in Sources */,
 				4FB051D52C8788D1004CEB29 /* URLSessionHTTPClientTests.swift in Sources */,
+				4FB051DB2C878B09004CEB29 /* SharedTestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
