@@ -12,6 +12,7 @@
 		4FB051D02C873210004CEB29 /* TasksLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051CF2C873210004CEB29 /* TasksLoader.swift */; };
 		4FB051D22C8732FE004CEB29 /* TodoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051D12C8732FE004CEB29 /* TodoTask.swift */; };
 		4FB051D52C8788D1004CEB29 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051D42C8788D1004CEB29 /* URLSessionHTTPClientTests.swift */; };
+		4FB051D82C87893E004CEB29 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051D72C87893E004CEB29 /* URLProtocolStub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		4FB051CF2C873210004CEB29 /* TasksLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksLoader.swift; sourceTree = "<group>"; };
 		4FB051D12C8732FE004CEB29 /* TodoTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTask.swift; sourceTree = "<group>"; };
 		4FB051D42C8788D1004CEB29 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
+		4FB051D72C87893E004CEB29 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +101,18 @@
 		4FB051D32C8788AC004CEB29 /* Shared API Infra */ = {
 			isa = PBXGroup;
 			children = (
+				4FB051D62C87892F004CEB29 /* Helpers */,
 				4FB051D42C8788D1004CEB29 /* URLSessionHTTPClientTests.swift */,
 			);
 			path = "Shared API Infra";
+			sourceTree = "<group>";
+		};
+		4FB051D62C87892F004CEB29 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4FB051D72C87893E004CEB29 /* URLProtocolStub.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FB051D82C87893E004CEB29 /* URLProtocolStub.swift in Sources */,
 				4FB051D52C8788D1004CEB29 /* URLSessionHTTPClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
