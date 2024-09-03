@@ -11,7 +11,7 @@
 		4F620EA92C86F62400F38AC9 /* EffectiveMobileTodoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F620EA82C86F62400F38AC9 /* EffectiveMobileTodoListTests.swift */; };
 		4F620EAA2C86F62400F38AC9 /* EffectiveMobileTodoList.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F620E9E2C86F62400F38AC9 /* EffectiveMobileTodoList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FB051D02C873210004CEB29 /* TasksLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051CF2C873210004CEB29 /* TasksLoader.swift */; };
-		4FB051D22C8732FE004CEB29 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051D12C8732FE004CEB29 /* Task.swift */; };
+		4FB051D22C8732FE004CEB29 /* TodoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051D12C8732FE004CEB29 /* TodoTask.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +30,7 @@
 		4F620EA32C86F62400F38AC9 /* EffectiveMobileTodoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EffectiveMobileTodoListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F620EA82C86F62400F38AC9 /* EffectiveMobileTodoListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectiveMobileTodoListTests.swift; sourceTree = "<group>"; };
 		4FB051CF2C873210004CEB29 /* TasksLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksLoader.swift; sourceTree = "<group>"; };
-		4FB051D12C8732FE004CEB29 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		4FB051D12C8732FE004CEB29 /* TodoTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				4FB051CF2C873210004CEB29 /* TasksLoader.swift */,
-				4FB051D12C8732FE004CEB29 /* Task.swift */,
+				4FB051D12C8732FE004CEB29 /* TodoTask.swift */,
 			);
 			path = "Tasks Feed Feature";
 			sourceTree = "<group>";
@@ -206,7 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FB051D22C8732FE004CEB29 /* Task.swift in Sources */,
+				4FB051D22C8732FE004CEB29 /* TodoTask.swift in Sources */,
 				4FB051D02C873210004CEB29 /* TasksLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

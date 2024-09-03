@@ -79,25 +79,15 @@ Given the customer doesn't have connectivity
 
 ## Model Specs
 
-###Source
+###TodoTask
 
 | Property      | Type                      |
 |---------------|---------------------------|
-| 'id'          | 'String' (optional)       |
+| 'id'          | 'UUID'                    |
 | ‘name’        | 'String'                  |
-
-###Article
-
-| Property      | Type                      |
-|---------------|---------------------------|
-| 'source'      | 'Source'                  |
-| ‘author’      | 'String' (optional)       |
-| 'title'       | 'String'                  |
-| 'description' | 'String' (optional)       |
-| ‘url’         | 'URL'                     |
-| 'urlToImage'  | 'URL' (optional)          |
-| 'publishedAt' | 'Date'                    |
-| 'content'     | 'String' (optional)       |
+| 'description' | 'String'                  |
+| 'dateCreated' | 'Date'                    |
+| 'status'      | 'Bool'                    |
 
 ### Load Feed From Cache Use Case
 
