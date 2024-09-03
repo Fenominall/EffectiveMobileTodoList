@@ -14,6 +14,7 @@
 		4FB051D52C8788D1004CEB29 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051D42C8788D1004CEB29 /* URLSessionHTTPClientTests.swift */; };
 		4FB051D82C87893E004CEB29 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051D72C87893E004CEB29 /* URLProtocolStub.swift */; };
 		4FB051DB2C878B09004CEB29 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051DA2C878B09004CEB29 /* SharedTestHelpers.swift */; };
+		4FB051DD2C878E9B004CEB29 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051DC2C878E9B004CEB29 /* XCTestCase+MemoryLeakTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 		4FB051D42C8788D1004CEB29 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		4FB051D72C87893E004CEB29 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		4FB051DA2C878B09004CEB29 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
+		4FB051DC2C878E9B004CEB29 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				4FB051DA2C878B09004CEB29 /* SharedTestHelpers.swift */,
+				4FB051DC2C878E9B004CEB29 /* XCTestCase+MemoryLeakTracking.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FB051D82C87893E004CEB29 /* URLProtocolStub.swift in Sources */,
+				4FB051DD2C878E9B004CEB29 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				4FB051D52C8788D1004CEB29 /* URLSessionHTTPClientTests.swift in Sources */,
 				4FB051DB2C878B09004CEB29 /* SharedTestHelpers.swift in Sources */,
 			);
