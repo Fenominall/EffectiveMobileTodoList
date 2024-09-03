@@ -119,7 +119,7 @@ Given the customer doesn't have connectivity
 ---
 
 # Load Tasks Feed FlowChart
-
+![EffectiveMobileTodoList](https://github.com/Fenominall/EffectiveMobileTodoList/blob/main/TasksLoadFlowChart.png)
 
 ### Cache Feed Use Case
 
