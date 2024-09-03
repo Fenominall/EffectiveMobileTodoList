@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol TasksLoader {
-    typealias Result = Swift.Result<[Task], Error>
+    typealias Result = Swift.Result<[TodoTask], Error>
     
     func load(completion: @escaping (Result) -> Void)
 }
