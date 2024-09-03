@@ -15,6 +15,7 @@
 		4FB051D82C87893E004CEB29 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051D72C87893E004CEB29 /* URLProtocolStub.swift */; };
 		4FB051DB2C878B09004CEB29 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051DA2C878B09004CEB29 /* SharedTestHelpers.swift */; };
 		4FB051DD2C878E9B004CEB29 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051DC2C878E9B004CEB29 /* XCTestCase+MemoryLeakTracking.swift */; };
+		4FB051E02C8795A7004CEB29 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051DF2C8795A7004CEB29 /* HTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		4FB051D72C87893E004CEB29 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		4FB051DA2C878B09004CEB29 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		4FB051DC2C878E9B004CEB29 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
+		4FB051DF2C8795A7004CEB29 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		4F620E9D2C86F62400F38AC9 /* EffectiveMobileTodoList */ = {
 			isa = PBXGroup;
 			children = (
+				4FB051DE2C87959B004CEB29 /* Shared API Infra */,
 				4FB051CE2C87310D004CEB29 /* Tasks Feed Feature */,
 				4F620E9E2C86F62400F38AC9 /* EffectiveMobileTodoList.h */,
 			);
@@ -127,6 +130,14 @@
 				4FB051DC2C878E9B004CEB29 /* XCTestCase+MemoryLeakTracking.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4FB051DE2C87959B004CEB29 /* Shared API Infra */ = {
+			isa = PBXGroup;
+			children = (
+				4FB051DF2C8795A7004CEB29 /* HTTPClient.swift */,
+			);
+			path = "Shared API Infra";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +253,7 @@
 			files = (
 				4FB051D22C8732FE004CEB29 /* TodoTask.swift in Sources */,
 				4FB051D02C873210004CEB29 /* TasksLoader.swift in Sources */,
+				4FB051E02C8795A7004CEB29 /* HTTPClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
