@@ -75,6 +75,31 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
         })
     }
     
+    func test_load_deliversItemsOn200HTTPResponseWithJSONItems() {
+        let (sut, client) = makeSUT()
+        
+        let item1 =  makeTask(
+            name: "Author1",
+            description: "Description1",
+            dateCreated: ISO8601DateFormatter().date(from: "2024-07-06T10:38:44Z")!,
+            status: false
+        )
+        
+        let item2 = makeTask(
+            name: "Author2",
+            description: "Description1",
+            dateCreated: ISO8601DateFormatter().date(from: "2024-07-06T10:39:44Z")!,
+            status: true
+        )
+        
+        let items = [item1.model, item2.model]
+        
+        expect(sut, toCompleteWith: .success(items)) {
+            let json = makeItemsJSON([item1.json, item2.json])
+            client.complete(withStatusCode: 200, data: json)
+        }
+    }
+    
     // MARK: - Helpers
     private func makeSUT(
         url: URL = anyURL(),
