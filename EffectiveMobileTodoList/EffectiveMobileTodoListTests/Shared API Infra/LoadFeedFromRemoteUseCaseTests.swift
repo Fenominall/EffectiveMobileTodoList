@@ -43,7 +43,16 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
         XCTAssertEqual(client.requestedURLs, [url])
     }
     
-    // MARK: - Helpers
+    func test_loadTwice_requestsDataFromURL() {
+        let url = anyURL()
+        let (sut, client) = makeSUT(url: url)
+        
+        sut.load { _ in }
+        sut.load { _ in }
+        
+        XCTAssertEqual(client.requestedURLs, [url, url])
+    }
+
     // MARK: - Helpers
     private func makeSUT(
         url: URL = anyURL(),
