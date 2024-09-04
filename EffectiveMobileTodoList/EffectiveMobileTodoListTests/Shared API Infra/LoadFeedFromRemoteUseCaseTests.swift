@@ -17,8 +17,12 @@ public final class RemoteFeedLoader: TasksLoader {
         self.client = client
     }
     
-    public func load(completion: @escaping (TasksLoader.Result) -> Void) {
-        
+    public typealias LoadResult = TasksLoader.Result
+    
+    public func load(completion: @escaping (LoadResult) -> Void) {
+        client.get(from: url) { _ in
+            
+        }
     }
 }
 
@@ -30,6 +34,14 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
+    func test_load_requestsDataFromURL() {
+        let url = anyURL()
+        let (sut, client) = makeSUT(url: url)
+        
+        sut.load { _ in }
+        
+        XCTAssertEqual(client.requestedURLs, [url])
+    }
     
     // MARK: - Helpers
     // MARK: - Helpers
