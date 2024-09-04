@@ -11,6 +11,12 @@ import XCTest
 
 class URLSessionHTTPClientTests: XCTestCase {
     
+    override func tearDown() {
+        super.tearDown()
+        
+        URLProtocolStub.removeStub()
+    }
+    
     func test_getFromURL_performsGET() {
         let url = anyURL()
         let exp = expectation(description: "Wait for request")
