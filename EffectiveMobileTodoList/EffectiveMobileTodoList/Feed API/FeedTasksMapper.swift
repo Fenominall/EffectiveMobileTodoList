@@ -17,15 +17,22 @@ public final class FeedTasksMapper {
     }
     
     private struct Item: Decodable {
+        let id: String
         let todo: String
+        let description: String?
         let completed: Bool
+        let createdDate: String
         
         var item: TodoTask {
+            let uuid = UUID(uuidString: id) ?? UUID()
+            let dateFormatter = ISO8601DateFormatter()
+            let date = dateFormatter.date(from: createdDate) ?? Date()
+            
             return TodoTask(
-                id: UUID(),
+                id: uuid,
                 name: todo,
-                description: todo,
-                dateCreated: Date(),
+                description: description ?? "",
+                dateCreated: date,
                 status: completed
             )
         }
