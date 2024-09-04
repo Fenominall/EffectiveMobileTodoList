@@ -25,8 +25,15 @@ public final class RemoteFeedLoader: TasksLoader {
     }
     
     public func load(completion: @escaping (LoadResult) -> Void) {
-        client.get(from: url) { _ in
+        client.get(from: url) { [weak self] result in
+            guard self != nil else { return }
             
+            switch result {
+            case .success: break
+                
+            case .failure:
+                completion(.failure(Error.connectivity))
+            }
         }
     }
 }
@@ -56,6 +63,15 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
         sut.load { _ in }
         
         XCTAssertEqual(client.requestedURLs, [url, url])
+    }
+    
+    func test_load_deliversErrorOnClientError() {
+        let (sut, client) = makeSUT()
+        
+        expect(sut, toCompleteWith: failure(.connectivity), when: {
+            let clientError = anyNSError()
+            client.complete(with: clientError)
+        })
     }
     
     
