@@ -44,4 +44,27 @@ class FeedTasksMapperTests: XCTestCase {
         
         XCTAssertEqual(result, [])
     }
+    
+    func test_map_deliverFeedItemsOn200HTTPResponseWithValidJSONItems() throws {
+        let item1 =  makeTask(
+            name: "Author1",
+            description: "Description1",
+            dateCreated: ISO8601DateFormatter().date(from: "2024-07-06T10:38:44Z")!,
+            status: false
+        )
+        
+        let item2 = makeTask(
+            name: "Author2",
+            description: "Description1",
+            dateCreated: ISO8601DateFormatter().date(from: "2024-07-06T10:39:44Z")!,
+            status: true
+        )
+        
+        
+        let json = makeItemsJSON([item1.json, item2.json])
+        
+        let result = try FeedTasksMapper.map(json, from: HTTPURLResponse(statusCode: 200))
+        
+        XCTAssertEqual(result, [item1.model, item2.model])
+    }
 }
