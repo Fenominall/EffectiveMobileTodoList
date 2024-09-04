@@ -19,6 +19,11 @@ public final class RemoteFeedLoader: TasksLoader {
     
     public typealias LoadResult = TasksLoader.Result
     
+    public enum Error: Swift.Error {
+        case connectivity
+        case invalidData
+    }
+    
     public func load(completion: @escaping (LoadResult) -> Void) {
         client.get(from: url) { _ in
             
@@ -52,7 +57,8 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
         
         XCTAssertEqual(client.requestedURLs, [url, url])
     }
-
+    
+    
     // MARK: - Helpers
     private func makeSUT(
         url: URL = anyURL(),
@@ -64,6 +70,59 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
         trackForMemoryLeaks(sut, file: file, line: line)
         trackForMemoryLeaks(client, file: file, line: line)
         return (sut, client)
+    }
+    
+    private func expect(
+        _ sut: RemoteFeedLoader,
+        toCompleteWith expectedResult: RemoteFeedLoader.LoadResult,
+        when action: () -> Void,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
+        let exp = expectation(description: "Wait for load completion")
+        
+        sut.load { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (
+                .success(receivedItems),
+                .success(expectedItems)
+            ):
+                XCTAssertEqual(
+                    receivedItems,
+                    expectedItems,
+                    file: file,
+                    line: line
+                )
+                
+            case let (
+                .failure(receivedError as RemoteFeedLoader.Error),
+                .failure(expectedError as RemoteFeedLoader.Error)
+            ):
+                XCTAssertEqual(
+                    receivedError,
+                    expectedError,
+                    file: file,
+                    line: line
+                )
+                
+            default:
+                XCTFail(
+                    "Expected result \(expectedResult) got \(receivedResult) instead",
+                    file: file,
+                    line: line
+                )
+            }
+            
+            exp.fulfill()
+        }
+        
+        action()
+        
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func failure(_ error: RemoteFeedLoader.Error) -> RemoteFeedLoader.LoadResult {
+        return .failure(error)
     }
     
     private class HTTPClientSpy: HTTPClient {
