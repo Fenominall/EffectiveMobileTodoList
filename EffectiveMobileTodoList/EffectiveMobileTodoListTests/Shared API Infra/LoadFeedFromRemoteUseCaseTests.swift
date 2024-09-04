@@ -9,16 +9,35 @@ import XCTest
 import EffectiveMobileTodoList
 
 public final class RemoteFeedLoader {
+    private let url: URL
+    private let client: HTTPClient
     
+    init(url: URL, client: HTTPClient) {
+        self.url = url
+        self.client = client
+    }
 }
 
-class LoadFeedFromRemoteUseCaseTests: XCTest {
+class LoadFeedFromRemoteUseCaseTests: XCTestCase {
     
     func test_init_doesNotRequestDataFromURL() {
         
     }
     
     // MARK: - Helpers
+    // MARK: - Helpers
+    private func makeSUT(
+        url: URL = anyURL(),
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> (sut: RemoteFeedLoader, client: HTTPClientSpy) {
+        let client = HTTPClientSpy()
+        let sut = RemoteFeedLoader(url: url, client: client)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        trackForMemoryLeaks(client, file: file, line: line)
+        return (sut, client)
+    }
+    
     private class HTTPClientSpy: HTTPClient {
         
         private var messages = [(url: URL, completion: (HTTPClient.Result) -> Void)]()
