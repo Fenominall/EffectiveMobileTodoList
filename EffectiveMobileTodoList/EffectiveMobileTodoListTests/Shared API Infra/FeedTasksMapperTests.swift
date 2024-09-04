@@ -22,4 +22,13 @@ class FeedTasksMapperTests: XCTestCase {
                          from: HTTPURLResponse(statusCode: code)))
         }
     }
+    
+    func test_map_throwsErrorOn200HTTPResponseWithInvalidJSON() throws {
+        let invalidJSON = Data("invalidJSON".utf8)
+        
+        XCTAssertThrowsError(
+            try FeedTasksMapper
+                .map(invalidJSON,
+                     from: HTTPURLResponse(statusCode: 200)))
+    }
 }
