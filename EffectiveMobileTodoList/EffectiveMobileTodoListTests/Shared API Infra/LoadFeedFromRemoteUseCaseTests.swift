@@ -208,5 +208,3 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
         }
     }
 }
-
-
