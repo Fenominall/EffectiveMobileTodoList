@@ -17,6 +17,7 @@
 		4FB051DD2C878E9B004CEB29 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051DC2C878E9B004CEB29 /* XCTestCase+MemoryLeakTracking.swift */; };
 		4FB051E02C8795A7004CEB29 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051DF2C8795A7004CEB29 /* HTTPClient.swift */; };
 		4FB051E32C87960D004CEB29 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051E22C87960D004CEB29 /* URLSessionHTTPClient.swift */; };
+		4FB052092C885AD4004CEB29 /* LoadFeedFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB052082C885AD4004CEB29 /* LoadFeedFromRemoteUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		4FB051DC2C878E9B004CEB29 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		4FB051DF2C8795A7004CEB29 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		4FB051E22C87960D004CEB29 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
+		4FB052082C885AD4004CEB29 /* LoadFeedFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFeedFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 			children = (
 				4FB051D62C87892F004CEB29 /* Helpers */,
 				4FB051D42C8788D1004CEB29 /* URLSessionHTTPClientTests.swift */,
+				4FB052082C885AD4004CEB29 /* LoadFeedFromRemoteUseCaseTests.swift */,
 			);
 			path = "Shared API Infra";
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				4FB051DD2C878E9B004CEB29 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				4FB051D52C8788D1004CEB29 /* URLSessionHTTPClientTests.swift in Sources */,
 				4FB051DB2C878B09004CEB29 /* SharedTestHelpers.swift in Sources */,
+				4FB052092C885AD4004CEB29 /* LoadFeedFromRemoteUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
