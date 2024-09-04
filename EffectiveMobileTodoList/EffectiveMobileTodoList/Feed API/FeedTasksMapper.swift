@@ -48,7 +48,7 @@ public final class FeedTasksMapper {
         _ data: Data,
         from response: HTTPURLResponse
     ) throws -> [TodoTask] {
-        guard response.statusCode == 200 else {
+        guard response.isOK else {
             throw Error.invalidData
         }
         
