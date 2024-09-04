@@ -72,12 +72,16 @@ public final class RemoteFeedLoader: TasksLoader {
     public func load(completion: @escaping (LoadResult) -> Void) {
         client.get(from: url) { [weak self] result in
             guard self != nil else { return }
-            
-            switch result {
-            case .success: break
-                
-            case .failure:
-                completion(.failure(Error.connectivity))
+            do {
+                switch result {
+                case let .success((data, response)):
+                    let todos = try FeedTasksMapper.map(data, from: response)
+                    completion(.success(todos))
+                case .failure:
+                    completion(.failure(Error.connectivity))
+                }
+            } catch {
+                completion(.failure(Error.invalidData))
             }
         }
     }
@@ -117,6 +121,19 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
             let clientError = anyNSError()
             client.complete(with: clientError)
         })
+    }
+    
+    func test_load_deliversErrorOnNon200HTTPResponse() {
+        let (sut, client) = makeSUT()
+        
+        let samples = [199, 201, 300, 400, 500]
+        
+        samples.enumerated().forEach { index, code in
+            expect(sut, toCompleteWith: failure(.invalidData)) {
+                let json = makeItemsJSON([])
+                client.complete(withStatusCode: code, data: json, at: index)
+            }
+        }
     }
     
     
