@@ -21,8 +21,11 @@ public final class RemoteFeedLoader {
 class LoadFeedFromRemoteUseCaseTests: XCTestCase {
     
     func test_init_doesNotRequestDataFromURL() {
+        let (_, client) = makeSUT()
         
+        XCTAssertTrue(client.requestedURLs.isEmpty)
     }
+    
     
     // MARK: - Helpers
     // MARK: - Helpers
