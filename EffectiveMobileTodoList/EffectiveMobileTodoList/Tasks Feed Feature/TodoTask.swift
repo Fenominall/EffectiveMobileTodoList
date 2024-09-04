@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct TodoTask {
+public struct TodoTask: Equatable {
     public let id: UUID
     public let name: String
     public let description: String
