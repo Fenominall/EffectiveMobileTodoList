@@ -29,8 +29,8 @@ func makeItemsJSON(_ items: [[String: Any]]) -> Data {
 func makeTask(
     id: UUID = UUID(),
     name: String,
-    description: String = "",
-    dateCreated: Date = Date(),
+    description: String,
+    dateCreated: Date,
     status: Bool
 ) -> (model: TodoTask, json: [String: Any]) {
     
