@@ -31,4 +31,17 @@ class FeedTasksMapperTests: XCTestCase {
                 .map(invalidJSON,
                      from: HTTPURLResponse(statusCode: 200)))
     }
+    
+    // MARK: Checking Success Courses for VALID JSON
+    
+    func test_map_deliversNoItemsOn200HTTPResponseWithEmptyList() throws {
+        let emptyJSON = makeItemsJSON([])
+        
+        let result =
+        try FeedTasksMapper
+            .map(emptyJSON,
+                 from: HTTPURLResponse(statusCode: 200))
+        
+        XCTAssertEqual(result, [])
+    }
 }
