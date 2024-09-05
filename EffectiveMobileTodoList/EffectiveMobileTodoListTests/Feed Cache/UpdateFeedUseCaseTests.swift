@@ -16,6 +16,23 @@ final class UpdateFeedUseCaseTests: XCTestCase {
         XCTAssertEqual(store.receivedMessages, [])
     }
     
+    func test_update_failsOnUpdatingError() {
+        let (sut,store) = makeSUT()
+        let insertionError = anyNSError()
+        
+        excpect(sut, toCompleteWithError: insertionError) {
+            store.completeUpdate(with: insertionError)
+        }
+    }
+    
+    func test_update_succeedsOnSuccessfulCacheUpdating() {
+        let (sut,store) = makeSUT()
+        
+        excpect(sut, toCompleteWithError: nil) {
+            store.completeUpdateSuccessfully()
+        }
+    }
+    
     // MARK: - Helpers
     private func makeSUT(currentDate: @escaping () -> Date = Date.init,
                          file: StaticString = #filePath,
