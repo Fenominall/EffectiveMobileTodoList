@@ -92,6 +92,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F5852652C89EB0100FE2173 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				4F5852662C89EB0700FE2173 /* CoreData */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		4F5852662C89EB0700FE2173 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		4F620E912C86F62400F38AC9 = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +222,7 @@
 		4FB052142C88E792004CEB29 /* Feed Cache */ = {
 			isa = PBXGroup;
 			children = (
+				4F5852652C89EB0100FE2173 /* Infrastructure */,
 				4F5852552C898D9400FE2173 /* LocalFeedLoader.swift */,
 				4F5852572C898DAE00FE2173 /* FeedStore.swift */,
 				4F5852592C898DC400FE2173 /* LocalTodoTask.swift */,
