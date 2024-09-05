@@ -10,6 +10,11 @@ import XCTest
 import EffectiveMobileTodoList
 
 final class UpdateFeedUseCaseTests: XCTestCase {
+    func test_init_doesNotMessageStoreUponCreation() {
+        let (_, store) = makeSUT()
+        
+        XCTAssertEqual(store.receivedMessages, [])
+    }
     
     // MARK: - Helpers
     private func makeSUT(currentDate: @escaping () -> Date = Date.init,
