@@ -67,7 +67,9 @@ extension LocalFeedLoader {
         selected tasks: [TodoTask],
         completion: @escaping (DeletionResult) -> Void
     ) {
-        
+        store.delete(tasks.toLocals()) { [weak self] deletionError in
+            self?.execute(completion, result: deletionError)
+        }
     }
 }
 
