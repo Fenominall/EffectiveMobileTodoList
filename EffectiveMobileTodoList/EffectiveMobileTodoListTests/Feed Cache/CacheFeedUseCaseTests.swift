@@ -25,6 +25,14 @@ final class CacheFeedUseCaseTests: XCTestCase {
         }
     }
     
+    func test_save_succeedsOnSuccessfulCacheInsertion() {
+        let (sut,store) = makeSUT()
+        
+        excpect(sut, toCompleteWithError: nil) {
+            store.completeInsertionSuccessfully()
+        }
+    }
+    
     // MARK: - Helpers
     private func makeSUT(currentDate: @escaping () -> Date = Date.init,
                          file: StaticString = #filePath,
