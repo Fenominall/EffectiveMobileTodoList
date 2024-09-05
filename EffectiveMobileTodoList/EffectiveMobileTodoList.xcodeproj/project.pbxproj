@@ -15,6 +15,9 @@
 		4F5852602C89A70B00FE2173 /* FeedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F58525F2C89A70B00FE2173 /* FeedCache.swift */; };
 		4F5852622C89D4EF00FE2173 /* DeleteFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5852612C89D4EF00FE2173 /* DeleteFeedUseCaseTests.swift */; };
 		4F5852642C89DA6900FE2173 /* UpdateFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5852632C89DA6900FE2173 /* UpdateFeedUseCaseTests.swift */; };
+		4F58526A2C89EBF700FE2173 /* TasksFeedStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4F5852682C89EBF700FE2173 /* TasksFeedStore.xcdatamodeld */; };
+		4F5852782C89F67C00FE2173 /* ManagedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5852742C89F67C00FE2173 /* ManagedCache.swift */; };
+		4F58527A2C89F67C00FE2173 /* ManagedTodoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5852762C89F67C00FE2173 /* ManagedTodoTask.swift */; };
 		4F620EA42C86F62400F38AC9 /* EffectiveMobileTodoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F620E9B2C86F62400F38AC9 /* EffectiveMobileTodoList.framework */; };
 		4F620EAA2C86F62400F38AC9 /* EffectiveMobileTodoList.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F620E9E2C86F62400F38AC9 /* EffectiveMobileTodoList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FB051D02C873210004CEB29 /* TasksLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051CF2C873210004CEB29 /* TasksLoader.swift */; };
@@ -53,6 +56,9 @@
 		4F58525F2C89A70B00FE2173 /* FeedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCache.swift; sourceTree = "<group>"; };
 		4F5852612C89D4EF00FE2173 /* DeleteFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFeedUseCaseTests.swift; sourceTree = "<group>"; };
 		4F5852632C89DA6900FE2173 /* UpdateFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFeedUseCaseTests.swift; sourceTree = "<group>"; };
+		4F5852692C89EBF700FE2173 /* TasksFeedStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TasksFeedStore.xcdatamodel; sourceTree = "<group>"; };
+		4F5852742C89F67C00FE2173 /* ManagedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedCache.swift; sourceTree = "<group>"; };
+		4F5852762C89F67C00FE2173 /* ManagedTodoTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedTodoTask.swift; sourceTree = "<group>"; };
 		4F620E9B2C86F62400F38AC9 /* EffectiveMobileTodoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EffectiveMobileTodoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F620E9E2C86F62400F38AC9 /* EffectiveMobileTodoList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EffectiveMobileTodoList.h; sourceTree = "<group>"; };
 		4F620EA32C86F62400F38AC9 /* EffectiveMobileTodoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EffectiveMobileTodoListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +109,9 @@
 		4F5852662C89EB0700FE2173 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				4F5852742C89F67C00FE2173 /* ManagedCache.swift */,
+				4F5852762C89F67C00FE2173 /* ManagedTodoTask.swift */,
+				4F5852682C89EBF700FE2173 /* TasksFeedStore.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -373,10 +382,13 @@
 			files = (
 				4F5852582C898DAE00FE2173 /* FeedStore.swift in Sources */,
 				4FB051D22C8732FE004CEB29 /* TodoTask.swift in Sources */,
+				4F58526A2C89EBF700FE2173 /* TasksFeedStore.xcdatamodeld in Sources */,
 				4FB051D02C873210004CEB29 /* TasksLoader.swift in Sources */,
 				4F5852602C89A70B00FE2173 /* FeedCache.swift in Sources */,
 				4FB052132C88E056004CEB29 /* HTTPURLResponse+StatusCode.swift in Sources */,
 				4FB051E02C8795A7004CEB29 /* HTTPClient.swift in Sources */,
+				4F5852782C89F67C00FE2173 /* ManagedCache.swift in Sources */,
+				4F58527A2C89F67C00FE2173 /* ManagedTodoTask.swift in Sources */,
 				4FB0520C2C88D503004CEB29 /* RemoteFeedLoader.swift in Sources */,
 				4F58525A2C898DC400FE2173 /* LocalTodoTask.swift in Sources */,
 				4FB051E32C87960D004CEB29 /* URLSessionHTTPClient.swift in Sources */,
@@ -674,6 +686,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4F5852682C89EBF700FE2173 /* TasksFeedStore.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4F5852692C89EBF700FE2173 /* TasksFeedStore.xcdatamodel */,
+			);
+			currentVersion = 4F5852692C89EBF700FE2173 /* TasksFeedStore.xcdatamodel */;
+			name = TasksFeedStore.xcdatamodeld;
+			path = "/Users/fenominall/Library/Mobile Documents/com~apple~CloudDocs/Documents/EffectiveMobileTodoList/EffectiveMobileTodoList/EffectiveMobileTodoList/Feed Cache/Infrastructure/CoreData/TasksFeedStore.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4F620E922C86F62400F38AC9 /* Project object */;
 }
