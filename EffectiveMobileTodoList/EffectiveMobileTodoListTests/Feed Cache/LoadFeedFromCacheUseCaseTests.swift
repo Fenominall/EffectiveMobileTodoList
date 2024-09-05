@@ -34,6 +34,14 @@ final class LoadFeedFromCacheUseCaseTests: XCTestCase {
         }
     }
     
+    func test_load_deliversNoTasksOnEmptyCache() {
+        let (sut, store) = makeSUT()
+        
+        excpect(sut, toCompleteWith: .success([])) {
+            store.completeRetrievalWithEmptyCache()
+        }
+    }
+    
     // MARK: - Helpers
     private func makeSUT(currentDate: @escaping () -> Date = Date.init,
                          file: StaticString = #filePath,
