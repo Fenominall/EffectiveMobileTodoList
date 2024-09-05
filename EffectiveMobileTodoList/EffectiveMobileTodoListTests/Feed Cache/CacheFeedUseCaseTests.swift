@@ -21,7 +21,6 @@ final class CacheFeedUseCaseTests: XCTestCase {
         let insertionError = anyNSError()
         
         excpect(sut, toCompleteWithError: insertionError) {
-            store.completeDeletionSuccessfully()
             store.completeInsertion(with: insertionError)
         }
     }
