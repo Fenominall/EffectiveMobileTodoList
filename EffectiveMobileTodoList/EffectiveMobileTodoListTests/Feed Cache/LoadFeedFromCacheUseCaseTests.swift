@@ -24,6 +24,16 @@ final class LoadFeedFromCacheUseCaseTests: XCTestCase {
         
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
+    
+    func test_load_failsOnRetrievalError() {
+        let (sut, store) = makeSUT()
+        let retrievalError = anyNSError()
+        
+        excpect(sut, toCompleteWith: .failure(retrievalError)) {
+            store.completeRetrieval(with: retrievalError)
+        }
+    }
+    
     // MARK: - Helpers
     private func makeSUT(currentDate: @escaping () -> Date = Date.init,
                          file: StaticString = #filePath,
