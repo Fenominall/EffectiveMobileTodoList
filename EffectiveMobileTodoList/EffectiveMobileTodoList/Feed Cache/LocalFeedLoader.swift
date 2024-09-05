@@ -53,10 +53,11 @@ extension LocalFeedLoader: TasksLoader {
 // Save
 extension LocalFeedLoader: FeedCache {
     public func save(_ feed: [TodoTask], completion: @escaping (SaveResult) -> Void) {
-        
+        store.insert(feed.toLocals(), timestamp: currentDate()) { [weak self] insertionError in
+            self?.execute(completion, result: insertionError)
+        }
     }
 }
-
 
 private extension Array where Element == LocalTodoTask {
     func toModels() -> [TodoTask] {
@@ -71,3 +72,18 @@ private extension Array where Element == LocalTodoTask {
         }
     }
 }
+
+private extension Array where Element == TodoTask {
+    func toLocals() -> [LocalTodoTask] {
+        return map {
+            LocalTodoTask(
+                id: $0.id,
+                name: $0.name,
+                description: $0.description,
+                dateCreated: $0.dateCreated,
+                status: $0.status
+            )
+        }
+    }
+}
+
