@@ -59,6 +59,18 @@ extension LocalFeedLoader: FeedCache {
     }
 }
 
+// Update
+extension LocalFeedLoader {
+    public typealias Result = Swift.Result<Void, Error>
+    
+    public func update(
+        selected tasks: TodoTask,
+        completion: @escaping (Result) -> Void
+    ) {
+        
+    }
+}
+
 // Delete
 extension LocalFeedLoader {
     public typealias DeletionResult = Swift.Result<Void, Error>

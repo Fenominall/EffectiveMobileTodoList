@@ -14,6 +14,7 @@
 		4F58525E2C8993EE00FE2173 /* FeedCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F58525D2C8993EE00FE2173 /* FeedCacheTestHelpers.swift */; };
 		4F5852602C89A70B00FE2173 /* FeedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F58525F2C89A70B00FE2173 /* FeedCache.swift */; };
 		4F5852622C89D4EF00FE2173 /* DeleteFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5852612C89D4EF00FE2173 /* DeleteFeedUseCaseTests.swift */; };
+		4F5852642C89DA6900FE2173 /* UpdateFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5852632C89DA6900FE2173 /* UpdateFeedUseCaseTests.swift */; };
 		4F620EA42C86F62400F38AC9 /* EffectiveMobileTodoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F620E9B2C86F62400F38AC9 /* EffectiveMobileTodoList.framework */; };
 		4F620EAA2C86F62400F38AC9 /* EffectiveMobileTodoList.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F620E9E2C86F62400F38AC9 /* EffectiveMobileTodoList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FB051D02C873210004CEB29 /* TasksLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051CF2C873210004CEB29 /* TasksLoader.swift */; };
@@ -51,6 +52,7 @@
 		4F58525D2C8993EE00FE2173 /* FeedCacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCacheTestHelpers.swift; sourceTree = "<group>"; };
 		4F58525F2C89A70B00FE2173 /* FeedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCache.swift; sourceTree = "<group>"; };
 		4F5852612C89D4EF00FE2173 /* DeleteFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFeedUseCaseTests.swift; sourceTree = "<group>"; };
+		4F5852632C89DA6900FE2173 /* UpdateFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFeedUseCaseTests.swift; sourceTree = "<group>"; };
 		4F620E9B2C86F62400F38AC9 /* EffectiveMobileTodoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EffectiveMobileTodoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F620E9E2C86F62400F38AC9 /* EffectiveMobileTodoList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EffectiveMobileTodoList.h; sourceTree = "<group>"; };
 		4F620EA32C86F62400F38AC9 /* EffectiveMobileTodoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EffectiveMobileTodoListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +230,7 @@
 				4FCAC48A2C88E9A6002CBBE7 /* LoadFeedFromCacheUseCaseTests.swift */,
 				4F58525B2C8993B400FE2173 /* CacheFeedUseCaseTests.swift */,
 				4F5852612C89D4EF00FE2173 /* DeleteFeedUseCaseTests.swift */,
+				4F5852632C89DA6900FE2173 /* UpdateFeedUseCaseTests.swift */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				4FCAC48E2C88EA74002CBBE7 /* FeedStoreSpy.swift in Sources */,
 				4FB051DD2C878E9B004CEB29 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				4FB051D52C8788D1004CEB29 /* URLSessionHTTPClientTests.swift in Sources */,
+				4F5852642C89DA6900FE2173 /* UpdateFeedUseCaseTests.swift in Sources */,
 				4F58525C2C8993B400FE2173 /* CacheFeedUseCaseTests.swift in Sources */,
 				4FCAC4862C88E91E002CBBE7 /* LoadFeedFromRemoteUseCaseTests.swift in Sources */,
 				4FB051DB2C878B09004CEB29 /* SharedTestHelpers.swift in Sources */,
