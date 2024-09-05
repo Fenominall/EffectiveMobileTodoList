@@ -27,6 +27,17 @@ final class DeleteFeedUseCaseTests: XCTestCase {
         XCTAssertEqual(store.receivedMessages, [.deleteCachedFeed(tasksFeed.local)])
     }
     
+    func test_delete_successfullyDeletesCache() {
+        let timestamp = Date()
+        let feed = uniqueTodoTaskFeed()
+        let (sut,store) = makeSUT(currentDate: { timestamp })
+        
+        sut.delete(selected: feed.models) { _ in }
+        store.completeDeletionSuccessfully()
+        
+        XCTAssertEqual(store.receivedMessages, [.deleteCachedFeed(feed.local)])
+    }
+    
     // MARK: - Helpers
     private func makeSUT(currentDate: @escaping () -> Date = Date.init,
                          file: StaticString = #filePath,
