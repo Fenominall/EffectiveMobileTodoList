@@ -59,6 +59,18 @@ extension LocalFeedLoader: FeedCache {
     }
 }
 
+// Delete
+extension LocalFeedLoader {
+    public typealias DeletionResult = Swift.Result<Void, Error>
+    
+    public func delete(
+        selected tasks: [TodoTask],
+        completion: @escaping (DeletionResult) -> Void
+    ) {
+        
+    }
+}
+
 private extension Array where Element == LocalTodoTask {
     func toModels() -> [TodoTask] {
         return map {
