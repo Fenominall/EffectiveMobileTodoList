@@ -20,5 +20,8 @@ public final class LocalFeedLoader: TasksLoader {
     }
     
     public func load(completion: @escaping (TasksLoader.Result) -> Void) {
+        store.retrieve { [weak self] result in
+            
+        }
     }
 }
