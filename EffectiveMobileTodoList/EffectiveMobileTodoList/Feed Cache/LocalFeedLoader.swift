@@ -67,7 +67,19 @@ extension LocalFeedLoader {
         selected task: TodoTask,
         completion: @escaping (Result) -> Void
     ) {
-        
+        store.update(createLocalTodTask(with: task)) { [weak self] updatingError in
+            self?.execute(completion, result: updatingError)
+        }
+    }
+    
+    private func createLocalTodTask(with task: TodoTask) -> LocalTodoTask {
+        LocalTodoTask(
+            id: task.id,
+            name: task.name,
+            description: task.description,
+            dateCreated: task.dateCreated,
+            status: task.status
+        )
     }
 }
 
