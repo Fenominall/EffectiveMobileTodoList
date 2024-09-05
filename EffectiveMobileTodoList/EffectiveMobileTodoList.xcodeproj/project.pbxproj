@@ -20,6 +20,8 @@
 		4F58527A2C89F67C00FE2173 /* ManagedTodoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5852762C89F67C00FE2173 /* ManagedTodoTask.swift */; };
 		4F58527C2C8A1E5000FE2173 /* CoreDataFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F58527B2C8A1E5000FE2173 /* CoreDataFeedStore.swift */; };
 		4F58527E2C8A1F5300FE2173 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F58527D2C8A1F5300FE2173 /* CoreDataHelpers.swift */; };
+		4F5852802C8A36EE00FE2173 /* CoreDataFeedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F58527F2C8A36EE00FE2173 /* CoreDataFeedStoreTests.swift */; };
+		4F5852832C8A388B00FE2173 /* FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5852822C8A388B00FE2173 /* FeedStoreSpecs.swift */; };
 		4F620EA42C86F62400F38AC9 /* EffectiveMobileTodoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F620E9B2C86F62400F38AC9 /* EffectiveMobileTodoList.framework */; };
 		4F620EAA2C86F62400F38AC9 /* EffectiveMobileTodoList.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F620E9E2C86F62400F38AC9 /* EffectiveMobileTodoList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FB051D02C873210004CEB29 /* TasksLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051CF2C873210004CEB29 /* TasksLoader.swift */; };
@@ -63,6 +65,8 @@
 		4F5852762C89F67C00FE2173 /* ManagedTodoTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedTodoTask.swift; sourceTree = "<group>"; };
 		4F58527B2C8A1E5000FE2173 /* CoreDataFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFeedStore.swift; sourceTree = "<group>"; };
 		4F58527D2C8A1F5300FE2173 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
+		4F58527F2C8A36EE00FE2173 /* CoreDataFeedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFeedStoreTests.swift; sourceTree = "<group>"; };
+		4F5852822C8A388B00FE2173 /* FeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreSpecs.swift; sourceTree = "<group>"; };
 		4F620E9B2C86F62400F38AC9 /* EffectiveMobileTodoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EffectiveMobileTodoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F620E9E2C86F62400F38AC9 /* EffectiveMobileTodoList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EffectiveMobileTodoList.h; sourceTree = "<group>"; };
 		4F620EA32C86F62400F38AC9 /* EffectiveMobileTodoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EffectiveMobileTodoListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +124,14 @@
 				4F5852682C89EBF700FE2173 /* TasksFeedStore.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		4F5852812C8A386700FE2173 /* FeedStoreSpecs */ = {
+			isa = PBXGroup;
+			children = (
+				4F5852822C8A388B00FE2173 /* FeedStoreSpecs.swift */,
+			);
+			path = FeedStoreSpecs;
 			sourceTree = "<group>";
 		};
 		4F620E912C86F62400F38AC9 = {
@@ -257,11 +269,13 @@
 		4FCAC4892C88E970002CBBE7 /* Feed Cache */ = {
 			isa = PBXGroup;
 			children = (
+				4F5852812C8A386700FE2173 /* FeedStoreSpecs */,
 				4FCAC48C2C88EA6C002CBBE7 /* Helpers */,
 				4FCAC48A2C88E9A6002CBBE7 /* LoadFeedFromCacheUseCaseTests.swift */,
 				4F58525B2C8993B400FE2173 /* CacheFeedUseCaseTests.swift */,
 				4F5852612C89D4EF00FE2173 /* DeleteFeedUseCaseTests.swift */,
 				4F5852632C89DA6900FE2173 /* UpdateFeedUseCaseTests.swift */,
+				4F58527F2C8A36EE00FE2173 /* CoreDataFeedStoreTests.swift */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
@@ -410,12 +424,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FCAC4882C88E932002CBBE7 /* FeedTasksMapperTests.swift in Sources */,
+				4F5852802C8A36EE00FE2173 /* CoreDataFeedStoreTests.swift in Sources */,
 				4FB051D82C87893E004CEB29 /* URLProtocolStub.swift in Sources */,
 				4F5852622C89D4EF00FE2173 /* DeleteFeedUseCaseTests.swift in Sources */,
 				4FCAC48E2C88EA74002CBBE7 /* FeedStoreSpy.swift in Sources */,
 				4FB051DD2C878E9B004CEB29 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				4FB051D52C8788D1004CEB29 /* URLSessionHTTPClientTests.swift in Sources */,
 				4F5852642C89DA6900FE2173 /* UpdateFeedUseCaseTests.swift in Sources */,
+				4F5852832C8A388B00FE2173 /* FeedStoreSpecs.swift in Sources */,
 				4F58525C2C8993B400FE2173 /* CacheFeedUseCaseTests.swift in Sources */,
 				4FCAC4862C88E91E002CBBE7 /* LoadFeedFromRemoteUseCaseTests.swift in Sources */,
 				4FB051DB2C878B09004CEB29 /* SharedTestHelpers.swift in Sources */,
