@@ -18,6 +18,14 @@ public final class LocalFeedLoader {
         self.store = store
         self.currentDate = currentDate
     }
+    
+    // MARK: - Helpers
+    private typealias Completion<T> = (T) -> Void
+    
+    private func execute<T>(_ completion: Completion<T>?, result: T) {
+        guard completion != nil else { return }
+        completion?(result)
+    }
 }
 
 // Load
@@ -43,8 +51,10 @@ extension LocalFeedLoader: TasksLoader {
 }
 
 // Save
-extension LocalFeedLoader {
-    
+extension LocalFeedLoader: FeedCache {
+    public func save(_ feed: [TodoTask], completion: @escaping (SaveResult) -> Void) {
+        
+    }
 }
 
 
