@@ -95,36 +95,9 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     }
     
     func insert(_ feed: [LocalTodoTask], to sut: FeedStore, completion: @escaping (Error?) -> Void) {
-        sut.insert(feed) { result in
-            switch result {
-            case .success:
-                completion(nil)
-            case .failure(let error):
-                completion(error)
-            }
-        }
-    }
-    
-    func insert(_ feed: [LocalTodoTask], to sut: FeedStore, checkError: Bool = true) -> Error? {
         let insertExp = expectation(description: "Wait for insert completion")
-        var insertionError: Error?
         
-        insert(feed, to: sut) { error in
-            insertionError = error
-            insertExp.fulfill()
-        }
-        
-        wait(for: [insertExp], timeout: 1.0)
-        
-        if checkError {
-            XCTAssertNil(insertionError, "Expected no error on insert")
-        }
-        
-        return insertionError
-    }
-    
-    func deleteCache(from sut: FeedStore, completion: @escaping (Error?) -> Void) {
-        sut.delete([]) { result in
+        sut.insert(feed) { result in
             switch result {
             case .success:
                 completion(nil)
