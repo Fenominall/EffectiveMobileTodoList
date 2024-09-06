@@ -31,6 +31,27 @@ extension ManagedTodoTask {
         )
     }
     
+    static func first(
+        with localTodoTask: LocalTodoTask,
+        in context: NSManagedObjectContext
+    ) throws -> ManagedTodoTask? {
+        let request = NSFetchRequest<ManagedTodoTask>(
+            entityName: ManagedTodoTask.entity().name!
+        )
+        
+        let uuidPredicate = NSPredicate(
+            format: "id == %@",
+            localTodoTask.id as CVarArg
+        )
+        
+        request.predicate = uuidPredicate
+        
+        request.fetchLimit = 1
+        
+        return try context.fetch(request).first
+    }
+    
+    
     static func createManagedTodoTasks(
         from localTasks: [LocalTodoTask],
         in context: NSManagedObjectContext
@@ -46,10 +67,10 @@ extension ManagedTodoTask {
             
             return managedTask
         })
-               
+        
         return tasks
     }
-
+    
 }
 
 extension ManagedTodoTask : Identifiable {
