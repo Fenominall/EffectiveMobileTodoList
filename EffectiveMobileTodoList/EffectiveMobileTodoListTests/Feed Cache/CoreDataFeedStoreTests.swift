@@ -95,11 +95,34 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
             self?.deleteCache(tasks, from: sut) { deletionError in
                 XCTAssertNil(deletionError, "Expected non-empty cache deletion to succeed")
             }
-        }        
+        }
     }
     
     func test_delete_emptiesPreviouslyInsertedCache() {
         
+    }
+    
+    func test_delete_deliversErrorOnDeletionError() {
+        let sut = makeSUT()
+        let tasks = uniqueTodoTaskFeed().local
+        
+        insert(tasks, to: sut) { insertionError in
+            XCTAssertNil(insertionError, "Expected successful insertion before testing deletion error")
+            
+            let failingStore = FailingFeedStore()
+            
+            failingStore.delete(tasks.first!) { deletionResult in
+                switch deletionResult {
+                case .success:
+                    XCTFail("Expected deletion to fail, but it succeeded")
+                case .failure(let error):
+                    XCTAssertTrue(error is SomeSpecificError, "Expected error of type SomeSpecificError, but got \(type(of: error))")
+                    if let specificError = error as? SomeSpecificError {
+                        XCTAssertEqual(specificError, SomeSpecificError.expectedError, "Unexpected error received")
+                    }
+                }
+            }
+        }
     }
     
     // MARK: - Helpers
@@ -172,4 +195,28 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
             expect(sut, toRetrieve: expectedResult, file: file, line: line)
             expect(sut, toRetrieve: expectedResult, file: file, line: line)
         }
+}
+
+
+class FailingFeedStore: FeedStore {
+    func update(_ task: EffectiveMobileTodoList.LocalTodoTask, completion: @escaping (UpdatingResult) -> Void) {
+        completion(.success(()))
+    }
+    
+    func insert(_ feed: [LocalTodoTask], completion: @escaping (Result<Void, Error>) -> Void) {
+        completion(.success(()))
+    }
+    
+    func delete(_ task: LocalTodoTask, completion: @escaping (Result<Void, Error>) -> Void) {
+        // Simulate a deletion error
+        completion(.failure(SomeSpecificError.expectedError))
+    }
+    
+    func retrieve(completion: @escaping (Result<[LocalTodoTask]?, Error>) -> Void) {
+        completion(.success([]))
+    }
+}
+
+enum SomeSpecificError: Error {
+    case expectedError
 }
