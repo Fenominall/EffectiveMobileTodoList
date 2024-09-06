@@ -104,9 +104,24 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
             case .failure(let error):
                 completion(error)
             }
+            insertExp.fulfill()
         }
+        
+        wait(for: [insertExp], timeout: 1.0)
     }
     
+    func deleteCache(_ tasks: [LocalTodoTask] = [], from sut: FeedStore, completion: @escaping (Error?) -> Void) {
+        _ = tasks.map {
+            sut.delete($0) { result in
+                switch result {
+                case .success:
+                    completion(nil)
+                case .failure(let error):
+                    completion(error)
+                }
+            }
+        }
+    }
     
     func expect(
         _ sut: FeedStore,
