@@ -28,7 +28,7 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
         
         let feed = uniqueTodoTaskFeed().local
         
-        _ = insert(feed, to: sut)
+        _ = insert(feed, to: sut) { _ in }
         
         expect(sut, toRetrieve: .success(feed))
     }
@@ -38,7 +38,7 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
         
         let feed = uniqueTodoTaskFeed().local
         
-        _ = insert(feed, to: sut, checkError: true)
+        insert(feed, to: sut) { _ in }
         
         expect(sut, toRetrieveTwice: .success(feed))
     }
@@ -48,29 +48,34 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
         
         let feed = uniqueTodoTaskFeed().local
         
-        let insertionError = insert(feed, to: sut, checkError: true)
-        
-        XCTAssertNil(insertionError, "Expected to insert cache successfully")
+        insert(feed, to: sut) { insertionError in
+            XCTAssertNil(insertionError, "Expected to insert cache successfully")
+        }
     }
     
     
     func test_insert_deliversNoErrorOnNonEmptyCache() {
         let sut = makeSUT()
         
-        let insertionError = insert([], to: sut, checkError: true)
-        
-        XCTAssertNil(insertionError, "Expected to insert cache successfully")
+        insert([], to: sut) { insertionError in
+            XCTAssertNil(insertionError, "Expected to insert cache successfully")
+        }
     }
     
     func test_insert_overridesPreviouslyInsertedCacheValues() {
         let sut = makeSUT()
         
-        let insertionError = insert([], to: sut, checkError: true)
-        
-        XCTAssertNil(insertionError, "Expected to override cache successfully")
+        insert([], to: sut) { insertionError in
+            XCTAssertNil(insertionError, "Expected to override cache successfully")
+        }
     }
     
     func test_delete_deliversNoErrorOnEmptyCache() {
+        let sut = makeSUT()
+        
+        deleteCache(from: sut) { deletionError in
+            XCTAssertNil(deletionError, "Expected empty cache deletion to succeed")
+        }
         
     }
     
