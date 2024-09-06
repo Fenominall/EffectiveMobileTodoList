@@ -126,7 +126,6 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     }
     
     func test_update_deliversNoErrorOnExistingTask() {
-        
     }
     
     func test_update_overridesPreviouslyUpdatedTask() {

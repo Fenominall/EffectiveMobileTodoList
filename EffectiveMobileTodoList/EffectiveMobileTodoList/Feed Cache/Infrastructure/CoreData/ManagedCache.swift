@@ -49,9 +49,25 @@ extension ManagedCache {
         }
     }
     
-}
-
-
-extension ManagedCache : Identifiable {
-    
+    static func updateTask(_ task: LocalTodoTask, context: NSManagedObjectContext) throws {
+        guard let managedTask = try ManagedTodoTask.first(with: task, in: context) else {
+            throw CacheError.taskNotFound
+        }
+        
+        guard managedTask.id == task.id else {
+            throw CacheError.taskIDMismatch
+        }
+        
+        ManagedTodoTask.update(managedTask, with: task)
+        
+        print("Updated task name: \(managedTask.name)")
+        
+        do {
+            print("TASK UPDATED AND SAVED")
+            try context.save()
+        } catch {
+            print("Failed to save context: \(error)")
+            throw error
+        }
+    }
 }

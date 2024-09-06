@@ -47,6 +47,10 @@ extension CoreDataFeedStore: FeedStore {
     
     
     public func update(_ task: LocalTodoTask, completion: @escaping (UpdatingResult) -> Void) {
-        
+        performAsync { context in
+            completion(Result {
+                try ManagedCache.updateTask(task, context: context)
+            })
+        }
     }
 }

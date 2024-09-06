@@ -11,4 +11,5 @@ enum CacheError: Error {
     case unableToCreateMutableCopy
     case missingManagedObjectContext
     case taskNotFound
+    case taskIDMismatch
 }

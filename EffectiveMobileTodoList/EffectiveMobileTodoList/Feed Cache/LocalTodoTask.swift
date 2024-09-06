@@ -9,7 +9,7 @@ import Foundation
 
 public struct LocalTodoTask: Equatable {
     public let id: UUID
-    public let name: String
+    public var name: String
     public let description: String
     public let dateCreated: Date
     public let status: Bool

@@ -89,7 +89,11 @@ extension ManagedTodoTask {
             }
         }
     
-    private static func findAndDelete(_ task: ManagedTodoTask, _ mutableCache: NSMutableOrderedSet, in context: NSManagedObjectContext) throws {
+    private static func findAndDelete(
+        _ task: ManagedTodoTask,
+        _ mutableCache: NSMutableOrderedSet,
+        in context: NSManagedObjectContext
+    ) throws {
         
         mutableCache.remove(task)
         
@@ -99,8 +103,12 @@ extension ManagedTodoTask {
             throw error
         }
     }
-}
-
-extension ManagedTodoTask : Identifiable {
     
+    static func update(_ managedTask: ManagedTodoTask, with task: LocalTodoTask) {
+        managedTask.id = task.id
+        managedTask.name = task.name
+        managedTask.descriptionText = task.description
+        managedTask.dateCreated = task.dateCreated
+        managedTask.status = task.status
+    }
 }
