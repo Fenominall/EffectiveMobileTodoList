@@ -99,7 +99,7 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     }
     
     func test_delete_emptiesPreviouslyInsertedCache() {
-        
+        // todo
     }
     
     func test_delete_deliversErrorOnDeletionError() {
@@ -123,6 +123,22 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
                 }
             }
         }
+    }
+    
+    func test_update_deliversNoErrorOnExistingTask() {
+        
+    }
+    
+    func test_update_overridesPreviouslyUpdatedTask() {
+        
+    }
+    
+    func test_update_hasNoSideEffectsOnUpdate() {
+        
+    }
+    
+    func test_update_failsIfTaskDoesNotExist() {
+        
     }
     
     // MARK: - Helpers
