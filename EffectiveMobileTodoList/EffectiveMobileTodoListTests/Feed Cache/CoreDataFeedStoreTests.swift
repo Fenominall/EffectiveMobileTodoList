@@ -58,7 +58,7 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
         let sut = makeSUT()
         
         let insertionError = insert([], to: sut, checkError: true)
-
+        
         XCTAssertNil(insertionError, "Expected to insert cache successfully")
     }
     
@@ -66,7 +66,7 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
         let sut = makeSUT()
         
         let insertionError = insert([], to: sut, checkError: true)
-
+        
         XCTAssertNil(insertionError, "Expected to override cache successfully")
     }
     
@@ -122,6 +122,18 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
         
         return insertionError
     }
+    
+    func deleteCache(from sut: FeedStore, completion: @escaping (Error?) -> Void) {
+        sut.delete([]) { result in
+            switch result {
+            case .success:
+                completion(nil)
+            case .failure(let error):
+                completion(error)
+            }
+        }
+    }
+    
     
     func expect(
         _ sut: FeedStore,
