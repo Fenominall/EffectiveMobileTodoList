@@ -11,7 +11,7 @@ import EffectiveMobileTodoList
 class FeedStoreSpy: FeedStore {
     enum ReceivedMessages: Equatable {
         case deleteCachedFeed([LocalTodoTask])
-        case insert([LocalTodoTask], Date)
+        case insert([LocalTodoTask])
         case retrieve
         case update(LocalTodoTask)
     }
@@ -42,16 +42,13 @@ class FeedStoreSpy: FeedStore {
     }
     
     // Insertion
-    func insert(
-        _ tasks: [LocalTodoTask],
-        timestamp: Date,
-        completion: @escaping FeedStore.InsertionCompletion
-    ) {
-        receivedMessages.append(.insert(tasks, timestamp))
+    func insert(_ tasks: [EffectiveMobileTodoList.LocalTodoTask], completion: @escaping InsertionCompletion) {
+        receivedMessages.append(.insert(tasks))
         if let result = insertionResult {
             completion(result)
         }
     }
+    
     
     func completeInsertion(with error: Error, at index: Int = 0) {
         insertionResult = .failure(error)
@@ -81,7 +78,7 @@ class FeedStoreSpy: FeedStore {
         with feed: [LocalTodoTask],
         timestamp: Date,
         at index: Int = 0) {
-            retrievalResult = .success(CachedFeed(feed: feed, timestamp: timestamp))
+            retrievalResult = .success(feed)
         }
     
     // Updating

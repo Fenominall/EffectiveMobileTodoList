@@ -9,14 +9,9 @@ import Foundation
 
 public final class LocalFeedLoader {
     private let store: FeedStore
-    private let currentDate: () -> Date
     
-    public init(
-        store: FeedStore,
-        currentDate: @escaping () -> Date
-    ) {
+    public init(store: FeedStore) {
         self.store = store
-        self.currentDate = currentDate
     }
     
     // MARK: - Helpers
@@ -39,7 +34,7 @@ extension LocalFeedLoader: TasksLoader {
             switch result {
                 
             case let .success(.some(cachedFeed)):
-                let feed = cachedFeed.feed.toModels()
+                let feed = cachedFeed.toModels()
                 completion(.success(feed))
             case let .failure(error):
                 completion(.failure(error))
@@ -53,7 +48,7 @@ extension LocalFeedLoader: TasksLoader {
 // Save
 extension LocalFeedLoader: FeedCache {
     public func save(_ feed: [TodoTask], completion: @escaping (SaveResult) -> Void) {
-        store.insert(feed.toLocals(), timestamp: currentDate()) { [weak self] insertionError in
+        store.insert(feed.toLocals()) { [weak self] insertionError in
             self?.execute(completion, result: insertionError)
         }
     }
