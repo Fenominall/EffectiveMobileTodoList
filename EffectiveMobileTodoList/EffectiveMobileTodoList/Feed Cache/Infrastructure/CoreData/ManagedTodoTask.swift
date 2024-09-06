@@ -19,6 +19,39 @@ public class ManagedTodoTask: NSManagedObject {
     @NSManaged public var cache: ManagedCache
 }
 
-extension ManagedTodoTask : Identifiable {
+extension ManagedTodoTask {
+    
+    var local: LocalTodoTask? {
+        return LocalTodoTask(
+            id: id,
+            name: name,
+            description: descriptionText,
+            dateCreated: dateCreated,
+            status: status
+        )
+    }
+    
+    static func createManagedTodoTasks(
+        from localTasks: [LocalTodoTask],
+        in context: NSManagedObjectContext
+    ) -> NSOrderedSet {
+        
+        let tasks = NSOrderedSet(array: localTasks.map { local in
+            let managedTask = ManagedTodoTask(context: context)
+            managedTask.id = local.id
+            managedTask.name = local.name
+            managedTask.descriptionText = local.description
+            managedTask.dateCreated = local.dateCreated
+            managedTask.status = local.status
+            
+            return managedTask
+        })
+               
+        return tasks
+    }
 
+}
+
+extension ManagedTodoTask : Identifiable {
+    
 }
