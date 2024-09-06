@@ -18,6 +18,26 @@ func uniqueTodoTask() -> TodoTask {
     )
 }
 
+func uniqueLocalTodoTask() -> LocalTodoTask {
+    LocalTodoTask(
+        id: UUID(),
+        name: "Name1",
+        description: "Description1",
+        dateCreated: Date(),
+        status: true
+    )
+}
+
+func convertToUniqueLocalTodoTask(with task: TodoTask) -> LocalTodoTask {
+    LocalTodoTask(
+        id: task.id,
+        name: task.name,
+        description: task.description,
+        dateCreated: task.dateCreated,
+        status: task.status
+    )
+}
+
 func uniqueTodoTaskFeed() -> (models: [TodoTask], local: [LocalTodoTask]) {
     let feed = [uniqueTodoTask(), uniqueTodoTask()]
     let localFeedImages = feed.map {
