@@ -8,17 +8,30 @@
 import CoreData
 
 extension CoreDataFeedStore: FeedStore {
+    public func insert(_ tasks: [LocalTodoTask], completion: @escaping InsertionCompletion) {
+        performAsync { context in
+            completion(Result {
+                let managedCache = try ManagedCache.fetchCache(in: context)
+                try managedCache.updateCache(with: tasks, in: context)
+                try context.save()
+            })
+        }
+    }
+    
+    public func retrieve(completion: @escaping RetrievalCompletion) {
+        performAsync { context in
+            completion(Result {
+                try ManagedCache.find(in: context).map {
+                    return $0.localTodoTasksFeed
+                }
+            })
+        }
+    }
+    
     public func delete(_ tasks: [LocalTodoTask], completion: @escaping DeletionCompletion) {
         
     }
     
-    public func insert(_ tasks: [LocalTodoTask], timestamp: Date, completion: @escaping InsertionCompletion) {
-        
-    }
-    
-    public func retrieve(completion: @escaping RetrievalCompletion) {
-        
-    }
     
     public func update(_ task: LocalTodoTask, completion: @escaping (UpdatingResult) -> Void) {
         
