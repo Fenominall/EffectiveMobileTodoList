@@ -71,6 +71,34 @@ extension ManagedTodoTask {
         return tasks
     }
     
+    static func deleteTask(
+        _ task: ManagedTodoTask,
+        in cache: NSOrderedSet,
+        _ context: NSManagedObjectContext) throws {
+            
+            guard let mutableCache = cache.mutableCopy() as? NSMutableOrderedSet else {
+                throw CacheError.unableToCreateMutableCopy
+            }
+            
+            try findAndDelete(task, mutableCache, in: context)
+            
+            do {
+                try context.save()
+            } catch {
+                throw error
+            }
+        }
+    
+    private static func findAndDelete(_ task: ManagedTodoTask, _ mutableCache: NSMutableOrderedSet, in context: NSManagedObjectContext) throws {
+        
+        mutableCache.remove(task)
+        
+        do {
+            try context.save()
+        } catch {
+            throw error
+        }
+    }
 }
 
 extension ManagedTodoTask : Identifiable {

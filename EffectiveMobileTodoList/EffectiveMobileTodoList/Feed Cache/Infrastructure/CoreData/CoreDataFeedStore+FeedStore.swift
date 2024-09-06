@@ -28,8 +28,21 @@ extension CoreDataFeedStore: FeedStore {
         }
     }
     
-    public func delete(_ tasks: LocalTodoTask, completion: @escaping DeletionCompletion) {
-        
+    public func delete(_ task: LocalTodoTask, completion: @escaping DeletionCompletion) {
+        performAsync { context in
+            completion(Result {
+                guard let cache = try ManagedCache.find(in: context)?.feed else {
+                    throw CacheError.missingManagedObjectContext
+                }
+                
+                guard let managedTask = try ManagedTodoTask.first(with: task, in: context) else {
+                    throw CacheError.taskNotFound
+                }
+                
+                let mutableCache = cache.mutableCopy() as! NSMutableOrderedSet
+                try ManagedTodoTask.deleteTask(managedTask, in: mutableCache, context)
+            })
+        }
     }
     
     

@@ -9,4 +9,6 @@ import Foundation
 
 enum CacheError: Error {
     case unableToCreateMutableCopy
+    case missingManagedObjectContext
+    case taskNotFound
 }

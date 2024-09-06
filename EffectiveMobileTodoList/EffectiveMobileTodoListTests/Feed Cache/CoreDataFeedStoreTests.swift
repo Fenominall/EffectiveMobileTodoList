@@ -28,7 +28,7 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
         
         let feed = uniqueTodoTaskFeed().local
         
-        _ = insert(feed, to: sut) { _ in }
+        insert(feed, to: sut) { _ in }
         
         expect(sut, toRetrieve: .success(feed))
     }
@@ -88,7 +88,14 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     }
     
     func test_delete_deliversNoErrorOnNonEmptyCache() {
+        let sut = makeSUT()
+        let tasks = uniqueTodoTaskFeed().local
         
+        insert(tasks, to: sut) { [weak self] _ in
+            self?.deleteCache(tasks, from: sut) { deletionError in
+                XCTAssertNil(deletionError, "Expected non-empty cache deletion to succeed")
+            }
+        }        
     }
     
     func test_delete_emptiesPreviouslyInsertedCache() {
