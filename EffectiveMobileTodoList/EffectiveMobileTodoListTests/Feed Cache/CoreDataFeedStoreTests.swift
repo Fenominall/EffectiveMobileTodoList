@@ -25,34 +25,49 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     
     func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
         let sut = makeSUT()
-           
-           let feed = uniqueTodoTaskFeed().local
-           
-           let insertExp = expectation(description: "Wait for insert completion")
-           insert(feed, to: sut) { error in
-               XCTAssertNil(error, "Expected no error on insert")
-               insertExp.fulfill()
-           }
-           
-           wait(for: [insertExp], timeout: 1.0)
-           
-           expect(sut, toRetrieve: .success(feed))
+        
+        let feed = uniqueTodoTaskFeed().local
+        
+        _ = insert(feed, to: sut)
+        
+        expect(sut, toRetrieve: .success(feed))
     }
     
     func test_retrieve_hasNoSideEffectsOnNonEmptyCache() {
+        let sut = makeSUT()
         
+        let feed = uniqueTodoTaskFeed().local
+        
+        _ = insert(feed, to: sut, checkError: true)
+        
+        expect(sut, toRetrieveTwice: .success(feed))
     }
     
     func test_insert_deliversNoErrorOnEmptyCache() {
+        let sut = makeSUT()
         
+        let feed = uniqueTodoTaskFeed().local
+        
+        let insertionError = insert(feed, to: sut, checkError: true)
+        
+        XCTAssertNil(insertionError, "Expected to insert cache successfully")
     }
     
+    
     func test_insert_deliversNoErrorOnNonEmptyCache() {
+        let sut = makeSUT()
         
+        let insertionError = insert([], to: sut, checkError: true)
+
+        XCTAssertNil(insertionError, "Expected to insert cache successfully")
     }
     
     func test_insert_overridesPreviouslyInsertedCacheValues() {
+        let sut = makeSUT()
         
+        let insertionError = insert([], to: sut, checkError: true)
+
+        XCTAssertNil(insertionError, "Expected to override cache successfully")
     }
     
     func test_delete_deliversNoErrorOnEmptyCache() {
@@ -89,7 +104,24 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
             }
         }
     }
-
+    
+    func insert(_ feed: [LocalTodoTask], to sut: FeedStore, checkError: Bool = true) -> Error? {
+        let insertExp = expectation(description: "Wait for insert completion")
+        var insertionError: Error?
+        
+        insert(feed, to: sut) { error in
+            insertionError = error
+            insertExp.fulfill()
+        }
+        
+        wait(for: [insertExp], timeout: 1.0)
+        
+        if checkError {
+            XCTAssertNil(insertionError, "Expected no error on insert")
+        }
+        
+        return insertionError
+    }
     
     func expect(
         _ sut: FeedStore,
