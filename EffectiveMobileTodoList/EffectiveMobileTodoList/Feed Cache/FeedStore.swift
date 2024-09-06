@@ -20,7 +20,7 @@ public protocol FeedStore {
     typealias UpdatingResult = Swift.Result<Void, Error>
     typealias UpdatingCompletion = (UpdatingResult) -> Void
     
-    func delete(_ tasks: [LocalTodoTask], completion: @escaping DeletionCompletion)
+    func delete(_ task: LocalTodoTask, completion: @escaping DeletionCompletion)
     func insert(_ tasks: [LocalTodoTask], completion: @escaping InsertionCompletion)
     func retrieve(completion: @escaping RetrievalCompletion)
     func update(_ task: LocalTodoTask, completion: @escaping (UpdatingResult) -> Void)

@@ -28,7 +28,7 @@ extension CoreDataFeedStore: FeedStore {
         }
     }
     
-    public func delete(_ tasks: [LocalTodoTask], completion: @escaping DeletionCompletion) {
+    public func delete(_ tasks: LocalTodoTask, completion: @escaping DeletionCompletion) {
         
     }
     

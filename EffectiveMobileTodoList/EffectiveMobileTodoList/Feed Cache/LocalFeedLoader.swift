@@ -83,10 +83,10 @@ extension LocalFeedLoader {
     public typealias DeletionResult = Swift.Result<Void, Error>
     
     public func delete(
-        selected tasks: [TodoTask],
+        selected task: TodoTask,
         completion: @escaping (DeletionResult) -> Void
     ) {
-        store.delete(tasks.toLocals()) { [weak self] deletionError in
+        store.delete(createLocalTodTask(with: task)) { [weak self] deletionError in
             self?.execute(completion, result: deletionError)
         }
     }

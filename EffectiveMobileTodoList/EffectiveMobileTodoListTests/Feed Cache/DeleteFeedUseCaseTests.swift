@@ -19,23 +19,29 @@ final class DeleteFeedUseCaseTests: XCTestCase {
     func test_delete_doesNotDeleteCacheOnDeletionError() {
         let (sut,store) = makeSUT()
         let deletionError = anyNSError()
-        let tasksFeed = uniqueTodoTaskFeed()
+        let task = uniqueTodoTask()
         
-        sut.delete(selected: tasksFeed.models) { _ in }
+        sut.delete(selected: task) { _ in }
         store.completeDeletion(with: deletionError)
         
-        XCTAssertEqual(store.receivedMessages, [.deleteCachedFeed(tasksFeed.local)])
+        XCTAssertEqual(
+            store.receivedMessages,
+            [.deleteCachedFeed(convertToUniqueLocalTodoTask(with: task))]
+        )
     }
     
     func test_delete_successfullyDeletesCache() {
         let timestamp = Date()
-        let feed = uniqueTodoTaskFeed()
+        let task = uniqueTodoTask()
         let (sut,store) = makeSUT(currentDate: { timestamp })
         
-        sut.delete(selected: feed.models) { _ in }
+        sut.delete(selected: task) { _ in }
         store.completeDeletionSuccessfully()
         
-        XCTAssertEqual(store.receivedMessages, [.deleteCachedFeed(feed.local)])
+        XCTAssertEqual(
+            store.receivedMessages,
+            [.deleteCachedFeed(convertToUniqueLocalTodoTask(with: task))]
+        )
     }
     
     // MARK: - Helpers
@@ -57,7 +63,7 @@ final class DeleteFeedUseCaseTests: XCTestCase {
         file: StaticString = #filePath,
         line: UInt = #line) {
             
-            sut.delete(selected: uniqueTodoTaskFeed().models) { result in
+            sut.delete(selected: uniqueTodoTask()) { result in
                 switch result {
                 case .success:
                     XCTAssertNil(expectedError, "Expected error \(String(describing: expectedError)) but got success instead", file: file, line: line)

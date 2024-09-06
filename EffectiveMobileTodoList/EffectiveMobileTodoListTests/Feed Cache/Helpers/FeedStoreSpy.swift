@@ -10,7 +10,7 @@ import EffectiveMobileTodoList
 
 class FeedStoreSpy: FeedStore {
     enum ReceivedMessages: Equatable {
-        case deleteCachedFeed([LocalTodoTask])
+        case deleteCachedFeed(LocalTodoTask)
         case insert([LocalTodoTask])
         case retrieve
         case update(LocalTodoTask)
@@ -24,10 +24,10 @@ class FeedStoreSpy: FeedStore {
     
     // Deletion
     func delete(
-        _ transactions: [LocalTodoTask],
+        _ task: LocalTodoTask,
         completion: @escaping FeedStore.DeletionCompletion
     ) {
-        receivedMessages.append(.deleteCachedFeed(transactions))
+        receivedMessages.append(.deleteCachedFeed(task))
         if let result = deletionResult {
             completion(result)
         }
