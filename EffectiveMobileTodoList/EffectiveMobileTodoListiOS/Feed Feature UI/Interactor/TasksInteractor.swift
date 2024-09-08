@@ -25,10 +25,8 @@ public final class TasksInteractor: TasksInteractorManager {
                 
             case let .success(tasks):
                 completion(.success(tasks.toModels()))
-
-            case .failure(_):
-                // Todo
-                break
+            case let .failure(error):
+                completion(.failure(error))
             }
         }
     }
