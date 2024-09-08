@@ -46,7 +46,7 @@ extension LocalFeedLoader: TasksLoader {
 }
 
 // Save
-extension LocalFeedLoader: FeedCache {
+extension LocalFeedLoader: TasksFeedCache {
     public func save(_ feed: [TodoTask], completion: @escaping (SaveResult) -> Void) {
         store.insert(feed.toLocals()) { [weak self] insertionError in
             self?.execute(completion, result: insertionError)

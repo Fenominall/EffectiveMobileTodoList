@@ -19,7 +19,7 @@
 		4F58525A2C898DC400FE2173 /* LocalTodoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5852592C898DC400FE2173 /* LocalTodoTask.swift */; };
 		4F58525C2C8993B400FE2173 /* CacheFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F58525B2C8993B400FE2173 /* CacheFeedUseCaseTests.swift */; };
 		4F58525E2C8993EE00FE2173 /* FeedCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F58525D2C8993EE00FE2173 /* FeedCacheTestHelpers.swift */; };
-		4F5852602C89A70B00FE2173 /* FeedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F58525F2C89A70B00FE2173 /* FeedCache.swift */; };
+		4F5852602C89A70B00FE2173 /* TasksFeedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F58525F2C89A70B00FE2173 /* TasksFeedCache.swift */; };
 		4F5852622C89D4EF00FE2173 /* DeleteFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5852612C89D4EF00FE2173 /* DeleteFeedUseCaseTests.swift */; };
 		4F5852642C89DA6900FE2173 /* UpdateFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5852632C89DA6900FE2173 /* UpdateFeedUseCaseTests.swift */; };
 		4F58526A2C89EBF700FE2173 /* TasksFeedStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4F5852682C89EBF700FE2173 /* TasksFeedStore.xcdatamodeld */; };
@@ -107,7 +107,7 @@
 		4F5852592C898DC400FE2173 /* LocalTodoTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTodoTask.swift; sourceTree = "<group>"; };
 		4F58525B2C8993B400FE2173 /* CacheFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFeedUseCaseTests.swift; sourceTree = "<group>"; };
 		4F58525D2C8993EE00FE2173 /* FeedCacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCacheTestHelpers.swift; sourceTree = "<group>"; };
-		4F58525F2C89A70B00FE2173 /* FeedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCache.swift; sourceTree = "<group>"; };
+		4F58525F2C89A70B00FE2173 /* TasksFeedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedCache.swift; sourceTree = "<group>"; };
 		4F5852612C89D4EF00FE2173 /* DeleteFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFeedUseCaseTests.swift; sourceTree = "<group>"; };
 		4F5852632C89DA6900FE2173 /* UpdateFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFeedUseCaseTests.swift; sourceTree = "<group>"; };
 		4F5852692C89EBF700FE2173 /* TasksFeedStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TasksFeedStore.xcdatamodel; sourceTree = "<group>"; };
@@ -352,7 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				4FB051CF2C873210004CEB29 /* TasksLoader.swift */,
-				4F58525F2C89A70B00FE2173 /* FeedCache.swift */,
+				4F58525F2C89A70B00FE2173 /* TasksFeedCache.swift */,
 				4FB051D12C8732FE004CEB29 /* TodoTask.swift */,
 			);
 			path = "Tasks Feed Feature";
@@ -670,7 +670,7 @@
 				4FB051D22C8732FE004CEB29 /* TodoTask.swift in Sources */,
 				4F58526A2C89EBF700FE2173 /* TasksFeedStore.xcdatamodeld in Sources */,
 				4FB051D02C873210004CEB29 /* TasksLoader.swift in Sources */,
-				4F5852602C89A70B00FE2173 /* FeedCache.swift in Sources */,
+				4F5852602C89A70B00FE2173 /* TasksFeedCache.swift in Sources */,
 				4F58527E2C8A1F5300FE2173 /* CoreDataHelpers.swift in Sources */,
 				4FB052132C88E056004CEB29 /* HTTPURLResponse+StatusCode.swift in Sources */,
 				4FB051E02C8795A7004CEB29 /* HTTPClient.swift in Sources */,
