@@ -60,13 +60,9 @@ extension ManagedCache {
         
         ManagedTodoTask.update(managedTask, with: task)
         
-        print("Updated task name: \(managedTask.name)")
-        
         do {
-            print("TASK UPDATED AND SAVED")
             try context.save()
         } catch {
-            print("Failed to save context: \(error)")
             throw error
         }
     }
