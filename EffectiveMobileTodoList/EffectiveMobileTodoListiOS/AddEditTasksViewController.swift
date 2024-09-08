@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddEditTaskViewController: UIViewController {
+class TaskListViewController: UIViewController {
     
     private lazy var tasksTableView: UITableView = {
         let tableView = UITableView()
@@ -84,7 +84,7 @@ class AddEditTaskViewController: UIViewController {
     }
 }
 
-extension AddEditTaskViewController: UITableViewDelegate, UITableViewDataSource {
+extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
