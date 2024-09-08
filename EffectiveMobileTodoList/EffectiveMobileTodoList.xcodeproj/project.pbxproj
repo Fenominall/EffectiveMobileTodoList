@@ -150,11 +150,7 @@
 		4F3C7B672C8E0DC500291DCA /* EffectiveMobileTodoListiOS */ = {
 			isa = PBXGroup;
 			children = (
-				4F3C7B7E2C8E0E0B00291DCA /* AddEditTasksViewController.swift */,
-				4F3C7B842C8E10A800291DCA /* TaskListFiltersView.swift */,
-				4F3C7B862C8E10E800291DCA /* TaskListFilterButton.swift */,
-				4F3C7B822C8E0E8400291DCA /* TaskTableViewCell.swift */,
-				4F3C7B802C8E0E4F00291DCA /* CustomTitleHeaderView.swift */,
+				4F3C7B8A2C8E232600291DCA /* Feed Feature UI */,
 				4F3C7B682C8E0DC500291DCA /* EffectiveMobileTodoListiOS.h */,
 			);
 			path = EffectiveMobileTodoListiOS;
@@ -165,6 +161,74 @@
 			children = (
 			);
 			path = EffectiveMobileTodoListiOSTests;
+			sourceTree = "<group>";
+		};
+		4F3C7B882C8E1E5200291DCA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4F3C7B8C2C8E233F00291DCA /* Views */,
+				4F3C7B8B2C8E233C00291DCA /* Controllers */,
+				4F3C7B802C8E0E4F00291DCA /* CustomTitleHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4F3C7B892C8E1E5800291DCA /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		4F3C7B8A2C8E232600291DCA /* Feed Feature UI */ = {
+			isa = PBXGroup;
+			children = (
+				4F3C7B882C8E1E5200291DCA /* View */,
+				4F3C7B892C8E1E5800291DCA /* Interactor */,
+				4F3C7B8D2C8E236600291DCA /* Presenter */,
+				4F3C7B8E2C8E236E00291DCA /* Entity */,
+				4F3C7B8F2C8E237500291DCA /* Router */,
+			);
+			path = "Feed Feature UI";
+			sourceTree = "<group>";
+		};
+		4F3C7B8B2C8E233C00291DCA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4F3C7B8C2C8E233F00291DCA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4F3C7B842C8E10A800291DCA /* TaskListFiltersView.swift */,
+				4F3C7B862C8E10E800291DCA /* TaskListFilterButton.swift */,
+				4F3C7B822C8E0E8400291DCA /* TaskTableViewCell.swift */,
+				4F3C7B7E2C8E0E0B00291DCA /* AddEditTasksViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4F3C7B8D2C8E236600291DCA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4F3C7B8E2C8E236E00291DCA /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		4F3C7B8F2C8E237500291DCA /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		4F5852652C89EB0100FE2173 /* Infrastructure */ = {
