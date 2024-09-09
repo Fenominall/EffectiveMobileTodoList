@@ -10,7 +10,7 @@ import UIKit
 class TaskListViewController: UIViewController {
     
     // MARK: Properties
-    private let errorView = ErrorView()
+    private(set) public var errorView = ErrorView()
     public var tableModel = [TasksTableCellController]()
     public var addNewTask: (() -> Void)?
     private let customTitleView = CustomTitleHeaderView()
