@@ -27,11 +27,7 @@ public final class TasksPresenter: TasksPresenterDelegate {
     
     public func viewDidLoad() {
         interactor.loadTasks()
-    }
-    
-    public func saveTasks(_ tasks: [TodoTaskViewModel]) {
-        interactor.saveTasks(tasks)
-    }
+    }    
 }
 
 extension TasksPresenter: TasksInteractorOutput {
@@ -45,12 +41,7 @@ extension TasksPresenter: TasksInteractorOutput {
         errorView.display(.noError)
         view.displayTasks(tasks)
     }
-    
-    public func didSaveTasks() {
-        loadingView.display(TaskLoadingViewModel(isLoading: false))
-        errorView.display(.noError)
-    }
-    
+        
     public func didFinish(with error: any Error) {
         loadingView.display(TaskLoadingViewModel(isLoading: false))
         errorView.display(.error(message: error.localizedDescription))

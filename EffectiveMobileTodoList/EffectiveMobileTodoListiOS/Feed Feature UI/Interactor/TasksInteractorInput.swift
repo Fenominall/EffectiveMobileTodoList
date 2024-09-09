@@ -9,5 +9,4 @@ import Foundation
 
 public protocol TasksInteractorInput {
     func loadTasks()
-    func saveTasks(_ tasks: [TodoTaskViewModel])
 }

@@ -9,25 +9,20 @@ import Foundation
 import EffectiveMobileTodoList
 
 public final class TasksInteractor: TasksInteractorInput {
-    private let presenter: TasksInteractorOutput
+    public weak var presenter: TasksInteractorOutput?
     private let loader: TasksLoader
-    private let cache: TasksFeedCache
     
     public init(
-        loader: TasksLoader,
-        cache: TasksFeedCache,
-        presenter: TasksInteractorOutput
+        loader: TasksLoader
     ) {
         self.loader = loader
-        self.cache = cache
-        self.presenter = presenter
     }
 }
 
 // Load Tasks
 extension TasksInteractor {
     public func loadTasks() {
-        presenter.didStartOperation()
+        presenter?.didStartOperation()
         
         loader.load { [weak self] result in
             guard let self = self else { return }
@@ -35,28 +30,9 @@ extension TasksInteractor {
             switch result {
                 
             case let .success(tasks):
-                self.presenter.didLoadTasks(tasks.toViewModels())
+                self.presenter?.didLoadTasks(tasks.toViewModels())
             case let .failure(error):
-                self.presenter.didFinish(with: error)
-            }
-        }
-    }
-}
-
-// Save Tasks
-extension TasksInteractor {
-    public func saveTasks(_ tasks: [TodoTaskViewModel]) {
-        presenter.didStartOperation()
-        
-        cache.save(tasks.toModels()) { [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-                
-            case .success:
-                self.presenter.didSaveTasks()
-            case let .failure(error):
-                self.presenter.didFinish(with: error)
+                self.presenter?.didFinish(with: error)
             }
         }
     }
@@ -71,20 +47,6 @@ private extension Array where Element == TodoTask {
                 description: $0.description,
                 dateCreated: $0.dateCreated,
                 isCompleted: $0.status
-            )
-        }
-    }
-}
-
-private extension Array where Element == TodoTaskViewModel {
-    func toModels() -> [TodoTask] {
-        return map {
-            TodoTask(
-                id: $0.id,
-                name: $0.name,
-                description: $0.description,
-                dateCreated: $0.dateCreated,
-                status: $0.isCompleted
             )
         }
     }

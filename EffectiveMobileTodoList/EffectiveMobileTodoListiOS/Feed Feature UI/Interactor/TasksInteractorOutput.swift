@@ -11,5 +11,4 @@ public protocol TasksInteractorOutput: AnyObject {
     func didStartOperation()
     func didLoadTasks(_ tasks: [TodoTaskViewModel])
     func didFinish(with error: Error)
-    func didSaveTasks()
 }

@@ -46,8 +46,10 @@ extension WeakRefVirtualProxy: TasksInteractorOutput where T: TasksInteractorOut
     func didFinish(with error: any Error) {
         object?.didFinish(with: error)
     }
-    
-    func didSaveTasks() {
-        object?.didSaveTasks()
+}
+
+extension WeakRefVirtualProxy: TasksInteractorInput where T: TasksInteractorInput {
+    func loadTasks() {
+        object?.loadTasks()
     }
 }
