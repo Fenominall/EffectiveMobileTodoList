@@ -1,5 +1,5 @@
 //
-//  AddEditTasksViewController.swift
+//  TaskListViewController.swift
 //  EffectiveMobileTodoListiOS
 //
 //  Created by Fenominall on 9/8/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TaskListViewController: UIViewController {
+public final class TaskListViewController: UIViewController {
     
     // MARK: Properties
     private(set) public var errorView = ErrorView()
@@ -51,7 +51,7 @@ class TaskListViewController: UIViewController {
     }()
     
     // MARK: App lifecycle
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
@@ -106,21 +106,21 @@ class TaskListViewController: UIViewController {
 }
 
 extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableModel.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return cellController(forRowAt: indexPath).view()
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let task = cellController(forRowAt: indexPath)
         task.selection()
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
     
@@ -131,13 +131,13 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension TaskListViewController: TaskLoadingView {
-    func display(_ viewModel: TaskLoadingViewModel) {
+    public func display(_ viewModel: TaskLoadingViewModel) {
         refreshControl.update(isRefreshing: viewModel.isLoading)
     }
 }
 
 extension TaskListViewController: TaskErrorView {
-    func display(_ viewModel: TaskErrorViewModel) {
+    public func display(_ viewModel: TaskErrorViewModel) {
         errorView.message = viewModel.message
     }
 }
