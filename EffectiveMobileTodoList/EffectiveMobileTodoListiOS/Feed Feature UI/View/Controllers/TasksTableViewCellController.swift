@@ -11,9 +11,11 @@ import Foundation
 public final class TasksTableCellController {
     private let viewModel: TodoTaskViewModel
     private var cell: TaskTableViewCell?
+    private(set) var selection: () -> Void
     
-    public init(viewModel: TodoTaskViewModel) {
+    public init(viewModel: TodoTaskViewModel, selection: @escaping () -> Void) {
         self.viewModel = viewModel
+        self.selection = selection
     }
     
     public func view() -> UITableViewCell {
