@@ -132,7 +132,7 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension TaskListViewController: TaskLoadingView {
     func display(_ viewModel: TaskLoadingViewModel) {
-        
+        refreshControl.update(isRefreshing: viewModel.isLoading)
     }
 }
 
