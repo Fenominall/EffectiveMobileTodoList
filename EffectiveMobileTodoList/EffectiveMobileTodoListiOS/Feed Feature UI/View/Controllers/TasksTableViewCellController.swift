@@ -37,3 +37,15 @@ public final class TasksTableCellController {
         return cell
     }
 }
+
+extension TasksTableCellController: TaskLoadingView {
+    public func display(_ viewModel: TaskLoadingViewModel) {
+        
+    }
+}
+
+extension TasksTableCellController: TaskErrorView {
+    public func display(_ viewModel: TaskErrorViewModel) {
+        
+    }
+}
