@@ -47,9 +47,9 @@ public final class TasksInteractor: TasksInteractorManager {
 }
 
 private extension Array where Element == TodoTask {
-    func toModels() -> [TaskViewModel] {
+    func toViewModels() -> [TodoTaskViewModel] {
         return map {
-            TaskViewModel(
+            TodoTaskViewModel(
                 id: $0.id,
                 name: $0.name,
                 description: $0.description,
@@ -60,8 +60,8 @@ private extension Array where Element == TodoTask {
     }
 }
 
-private extension Array where Element == TaskViewModel {
-    func toLocale() -> [TodoTask] {
+private extension Array where Element == TodoTaskViewModel {
+    func toModels() -> [TodoTask] {
         return map {
             TodoTask(
                 id: $0.id,
