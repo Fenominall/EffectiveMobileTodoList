@@ -271,6 +271,10 @@
 		4F3C7B8D2C8E236600291DCA /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				4F61AB622C8EE0080040C357 /* TaskLoadingViewModel.swift */,
+				4F61AB602C8EDC9F0040C357 /* TaskLoadingView.swift */,
+				4F61AB5E2C8EDC960040C357 /* TaskErrorView.swift */,
+				4F61AB642C8EE01E0040C357 /* TaskErrorViewModel.swift */,
 				4F61AB4E2C8EABCE0040C357 /* TasksPresenterDelegate.swift */,
 				4F61AB502C8EAC920040C357 /* TasksPresenter.swift */,
 			);
@@ -334,10 +338,6 @@
 			isa = PBXGroup;
 			children = (
 				4F61AB522C8EAF4F0040C357 /* TasksView.swift */,
-				4F61AB622C8EE0080040C357 /* TaskLoadingViewModel.swift */,
-				4F61AB602C8EDC9F0040C357 /* TaskLoadingView.swift */,
-				4F61AB5E2C8EDC960040C357 /* TaskErrorView.swift */,
-				4F61AB642C8EE01E0040C357 /* TaskErrorViewModel.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";

@@ -49,7 +49,6 @@ extension TasksPresenter: TasksInteractorOutput {
     public func didSaveTasks() {
         loadingView.display(TaskLoadingViewModel(isLoading: false))
         errorView.display(.noError)
-        view.displaySaveSuccess()
     }
     
     public func didFinish(with error: any Error) {
