@@ -33,6 +33,8 @@ class TaskListViewController: UIViewController {
         return button
     }()
     
+    public var tableModel = [TasksTableCellController]()
+    public var addNewTask: (() -> Void)?
     private let customTitleView = CustomTitleHeaderView()
     private let filterView = FiltersView()
     
@@ -81,6 +83,7 @@ class TaskListViewController: UIViewController {
     
     
     @objc private func newTaskTapped() {
+        addNewTask?()
     }
 }
 
