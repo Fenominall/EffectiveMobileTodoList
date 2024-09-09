@@ -121,12 +121,12 @@ class TaskTableViewCell: UITableViewCell {
         ])
     }
     
-    func configure(with title: String, detail: String, timeDate: String, specificTime: String, completed: Bool) {
+    func configure(withName title: String, description: String, timeDate: String, specificTime: String, isCompleted: Bool) {
         titleLabel.text = title
-        descriptionLabel.text = detail
+        descriptionLabel.text = description
         timeDateLabel.text = timeDate
         specificTimeLabel.text = specificTime
-        isTaskCompleted = completed
+        isTaskCompleted = isCompleted
     }
     
     private func updateCheckmarkState() {

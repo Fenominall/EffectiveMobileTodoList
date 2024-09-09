@@ -99,11 +99,11 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         cell.configure(
-            with: "Task \(indexPath.row + 1)",
-            detail: "Crypto Wallet Redesign",
+            withName: "Task \(indexPath.row + 1)",
+            description: "Crypto Wallet Redesign",
             timeDate: "Today",
             specificTime: "10:00 PM - 11:45 PM",
-            completed: indexPath.row % 2 == 0
+            isCompleted: indexPath.row % 2 == 0
         )
         return cell
         
