@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+public protocol TasksPresenterDelegate {
+    func viewDidLoad()
+    func saveTasks(_ tasks: [TodoTaskViewModel])
+}
