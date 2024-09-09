@@ -138,6 +138,6 @@ extension TaskListViewController: TaskLoadingView {
 
 extension TaskListViewController: TaskErrorView {
     func display(_ viewModel: TaskErrorViewModel) {
-        
+        errorView.message = viewModel.message
     }
 }
