@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-public final class TasksTableViewCellController {
+public final class TasksTableCellController {
     private let viewModel: TodoTaskViewModel
     private var cell: TaskTableViewCell?
     
