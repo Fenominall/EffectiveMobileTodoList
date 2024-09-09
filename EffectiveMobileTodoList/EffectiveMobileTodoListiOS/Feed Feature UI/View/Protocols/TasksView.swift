@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol TaskView: AnyObject {
+public protocol TasksView: AnyObject {
     func displayTasks(_ tasks: [TodoTaskViewModel])
     func displayError(_ error: Error)
     func displaySaveSuccess()
