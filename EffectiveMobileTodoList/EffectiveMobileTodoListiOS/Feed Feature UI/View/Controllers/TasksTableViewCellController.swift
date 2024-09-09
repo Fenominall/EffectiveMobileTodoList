@@ -40,7 +40,7 @@ public final class TasksTableCellController {
 
 extension TasksTableCellController: TaskLoadingView {
     public func display(_ viewModel: TaskLoadingViewModel) {
-        
+        cell?.containerView.isShimmering = viewModel.isLoading
     }
 }
 
