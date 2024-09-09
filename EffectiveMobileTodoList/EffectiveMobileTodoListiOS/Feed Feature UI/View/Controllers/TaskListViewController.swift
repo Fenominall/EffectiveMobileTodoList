@@ -111,3 +111,15 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension TaskListViewController: TaskLoadingView {
+    func display(_ viewModel: TaskLoadingViewModel) {
+        
+    }
+}
+
+extension TaskListViewController: TaskErrorView {
+    func display(_ viewModel: TaskErrorViewModel) {
+        
+    }
+}
+
