@@ -9,6 +9,5 @@ import Foundation
 
 public protocol TasksView: AnyObject {
     func displayTasks(_ tasks: [TodoTaskViewModel])
-    func displayError(_ error: Error)
     func displaySaveSuccess()
 }
