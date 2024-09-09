@@ -27,6 +27,8 @@ public final class TasksInteractor: TasksInteractorInput {
 // Load Tasks
 extension TasksInteractor {
     public func loadTasks() {
+        presenter.didStartOperation()
+        
         loader.load { [weak self] result in
             guard let self = self else { return }
             
@@ -35,7 +37,7 @@ extension TasksInteractor {
             case let .success(tasks):
                 self.presenter.didLoadTasks(tasks.toViewModels())
             case let .failure(error):
-                self.presenter.didFailLoadingTasks(with: error)
+                self.presenter.didFinish(with: error)
             }
         }
     }
@@ -44,6 +46,8 @@ extension TasksInteractor {
 // Save Tasks
 extension TasksInteractor {
     public func saveTasks(_ tasks: [TodoTaskViewModel]) {
+        presenter.didStartOperation()
+        
         cache.save(tasks.toModels()) { [weak self] result in
             guard let self = self else { return }
             
@@ -52,7 +56,7 @@ extension TasksInteractor {
             case .success:
                 self.presenter.didSaveTasks()
             case let .failure(error):
-                self.presenter.didFailSavingTasks(with: error)
+                self.presenter.didFinish(with: error)
             }
         }
     }
