@@ -15,8 +15,15 @@ class TaskListViewController: UIViewController {
     public var addNewTask: (() -> Void)?
     private let customTitleView = CustomTitleHeaderView()
     private let filterView = FiltersView()
+    public var onRefresh: (() -> Void)?
     
     // MARK: UI Elements
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return refreshControl
+    }()
+    
     private lazy var tasksTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,6 +33,8 @@ class TaskListViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+        tableView.tableHeaderView = errorView.makeContainer()
+        tableView.refreshControl = refreshControl
         return tableView
     }()
     
@@ -52,6 +61,10 @@ class TaskListViewController: UIViewController {
     // MARK: Actions
     @objc private func newTaskTapped() {
         addNewTask?()
+    }
+    
+    @objc private func refresh() {
+        onRefresh?()
     }
     
     // MARK: Helpers
