@@ -32,11 +32,18 @@ public final class TasksInteractor: TasksInteractorManager {
     }
     
     public func saveTask(_ tasks: [TaskViewModel], completion: @escaping (TasksInteractorSaver.Result) -> Void) {
-        
+        cache.save(tasks.toLocale()) { [weak self] result in
+            guard self != nil else { return }
+            
+            switch result {
+                
+            case .success():
+                completion(.success(()))
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
     }
-    
-    // MARK: - Helpers
-    
 }
 
 private extension Array where Element == TodoTask {
@@ -48,6 +55,20 @@ private extension Array where Element == TodoTask {
                 description: $0.description,
                 dateCreated: $0.dateCreated,
                 isCompleted: $0.status
+            )
+        }
+    }
+}
+
+private extension Array where Element == TaskViewModel {
+    func toLocale() -> [TodoTask] {
+        return map {
+            TodoTask(
+                id: $0.id,
+                name: $0.name,
+                description: $0.description,
+                dateCreated: $0.dateCreated,
+                status: $0.isCompleted
             )
         }
     }
