@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+public struct TaskLoadingViewModel {
+    public let isLoading: Bool
+}

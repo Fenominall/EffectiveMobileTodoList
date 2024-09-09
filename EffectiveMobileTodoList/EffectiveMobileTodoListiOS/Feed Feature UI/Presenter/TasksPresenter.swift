@@ -8,12 +8,20 @@
 import Foundation
 
 public final class TasksPresenter: TasksPresenterDelegate {
-    
     private let view: TasksView
+    private let errorView: TaskErrorView
+    private let loadingView: TaskLoadingView
     private let interactor: TasksInteractorInput
     
-    public init(view: TasksView, interactor: TasksInteractorInput) {
+    public init(
+        view: TasksView,
+        errorView: TaskErrorView,
+        loadingView: TaskLoadingView,
+        interactor: TasksInteractorInput
+    ) {
         self.view = view
+        self.errorView = errorView
+        self.loadingView = loadingView
         self.interactor = interactor
     }
     
@@ -27,19 +35,25 @@ public final class TasksPresenter: TasksPresenterDelegate {
 }
 
 extension TasksPresenter: TasksInteractorOutput {
+    public func didStartOperation() {
+        loadingView.display(TaskLoadingViewModel(isLoading: true))
+        errorView.display(.noError)
+    }
+    
     public func didLoadTasks(_ tasks: [TodoTaskViewModel]) {
+        loadingView.display(TaskLoadingViewModel(isLoading: false))
+        errorView.display(.noError)
         view.displayTasks(tasks)
     }
     
-    public func didFailLoadingTasks(with error: any Error) {
-        view.displayError(error)
-    }
-    
     public func didSaveTasks() {
+        loadingView.display(TaskLoadingViewModel(isLoading: false))
+        errorView.display(.noError)
         view.displaySaveSuccess()
     }
     
-    public func didFailSavingTasks(with error: any Error) {
-        view.displayError(error)
+    public func didFinish(with error: any Error) {
+        loadingView.display(TaskLoadingViewModel(isLoading: false))
+        errorView.display(.error(message: error.localizedDescription))
     }
 }

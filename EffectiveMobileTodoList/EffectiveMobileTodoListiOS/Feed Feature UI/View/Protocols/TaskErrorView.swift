@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+public protocol TaskErrorView {
+    func display(_ viewModel: TaskErrorViewModel)
+}

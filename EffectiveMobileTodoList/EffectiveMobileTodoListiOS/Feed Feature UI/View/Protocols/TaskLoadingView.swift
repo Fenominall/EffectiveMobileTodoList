@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+public protocol TaskLoadingView {
+    func display(_ viewModel: TaskLoadingViewModel)
+}
