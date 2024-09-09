@@ -9,6 +9,14 @@ import UIKit
 
 class TaskListViewController: UIViewController {
     
+    // MARK: Properties
+    private let errorView = ErrorView()
+    public var tableModel = [TasksTableCellController]()
+    public var addNewTask: (() -> Void)?
+    private let customTitleView = CustomTitleHeaderView()
+    private let filterView = FiltersView()
+    
+    // MARK: UI Elements
     private lazy var tasksTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -33,11 +41,7 @@ class TaskListViewController: UIViewController {
         return button
     }()
     
-    public var tableModel = [TasksTableCellController]()
-    public var addNewTask: (() -> Void)?
-    private let customTitleView = CustomTitleHeaderView()
-    private let filterView = FiltersView()
-    
+    // MARK: App lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,6 +49,12 @@ class TaskListViewController: UIViewController {
         setupConstraints()
     }
     
+    // MARK: Actions
+    @objc private func newTaskTapped() {
+        addNewTask?()
+    }
+    
+    // MARK: Helpers
     private func setupUI() {
         customTitleView.configure(title: "Today’s Task", subtitle: "Wednesday, 11 May")
         view.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
@@ -79,10 +89,6 @@ class TaskListViewController: UIViewController {
             tasksTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tasksTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-    }
-    
-    @objc private func newTaskTapped() {
-        addNewTask?()
     }
 }
 
@@ -122,4 +128,3 @@ extension TaskListViewController: TaskErrorView {
         
     }
 }
-
