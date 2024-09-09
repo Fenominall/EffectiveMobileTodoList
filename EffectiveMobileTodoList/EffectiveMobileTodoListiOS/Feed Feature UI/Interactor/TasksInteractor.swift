@@ -12,7 +12,7 @@ public final class TasksInteractor: TasksInteractorManager {
     private let loader: TasksLoader
     private let cache: TasksFeedCache
     
-    init(loader: TasksLoader, cache: TasksFeedCache) {
+    public init(loader: TasksLoader, cache: TasksFeedCache) {
         self.loader = loader
         self.cache = cache
     }
