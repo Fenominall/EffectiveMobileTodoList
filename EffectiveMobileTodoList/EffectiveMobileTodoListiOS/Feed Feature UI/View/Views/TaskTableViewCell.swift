@@ -10,6 +10,19 @@ import UIKit
 class TaskTableViewCell: UITableViewCell {
     static let reuseIdentifier = "TaskCell"
     
+    lazy var containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .systemBackground
+        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = 15
+        view.backgroundColor = .white
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.1
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowRadius = 4
+        return view
+    }()
     private let titleLabel = UILabel()
     private let descriptionLabel = UILabel()
     private let timeDateLabel = UILabel()
@@ -89,10 +102,11 @@ class TaskTableViewCell: UITableViewCell {
         separatorLine.backgroundColor = .lightGray
         separatorLine.alpha = 0.3
         
-        contentView.addSubview(infoStackView)
-        contentView.addSubview(timeStack)
-        contentView.addSubview(checkmarkButton)
-        contentView.addSubview(separatorLine)
+        contentView.addSubview(containerView)
+        containerView.addSubview(infoStackView)
+        containerView.addSubview(timeStack)
+        containerView.addSubview(checkmarkButton)
+        containerView.addSubview(separatorLine)
     }
     
     private func setupConstraints() {
@@ -103,6 +117,11 @@ class TaskTableViewCell: UITableViewCell {
         separatorLine.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
+            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
+            containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            
             infoStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 25),
             infoStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50),
             

@@ -81,38 +81,23 @@ class TaskListViewController: UIViewController {
         ])
     }
     
-    
     @objc private func newTaskTapped() {
         addNewTask?()
     }
 }
 
 extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return tableModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TaskTableViewCell.reuseIdentifier, for: indexPath) as? TaskTableViewCell else {
-            return UITableViewCell()
-        }
-        cell.configure(
-            withName: "Task \(indexPath.row + 1)",
-            description: "Crypto Wallet Redesign",
-            timeDate: "Today",
-            specificTime: "10:00 PM - 11:45 PM",
-            isCompleted: indexPath.row % 2 == 0
-        )
-        return cell
-        
+        return cellController(forRowAt: indexPath).view()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let task = cellController(forRowAt: indexPath)
+        task.selection()
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -120,31 +105,9 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
         return 150
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        setupRoundedView(with: cell)
-    }
-    
-    private func setupRoundedView(with cell: UITableViewCell) {
-        cell.backgroundColor = .clear
-        let roundedView = UIView()
-        roundedView.layer.cornerRadius = 15
-        roundedView.backgroundColor = .white
-        roundedView.layer.shadowColor = UIColor.black.cgColor
-        roundedView.layer.shadowOpacity = 0.1
-        roundedView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        roundedView.layer.shadowRadius = 4
-        
-        cell.contentView.addSubview(roundedView)
-        roundedView.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.sendSubviewToBack(roundedView)
-        
-        NSLayoutConstraint.activate([
-            roundedView.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 25),
-            roundedView.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -25),
-            roundedView.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 8),
-            roundedView.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -10)
-        ])
+    // MARK - Helpers
+    private func cellController(forRowAt indexPath: IndexPath) -> TasksTableCellController {
+        return tableModel[indexPath.row]
     }
 }
 
