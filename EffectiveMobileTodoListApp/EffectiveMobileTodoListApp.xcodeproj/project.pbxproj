@@ -12,6 +12,7 @@
 		4FBB50CA2C8F4465002A23E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB50C92C8F4465002A23E9 /* Assets.xcassets */; };
 		4FBB50CD2C8F4465002A23E9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB50CC2C8F4465002A23E9 /* Base */; };
 		4FBB50F12C8F6E33002A23E9 /* WeakRefVirtualProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB50F02C8F6E33002A23E9 /* WeakRefVirtualProxy.swift */; };
+		4FBB50F42C8F7283002A23E9 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB50F32C8F7283002A23E9 /* MainQueueDispatchDecorator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		4FBB50CC2C8F4465002A23E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4FBB50CE2C8F4465002A23E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FBB50F02C8F6E33002A23E9 /* WeakRefVirtualProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefVirtualProxy.swift; sourceTree = "<group>"; };
+		4FBB50F32C8F7283002A23E9 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,23 @@
 		4FBB50BF2C8F4464002A23E9 /* EffectiveMobileTodoListApp */ = {
 			isa = PBXGroup;
 			children = (
+				4FBB50F22C8F7277002A23E9 /* Shared Helpers */,
 				4FBB50C02C8F4464002A23E9 /* AppDelegate.swift */,
 				4FBB50C22C8F4464002A23E9 /* SceneDelegate.swift */,
-				4FBB50F02C8F6E33002A23E9 /* WeakRefVirtualProxy.swift */,
 				4FBB50C92C8F4465002A23E9 /* Assets.xcassets */,
 				4FBB50CB2C8F4465002A23E9 /* LaunchScreen.storyboard */,
 				4FBB50CE2C8F4465002A23E9 /* Info.plist */,
 			);
 			path = EffectiveMobileTodoListApp;
+			sourceTree = "<group>";
+		};
+		4FBB50F22C8F7277002A23E9 /* Shared Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4FBB50F02C8F6E33002A23E9 /* WeakRefVirtualProxy.swift */,
+				4FBB50F32C8F7283002A23E9 /* MainQueueDispatchDecorator.swift */,
+			);
+			path = "Shared Helpers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FBB50F42C8F7283002A23E9 /* MainQueueDispatchDecorator.swift in Sources */,
 				4FBB50C12C8F4464002A23E9 /* AppDelegate.swift in Sources */,
 				4FBB50F12C8F6E33002A23E9 /* WeakRefVirtualProxy.swift in Sources */,
 				4FBB50C32C8F4464002A23E9 /* SceneDelegate.swift in Sources */,
