@@ -13,7 +13,28 @@
 		4FBB50CD2C8F4465002A23E9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB50CC2C8F4465002A23E9 /* Base */; };
 		4FBB50F12C8F6E33002A23E9 /* WeakRefVirtualProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB50F02C8F6E33002A23E9 /* WeakRefVirtualProxy.swift */; };
 		4FBB50F42C8F7283002A23E9 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB50F32C8F7283002A23E9 /* MainQueueDispatchDecorator.swift */; };
+		4FBB50F62C8F7463002A23E9 /* TasksFeedUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB50F52C8F7463002A23E9 /* TasksFeedUIComposer.swift */; };
+		4FC06EAF2C8F77D40034F364 /* EffectiveMobileTodoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC06EAE2C8F77D40034F364 /* EffectiveMobileTodoList.framework */; };
+		4FC06EB02C8F77D40034F364 /* EffectiveMobileTodoList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC06EAE2C8F77D40034F364 /* EffectiveMobileTodoList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4FC06EB32C8F77D70034F364 /* EffectiveMobileTodoListiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC06EB22C8F77D70034F364 /* EffectiveMobileTodoListiOS.framework */; };
+		4FC06EB42C8F77D70034F364 /* EffectiveMobileTodoListiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC06EB22C8F77D70034F364 /* EffectiveMobileTodoListiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4FC06EB72C8F7F280034F364 /* TasksFeedViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EB62C8F7F280034F364 /* TasksFeedViewAdapter.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4FC06EB12C8F77D40034F364 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4FC06EB42C8F77D70034F364 /* EffectiveMobileTodoListiOS.framework in Embed Frameworks */,
+				4FC06EB02C8F77D40034F364 /* EffectiveMobileTodoList.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4FBB50BD2C8F4464002A23E9 /* EffectiveMobileTodoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EffectiveMobileTodoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +45,10 @@
 		4FBB50CE2C8F4465002A23E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FBB50F02C8F6E33002A23E9 /* WeakRefVirtualProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefVirtualProxy.swift; sourceTree = "<group>"; };
 		4FBB50F32C8F7283002A23E9 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
+		4FBB50F52C8F7463002A23E9 /* TasksFeedUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedUIComposer.swift; sourceTree = "<group>"; };
+		4FC06EAE2C8F77D40034F364 /* EffectiveMobileTodoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EffectiveMobileTodoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FC06EB22C8F77D70034F364 /* EffectiveMobileTodoListiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EffectiveMobileTodoListiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FC06EB62C8F7F280034F364 /* TasksFeedViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedViewAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +56,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FC06EB32C8F77D70034F364 /* EffectiveMobileTodoListiOS.framework in Frameworks */,
+				4FC06EAF2C8F77D40034F364 /* EffectiveMobileTodoList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +69,7 @@
 			children = (
 				4FBB50BF2C8F4464002A23E9 /* EffectiveMobileTodoListApp */,
 				4FBB50BE2C8F4464002A23E9 /* Products */,
+				4FC06EAD2C8F77D40034F364 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,6 +87,7 @@
 				4FBB50F22C8F7277002A23E9 /* Shared Helpers */,
 				4FBB50C02C8F4464002A23E9 /* AppDelegate.swift */,
 				4FBB50C22C8F4464002A23E9 /* SceneDelegate.swift */,
+				4FC06EB52C8F7F110034F364 /* Tasks Feed UI Composer */,
 				4FBB50C92C8F4465002A23E9 /* Assets.xcassets */,
 				4FBB50CB2C8F4465002A23E9 /* LaunchScreen.storyboard */,
 				4FBB50CE2C8F4465002A23E9 /* Info.plist */,
@@ -75,6 +104,24 @@
 			path = "Shared Helpers";
 			sourceTree = "<group>";
 		};
+		4FC06EAD2C8F77D40034F364 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4FC06EB22C8F77D70034F364 /* EffectiveMobileTodoListiOS.framework */,
+				4FC06EAE2C8F77D40034F364 /* EffectiveMobileTodoList.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4FC06EB52C8F7F110034F364 /* Tasks Feed UI Composer */ = {
+			isa = PBXGroup;
+			children = (
+				4FBB50F52C8F7463002A23E9 /* TasksFeedUIComposer.swift */,
+				4FC06EB62C8F7F280034F364 /* TasksFeedViewAdapter.swift */,
+			);
+			path = "Tasks Feed UI Composer";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -85,6 +132,7 @@
 				4FBB50B92C8F4464002A23E9 /* Sources */,
 				4FBB50BA2C8F4464002A23E9 /* Frameworks */,
 				4FBB50BB2C8F4464002A23E9 /* Resources */,
+				4FC06EB12C8F77D40034F364 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -148,7 +196,9 @@
 				4FBB50F42C8F7283002A23E9 /* MainQueueDispatchDecorator.swift in Sources */,
 				4FBB50C12C8F4464002A23E9 /* AppDelegate.swift in Sources */,
 				4FBB50F12C8F6E33002A23E9 /* WeakRefVirtualProxy.swift in Sources */,
+				4FBB50F62C8F7463002A23E9 /* TasksFeedUIComposer.swift in Sources */,
 				4FBB50C32C8F4464002A23E9 /* SceneDelegate.swift in Sources */,
+				4FC06EB72C8F7F280034F364 /* TasksFeedViewAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
