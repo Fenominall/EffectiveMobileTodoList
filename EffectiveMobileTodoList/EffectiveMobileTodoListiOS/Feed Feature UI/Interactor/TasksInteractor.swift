@@ -8,39 +8,51 @@
 import Foundation
 import EffectiveMobileTodoList
 
-public final class TasksInteractor: TasksInteractorManager {
+public final class TasksInteractor: TasksInteractorInput {
+    private let presenter: TasksInteractorOutput
     private let loader: TasksLoader
     private let cache: TasksFeedCache
     
-    public init(loader: TasksLoader, cache: TasksFeedCache) {
+    public init(
+        loader: TasksLoader,
+        cache: TasksFeedCache,
+        presenter: TasksInteractorOutput
+    ) {
         self.loader = loader
         self.cache = cache
+        self.presenter = presenter
     }
-    
-    public func loadTasks(completion: @escaping (TasksInteractorLoader.Result) -> Void) {
+}
+
+// Load Tasks
+extension TasksInteractor {
+    public func loadTasks() {
         loader.load { [weak self] result in
-            guard self != nil else { return }
+            guard let self = self else { return }
             
             switch result {
                 
             case let .success(tasks):
-                completion(.success(tasks.toModels()))
+                self.presenter.didLoadTasks(tasks.toViewModels())
             case let .failure(error):
-                completion(.failure(error))
+                self.presenter.didFailLoadingTasks(with: error)
             }
         }
     }
-    
-    public func saveTask(_ tasks: [TaskViewModel], completion: @escaping (TasksInteractorSaver.Result) -> Void) {
-        cache.save(tasks.toLocale()) { [weak self] result in
-            guard self != nil else { return }
+}
+
+// Save Tasks
+extension TasksInteractor {
+    public func saveTasks(_ tasks: [TodoTaskViewModel]) {
+        cache.save(tasks.toModels()) { [weak self] result in
+            guard let self = self else { return }
             
             switch result {
                 
-            case .success():
-                completion(.success(()))
+            case .success:
+                self.presenter.didSaveTasks()
             case let .failure(error):
-                completion(.failure(error))
+                self.presenter.didFailSavingTasks(with: error)
             }
         }
     }
