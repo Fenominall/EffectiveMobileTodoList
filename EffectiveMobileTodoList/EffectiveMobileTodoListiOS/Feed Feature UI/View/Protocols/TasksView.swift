@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol TasksView: AnyObject {
-    func displayTasks(_ tasks: [TodoTaskViewModel])
+    func displayTasks(_ viewModel: [TodoTaskViewModel])
 }
