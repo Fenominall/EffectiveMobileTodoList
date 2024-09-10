@@ -13,7 +13,6 @@ class TaskTableViewCell: UITableViewCell {
     lazy var containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemBackground
         view.layer.cornerRadius = 10
         view.layer.cornerRadius = 15
         view.backgroundColor = .white
@@ -23,6 +22,7 @@ class TaskTableViewCell: UITableViewCell {
         view.layer.shadowRadius = 4
         return view
     }()
+    
     private let titleLabel = UILabel()
     private let descriptionLabel = UILabel()
     private let timeDateLabel = UILabel()
@@ -80,7 +80,7 @@ class TaskTableViewCell: UITableViewCell {
     
     private func setupUI() {
         contentView.backgroundColor = .clear
-        
+        titleLabel.textColor = .gray
         titleLabel.font = UIFont.preferredFont(forTextStyle: .title3)
         descriptionLabel.font = UIFont.systemFont(ofSize: 14)
         descriptionLabel.textColor = .gray
@@ -124,6 +124,7 @@ class TaskTableViewCell: UITableViewCell {
             
             infoStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 25),
             infoStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50),
+            infoStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -80),
             
             checkmarkButton.trailingAnchor.constraint(equalTo: separatorLine.trailingAnchor),
             checkmarkButton.centerYAnchor.constraint(equalTo: infoStackView.centerYAnchor),
@@ -158,12 +159,11 @@ class TaskTableViewCell: UITableViewCell {
         if isTaskCompleted {
             attributedText = NSAttributedString(string: text, attributes: [
                 .strikethroughStyle: NSUnderlineStyle.single.rawValue,
-                .strikethroughColor: UIColor.label
             ])
         } else {
             attributedText = NSAttributedString(string: text, attributes: [
                 .strikethroughStyle: 0,
-                .foregroundColor: UIColor.label
+
             ])
         }
         
