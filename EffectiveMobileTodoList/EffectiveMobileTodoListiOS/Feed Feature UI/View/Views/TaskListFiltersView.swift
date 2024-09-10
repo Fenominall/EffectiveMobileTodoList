@@ -32,9 +32,9 @@ public class FiltersView: UIView {
         openButton.configure(title: "Open")
         closedButton.configure(title: "Closed")
         
-        allButton.addTarget(self, action: #selector(TaskListFilterButtonTapped), for: .touchUpInside)
-        openButton.addTarget(self, action: #selector(TaskListFilterButtonTapped), for: .touchUpInside)
-        closedButton.addTarget(self, action: #selector(TaskListFilterButtonTapped), for: .touchUpInside)
+        allButton.addTarget(self, action: #selector(taskListFilterButtonTapped), for: .touchUpInside)
+        openButton.addTarget(self, action: #selector(taskListFilterButtonTapped), for: .touchUpInside)
+        closedButton.addTarget(self, action: #selector(taskListFilterButtonTapped), for: .touchUpInside)
         
         addSubview(allButton)
         addSubview(openButton)
@@ -70,7 +70,7 @@ public class FiltersView: UIView {
         ])
     }
     
-    @objc private func TaskListFilterButtonTapped(_ sender: TaskListFilterButton) {
+    @objc private func taskListFilterButtonTapped(_ sender: TaskListFilterButton) {
         selectTaskListFilterButton(sender)
     }
     
