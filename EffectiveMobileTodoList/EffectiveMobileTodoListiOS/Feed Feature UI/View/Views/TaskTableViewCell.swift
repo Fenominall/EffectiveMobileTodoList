@@ -79,7 +79,8 @@ class TaskTableViewCell: UITableViewCell {
     }
     
     private func setupUI() {
-        contentView.backgroundColor = .clear
+        contentView.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+        
         titleLabel.textColor = .black
         titleLabel.font = UIFont.preferredFont(forTextStyle: .title3)
         descriptionLabel.font = UIFont.systemFont(ofSize: 14)
@@ -169,7 +170,6 @@ class TaskTableViewCell: UITableViewCell {
         
         titleLabel.attributedText = attributedText
     }
-    
     
     @objc private func checkmarkTapped() {
         isTaskCompleted.toggle()
