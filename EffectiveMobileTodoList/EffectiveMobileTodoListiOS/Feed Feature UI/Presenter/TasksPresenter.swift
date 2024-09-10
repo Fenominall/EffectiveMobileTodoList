@@ -27,7 +27,7 @@ public final class TasksPresenter: TasksPresenterDelegate {
     
     public func viewDidLoad() {
         interactor.loadTasks()
-    }    
+    }
 }
 
 extension TasksPresenter: TasksInteractorOutput {
@@ -41,7 +41,7 @@ extension TasksPresenter: TasksInteractorOutput {
         errorView.display(.noError)
         view.displayTasks(tasks)
     }
-        
+    
     public func didFinish(with error: any Error) {
         loadingView.display(TaskLoadingViewModel(isLoading: false))
         errorView.display(.error(message: error.localizedDescription))
