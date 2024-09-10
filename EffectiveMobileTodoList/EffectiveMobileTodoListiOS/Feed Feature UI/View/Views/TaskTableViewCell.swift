@@ -80,7 +80,7 @@ class TaskTableViewCell: UITableViewCell {
     
     private func setupUI() {
         contentView.backgroundColor = .clear
-        titleLabel.textColor = .gray
+        titleLabel.textColor = .black
         titleLabel.font = UIFont.preferredFont(forTextStyle: .title3)
         descriptionLabel.font = UIFont.systemFont(ofSize: 14)
         descriptionLabel.textColor = .gray
