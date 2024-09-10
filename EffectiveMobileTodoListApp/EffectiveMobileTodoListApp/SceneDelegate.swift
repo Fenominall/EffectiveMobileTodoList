@@ -10,9 +10,9 @@ import EffectiveMobileTodoList
 import EffectiveMobileTodoListiOS
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
     var window: UIWindow?
-
+    
     private lazy var httpClient: HTTPClient = {
         URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     }()
@@ -40,17 +40,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private lazy var navigationController = UINavigationController(
         rootViewController: TasksFeedUIComposer
             .tasksFeedComposedWith(
-                feedLoader: remoteFeedLoader,
-                selection: { _ in }
+                feedLoader: TasksFeedLoaderWithFallbackComposite(
+                    primary: TasksFeedLoaderCacheDecorator(
+                        decoratee: remoteFeedLoader,
+                        cache: localFeedLoader),
+                    fallback: localFeedLoader),
+                selection: {
+                    _ in
+                }
             )
     )
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         configureWindow()
     }
-
+    
     private func configureWindow() {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
