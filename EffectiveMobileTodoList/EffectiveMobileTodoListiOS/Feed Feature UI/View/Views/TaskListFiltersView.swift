@@ -8,10 +8,18 @@
 import UIKit
 
 public class FiltersView: UIView {
+    public var onFilterSelected: ((FilterType) -> Void)?
+    
     private let allButton = TaskListFilterButton(type: .system)
     private let openButton = TaskListFilterButton(type: .system)
     private let closedButton = TaskListFilterButton(type: .system)
     private let divider1 = UIView()
+    
+    public enum FilterType {
+        case all
+        case open
+        case closed
+    }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,7 +79,20 @@ public class FiltersView: UIView {
     }
     
     @objc private func taskListFilterButtonTapped(_ sender: TaskListFilterButton) {
+        let filterType: FilterType
+        
+        switch sender {
+        case allButton:
+            filterType = .all
+        case openButton:
+            filterType = .open
+        case closedButton:
+            filterType = .closed
+        default:
+            return
+        }
         selectTaskListFilterButton(sender)
+        onFilterSelected?(filterType)
     }
     
     private func selectTaskListFilterButton(_ button: TaskListFilterButton) {
