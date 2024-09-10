@@ -20,6 +20,7 @@
 		4FC06EB42C8F77D70034F364 /* EffectiveMobileTodoListiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC06EB22C8F77D70034F364 /* EffectiveMobileTodoListiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4FC06EB72C8F7F280034F364 /* TasksFeedViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EB62C8F7F280034F364 /* TasksFeedViewAdapter.swift */; };
 		4FC06EB92C8F842B0034F364 /* NullStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EB82C8F842A0034F364 /* NullStore.swift */; };
+		4FC06EBB2C902B920034F364 /* TasksFeedLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EBA2C902B920034F364 /* TasksFeedLoaderWithFallbackComposite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +52,7 @@
 		4FC06EB22C8F77D70034F364 /* EffectiveMobileTodoListiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EffectiveMobileTodoListiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC06EB62C8F7F280034F364 /* TasksFeedViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedViewAdapter.swift; sourceTree = "<group>"; };
 		4FC06EB82C8F842A0034F364 /* NullStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStore.swift; sourceTree = "<group>"; };
+		4FC06EBA2C902B920034F364 /* TasksFeedLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			children = (
 				4FBB50F52C8F7463002A23E9 /* TasksFeedUIComposer.swift */,
 				4FC06EB62C8F7F280034F364 /* TasksFeedViewAdapter.swift */,
+				4FC06EBA2C902B920034F364 /* TasksFeedLoaderWithFallbackComposite.swift */,
 			);
 			path = "Tasks Feed UI Composer";
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				4FBB50F12C8F6E33002A23E9 /* WeakRefVirtualProxy.swift in Sources */,
 				4FC06EB92C8F842B0034F364 /* NullStore.swift in Sources */,
 				4FBB50F62C8F7463002A23E9 /* TasksFeedUIComposer.swift in Sources */,
+				4FC06EBB2C902B920034F364 /* TasksFeedLoaderWithFallbackComposite.swift in Sources */,
 				4FBB50C32C8F4464002A23E9 /* SceneDelegate.swift in Sources */,
 				4FC06EB72C8F7F280034F364 /* TasksFeedViewAdapter.swift in Sources */,
 			);
