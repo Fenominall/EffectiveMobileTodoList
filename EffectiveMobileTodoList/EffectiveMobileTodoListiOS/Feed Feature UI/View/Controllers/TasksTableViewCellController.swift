@@ -37,15 +37,3 @@ public final class TasksTableCellController {
         return cell
     }
 }
-
-extension TasksTableCellController: TaskLoadingView {
-    public func display(_ viewModel: TaskLoadingViewModel) {
-        cell?.containerView.isShimmering = viewModel.isLoading
-    }
-}
-
-extension TasksTableCellController: TaskErrorView {
-    public func display(_ viewModel: TaskErrorViewModel) {
-        
-    }
-}
