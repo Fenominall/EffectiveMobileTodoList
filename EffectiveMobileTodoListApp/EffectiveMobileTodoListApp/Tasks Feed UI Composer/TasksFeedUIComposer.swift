@@ -22,13 +22,12 @@ final class TasksFeedUIComposer {
         )
         
         let presenter = TasksPresenter(
-            view: WeakRefVirtualProxy(
-                TasksFeedViewAdapter(
+            view: TasksFeedViewAdapter(
                     controller: view,
-                    selection: selection)),
+                    selection: selection),
             errorView: WeakRefVirtualProxy(view),
             loadingView: WeakRefVirtualProxy(view),
-            interactor: WeakRefVirtualProxy(interactor)
+            interactor: interactor
         )
         
         view.onRefresh = presenter.viewDidLoad
