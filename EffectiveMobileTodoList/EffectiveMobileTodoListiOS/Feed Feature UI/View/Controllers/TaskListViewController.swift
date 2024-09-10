@@ -17,6 +17,12 @@ public final class TaskListViewController: UIViewController {
             tasksTableView.reloadData()
         }
     }
+    private var filteredTasks = [TasksTableCellController]()
+    private var selectedFilter: FiltersView.FilterType = .all {
+        didSet {
+            filterTasks()
+        }
+    }
     public var addNewTask: (() -> Void)?
     private let customTitleView = CustomTitleHeaderView()
     private let filterView = FiltersView()
@@ -82,6 +88,14 @@ public final class TaskListViewController: UIViewController {
         view.addSubview(tasksTableView)
         view.addSubview(customTitleView)
         view.addSubview(newTaskButton)
+        
+        selectFilterTypeAction()
+    }
+    
+    private func selectFilterTypeAction() {
+        filterView.onFilterSelected = { [weak self] filterType in
+            self?.selectedFilter = filterType
+        }
     }
     
     private func setupConstraints() {
@@ -113,7 +127,7 @@ public final class TaskListViewController: UIViewController {
 
 extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableModel.count
+        return filteredTasks.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -132,7 +146,7 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK - Helpers
     private func cellController(forRowAt indexPath: IndexPath) -> TasksTableCellController {
-        return tableModel[indexPath.row]
+        return filteredTasks[indexPath.row]
     }
     
     private func filterTasks() {
@@ -145,6 +159,17 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
             openCount: "\(openTasksCount)",
             closedCount: "\(closedTasksCount)"
         )
+        
+        switch selectedFilter {
+        case .all:
+            filteredTasks = tableModel
+        case .open:
+            filteredTasks = tableModel.filter { !$0.viewModel.isCompleted }
+        case .closed:
+            filteredTasks = tableModel.filter { $0.viewModel.isCompleted }
+        }
+        
+        tasksTableView.reloadData()
     }
 }
 
