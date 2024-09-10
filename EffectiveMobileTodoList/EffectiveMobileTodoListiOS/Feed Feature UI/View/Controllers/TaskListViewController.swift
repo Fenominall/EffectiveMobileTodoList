@@ -44,7 +44,6 @@ public final class TaskListViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
-        tableView.tableHeaderView = errorView.makeContainer()
         tableView.refreshControl = refreshControl
         return tableView
     }()
@@ -85,6 +84,7 @@ public final class TaskListViewController: UIViewController {
         view.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         
         view.addSubview(filterView)
+        view.addSubview(errorView)
         view.addSubview(tasksTableView)
         view.addSubview(customTitleView)
         view.addSubview(newTaskButton)
@@ -101,12 +101,13 @@ public final class TaskListViewController: UIViewController {
     private func setupConstraints() {
         customTitleView.translatesAutoresizingMaskIntoConstraints = false
         filterView.translatesAutoresizingMaskIntoConstraints = false
+        errorView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             customTitleView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             customTitleView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
             customTitleView.trailingAnchor.constraint(lessThanOrEqualTo: newTaskButton.leadingAnchor, constant: -16),
-            
+                        
             newTaskButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
             newTaskButton.centerYAnchor.constraint(equalTo: customTitleView.centerYAnchor),
             newTaskButton.widthAnchor.constraint(equalToConstant: 130),
@@ -117,6 +118,9 @@ public final class TaskListViewController: UIViewController {
             filterView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             filterView.heightAnchor.constraint(equalToConstant: 60),
             
+            errorView.centerXAnchor.constraint(equalTo: filterView.centerXAnchor),
+            errorView.centerYAnchor.constraint(equalTo: filterView.centerYAnchor),
+
             tasksTableView.topAnchor.constraint(equalTo: filterView.bottomAnchor),
             tasksTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tasksTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
