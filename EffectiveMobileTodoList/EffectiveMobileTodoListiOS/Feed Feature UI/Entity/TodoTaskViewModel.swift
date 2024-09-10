@@ -12,7 +12,7 @@ public struct TodoTaskViewModel: Equatable {
     public let name: String
     public let description: String
     public let dateCreated: Date
-    public let isCompleted: Bool
+    public var isCompleted: Bool
     
     public init(
         id: UUID,
