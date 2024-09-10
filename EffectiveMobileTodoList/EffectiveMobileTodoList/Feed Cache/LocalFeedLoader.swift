@@ -79,7 +79,7 @@ extension LocalFeedLoader {
 }
 
 // Delete
-extension LocalFeedLoader {
+extension LocalFeedLoader: TasksRemover {
     public typealias DeletionResult = Swift.Result<Void, Error>
     
     public func delete(

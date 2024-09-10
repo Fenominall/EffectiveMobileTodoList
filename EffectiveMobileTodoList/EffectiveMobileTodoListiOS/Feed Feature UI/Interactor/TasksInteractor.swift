@@ -11,11 +11,14 @@ import EffectiveMobileTodoList
 public final class TasksInteractor: TasksInteractorInput {
     public weak var presenter: TasksInteractorOutput?
     private let loader: TasksLoader
+    private let remover: TasksRemover
     
     public init(
-        loader: TasksLoader
+        loader: TasksLoader,
+        remover: TasksRemover
     ) {
         self.loader = loader
+        self.remover = remover
     }
 }
 
