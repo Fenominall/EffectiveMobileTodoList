@@ -30,8 +30,8 @@ public final class TasksTableCellController {
         cell.configure(
             withName: viewModel.name,
             description: viewModel.description,
-            timeDate: convertDate(with: viewModel.dateCreated),
-            specificTime: convertDateForShort(with: viewModel.dateCreated),
+            timeDate: convertDateForShort(with: viewModel.dateCreated),
+            specificTime: convertDate(with: viewModel.dateCreated),
             isCompleted: viewModel.isCompleted
         )
         return cell
