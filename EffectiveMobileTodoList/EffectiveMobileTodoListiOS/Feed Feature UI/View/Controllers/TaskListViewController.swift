@@ -83,13 +83,14 @@ public final class TaskListViewController: UIViewController {
         customTitleView.configure(title: "Today’s Task", subtitle: "Wednesday, 11 May")
         view.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         
-        view.addSubview(filterView)
-        view.addSubview(errorView)
-        view.addSubview(tasksTableView)
-        view.addSubview(customTitleView)
-        view.addSubview(newTaskButton)
-        
+        addSubviews()
         selectFilterTypeAction()
+    }
+    
+    private func addSubviews() {
+        [filterView, errorView, tasksTableView, customTitleView, newTaskButton].forEach {
+                view.addSubview($0)
+            }
     }
     
     private func selectFilterTypeAction() {
