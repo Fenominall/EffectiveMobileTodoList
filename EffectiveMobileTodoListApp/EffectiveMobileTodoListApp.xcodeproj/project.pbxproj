@@ -19,6 +19,7 @@
 		4FC06EB32C8F77D70034F364 /* EffectiveMobileTodoListiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC06EB22C8F77D70034F364 /* EffectiveMobileTodoListiOS.framework */; };
 		4FC06EB42C8F77D70034F364 /* EffectiveMobileTodoListiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC06EB22C8F77D70034F364 /* EffectiveMobileTodoListiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4FC06EB72C8F7F280034F364 /* TasksFeedViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EB62C8F7F280034F364 /* TasksFeedViewAdapter.swift */; };
+		4FC06EB92C8F842B0034F364 /* NullStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EB82C8F842A0034F364 /* NullStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +50,7 @@
 		4FC06EAE2C8F77D40034F364 /* EffectiveMobileTodoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EffectiveMobileTodoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC06EB22C8F77D70034F364 /* EffectiveMobileTodoListiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EffectiveMobileTodoListiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC06EB62C8F7F280034F364 /* TasksFeedViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedViewAdapter.swift; sourceTree = "<group>"; };
+		4FC06EB82C8F842A0034F364 /* NullStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			children = (
 				4FBB50F02C8F6E33002A23E9 /* WeakRefVirtualProxy.swift */,
 				4FBB50F32C8F7283002A23E9 /* MainQueueDispatchDecorator.swift */,
+				4FC06EB82C8F842A0034F364 /* NullStore.swift */,
 			);
 			path = "Shared Helpers";
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				4FBB50F42C8F7283002A23E9 /* MainQueueDispatchDecorator.swift in Sources */,
 				4FBB50C12C8F4464002A23E9 /* AppDelegate.swift in Sources */,
 				4FBB50F12C8F6E33002A23E9 /* WeakRefVirtualProxy.swift in Sources */,
+				4FC06EB92C8F842B0034F364 /* NullStore.swift in Sources */,
 				4FBB50F62C8F7463002A23E9 /* TasksFeedUIComposer.swift in Sources */,
 				4FBB50C32C8F4464002A23E9 /* SceneDelegate.swift in Sources */,
 				4FC06EB72C8F7F280034F364 /* TasksFeedViewAdapter.swift in Sources */,
