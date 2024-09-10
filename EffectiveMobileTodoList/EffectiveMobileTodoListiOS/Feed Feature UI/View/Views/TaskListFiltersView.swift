@@ -7,13 +7,13 @@
 
 import UIKit
 
-class FiltersView: UIView {
+public class FiltersView: UIView {
     private let allButton = TaskListFilterButton(type: .system)
     private let openButton = TaskListFilterButton(type: .system)
     private let closedButton = TaskListFilterButton(type: .system)
     private let divider1 = UIView()
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         
         setupTaskListFilterButtons()
@@ -23,7 +23,7 @@ class FiltersView: UIView {
         selectTaskListFilterButton(allButton)
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -80,6 +80,12 @@ class FiltersView: UIView {
         
         // Select the tapped button
         button.setSelected(true)
+    }
+    
+    public func updateFilterCounts(allCount: String, openCount: String, closedCount: String) {
+        allButton.updateCount(allCount)
+        openButton.updateCount(openCount)
+        closedButton.updateCount(closedCount)
     }
 }
 

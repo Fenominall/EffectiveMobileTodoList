@@ -11,7 +11,12 @@ public final class TaskListViewController: UIViewController {
     
     // MARK: Properties
     private(set) public var errorView = ErrorView()
-    public var tableModel = [TasksTableCellController]()
+    public var tableModel = [TasksTableCellController]() {
+        didSet {
+            filterTasks()
+            tasksTableView.reloadData()
+        }
+    }
     public var addNewTask: (() -> Void)?
     private let customTitleView = CustomTitleHeaderView()
     private let filterView = FiltersView()
@@ -56,6 +61,7 @@ public final class TaskListViewController: UIViewController {
         
         setupUI()
         setupConstraints()
+        refresh()
     }
     
     // MARK: Actions
@@ -127,6 +133,18 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK - Helpers
     private func cellController(forRowAt indexPath: IndexPath) -> TasksTableCellController {
         return tableModel[indexPath.row]
+    }
+    
+    private func filterTasks() {
+        let allTasksCount = tableModel.count
+        let openTasksCount = tableModel.filter { !$0.viewModel.isCompleted }.count
+        let closedTasksCount = tableModel.filter { $0.viewModel.isCompleted }.count
+        
+        filterView.updateFilterCounts(
+            allCount: "\(allTasksCount)",
+            openCount: "\(openTasksCount)",
+            closedCount: "\(closedTasksCount)"
+        )
     }
 }
 
