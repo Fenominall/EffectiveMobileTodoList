@@ -9,7 +9,7 @@ import UIKit
 import Foundation
 
 public final class TasksTableCellController {
-    private let viewModel: TodoTaskViewModel
+    private(set) var viewModel: TodoTaskViewModel
     private var cell: TaskTableViewCell?
     private(set) var selection: () -> Void
     
