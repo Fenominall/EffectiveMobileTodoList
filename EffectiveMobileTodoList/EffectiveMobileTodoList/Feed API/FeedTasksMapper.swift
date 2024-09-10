@@ -17,25 +17,22 @@ public final class FeedTasksMapper {
     }
     
     private struct Item: Decodable {
-        let id: String
+        let id: Int
         let todo: String
-        let description: String?
         let completed: Bool
-        let createdDate: String
         
         var item: TodoTask {
-            let uuid = UUID(uuidString: id) ?? UUID()
-            let dateFormatter = ISO8601DateFormatter()
-            let date = dateFormatter.date(from: createdDate) ?? Date()
+            let uuid = UUID(uuidString: "\(id)-\(UUID().uuidString)") ?? UUID()
             
             return TodoTask(
                 id: uuid,
                 name: todo,
-                description: description ?? "",
-                dateCreated: date,
+                description: todo,
+                dateCreated: Date(),
                 status: completed
             )
         }
+        
     }
     
     public enum Error: Swift.Error {
