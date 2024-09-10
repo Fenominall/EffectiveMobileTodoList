@@ -21,6 +21,7 @@
 		4FC06EB72C8F7F280034F364 /* TasksFeedViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EB62C8F7F280034F364 /* TasksFeedViewAdapter.swift */; };
 		4FC06EB92C8F842B0034F364 /* NullStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EB82C8F842A0034F364 /* NullStore.swift */; };
 		4FC06EBB2C902B920034F364 /* TasksFeedLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EBA2C902B920034F364 /* TasksFeedLoaderWithFallbackComposite.swift */; };
+		4FC06EBD2C902C600034F364 /* TasksFeedLoaderCacheDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EBC2C902C600034F364 /* TasksFeedLoaderCacheDecorator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +54,7 @@
 		4FC06EB62C8F7F280034F364 /* TasksFeedViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedViewAdapter.swift; sourceTree = "<group>"; };
 		4FC06EB82C8F842A0034F364 /* NullStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStore.swift; sourceTree = "<group>"; };
 		4FC06EBA2C902B920034F364 /* TasksFeedLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
+		4FC06EBC2C902C600034F364 /* TasksFeedLoaderCacheDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedLoaderCacheDecorator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				4FBB50F52C8F7463002A23E9 /* TasksFeedUIComposer.swift */,
 				4FC06EB62C8F7F280034F364 /* TasksFeedViewAdapter.swift */,
 				4FC06EBA2C902B920034F364 /* TasksFeedLoaderWithFallbackComposite.swift */,
+				4FC06EBC2C902C600034F364 /* TasksFeedLoaderCacheDecorator.swift */,
 			);
 			path = "Tasks Feed UI Composer";
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				4FC06EBB2C902B920034F364 /* TasksFeedLoaderWithFallbackComposite.swift in Sources */,
 				4FBB50C32C8F4464002A23E9 /* SceneDelegate.swift in Sources */,
 				4FC06EB72C8F7F280034F364 /* TasksFeedViewAdapter.swift in Sources */,
+				4FC06EBD2C902C600034F364 /* TasksFeedLoaderCacheDecorator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
