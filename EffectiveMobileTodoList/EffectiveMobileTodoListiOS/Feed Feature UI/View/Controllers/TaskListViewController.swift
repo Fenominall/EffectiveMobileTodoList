@@ -149,6 +149,29 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
         return 150
     }
     
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Remove from filteredTasks and delete the row
+            filteredTasks.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+
+            tableView.endUpdates()
+
+            filterTasks()
+
+            // Check if the deleted row was the last one
+            if filteredTasks.isEmpty {
+                // If the last row was deleted, update the indexPath to prevent out-of-range errors
+                _ = IndexPath(row: 0, section: 0)
+            }
+
+            // Remove the task from the tableModel array
+            if let index = tableModel.firstIndex(where: { $0.viewModel.id == filteredTasks[indexPath.row].viewModel.id }) {
+                tableModel.remove(at: index)
+            }
+        }
+    }
+    
     // MARK - Helpers
     private func cellController(forRowAt indexPath: IndexPath) -> TasksTableCellController {
         return filteredTasks[indexPath.row]
@@ -175,6 +198,16 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         tasksTableView.reloadData()
+    }
+    
+    private func deleteTask(at indexPath: IndexPath) {
+        let taskToDelete = filteredTasks[indexPath.row]
+        if let index = tableModel.firstIndex(where: { $0 === taskToDelete }) {
+            tableModel.remove(at: index)
+        }
+        filteredTasks.remove(at: indexPath.row)
+        tasksTableView.deleteRows(at: [indexPath], with: .automatic)
+        filterTasks()
     }
 }
 
