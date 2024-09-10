@@ -119,4 +119,3 @@ private extension Array where Element == TodoTask {
         }
     }
 }
-
