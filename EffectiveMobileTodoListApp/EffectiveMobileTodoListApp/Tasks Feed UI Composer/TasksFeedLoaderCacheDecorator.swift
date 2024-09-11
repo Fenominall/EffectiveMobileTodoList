@@ -20,7 +20,7 @@ final class TasksFeedLoaderCacheDecorator: TasksLoader {
     func load(completion: @escaping (TasksLoader.Result) -> Void) {
         decoratee.load { [weak self] result in
             completion(result.map({ feed in
-                self?.cache.saveIngoringResult(feed)
+                self?.cache.saveIgnoringResult(feed)
                 return feed
             }))
         }
@@ -28,7 +28,7 @@ final class TasksFeedLoaderCacheDecorator: TasksLoader {
 }
 
 private extension TasksFeedCache {
-    func saveIngoringResult(_ feed: [TodoTask]) {
+    func saveIgnoringResult(_ feed: [TodoTask]) {
         save(feed) { _ in }
     }
 }
