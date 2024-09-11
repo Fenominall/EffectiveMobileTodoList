@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import EffectiveMobileTodoList
 
 public protocol TasksPresenterDelegate {
     func viewDidLoad()
-    func didRequestTaskDeletion(_ task: TodoTaskViewModel)
+    func didRequestTaskDeletion(_ task: TodoTask)
 }

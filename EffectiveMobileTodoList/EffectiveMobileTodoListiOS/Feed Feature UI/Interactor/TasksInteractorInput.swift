@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import EffectiveMobileTodoList
 
 public protocol TasksInteractorInput {
     func loadTasks()
-    func deleteTask(_ task: TodoTaskViewModel)
+    func deleteTask(_ task: TodoTask)
 }

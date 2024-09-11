@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import EffectiveMobileTodoList
 
 public protocol TasksInteractorOutput: AnyObject {
     func didStartOperation()
-    func didLoadTasks(_ tasks: [TodoTaskViewModel])
+    func didLoadTasks(_ tasks: [TodoTask])
     func didFinish(with error: Error)
     func didFinishOperation()
 }

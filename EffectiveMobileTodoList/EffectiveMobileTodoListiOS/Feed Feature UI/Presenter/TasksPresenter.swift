@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import EffectiveMobileTodoList
 
 public final class TasksPresenter: TasksPresenterDelegate {
     private let view: TasksView
@@ -29,7 +30,7 @@ public final class TasksPresenter: TasksPresenterDelegate {
         interactor.loadTasks()
     }
     
-    public func didRequestTaskDeletion(_ task: TodoTaskViewModel) {
+    public func didRequestTaskDeletion(_ task: TodoTask) {
         interactor.deleteTask(task)
     }
 }
@@ -40,7 +41,7 @@ extension TasksPresenter: TasksInteractorOutput {
         errorView.display(.noError)
     }
     
-    public func didLoadTasks(_ tasks: [TodoTaskViewModel]) {
+    public func didLoadTasks(_ tasks: [TodoTask]) {
         loadingView.display(TaskLoadingViewModel(isLoading: false))
         errorView.display(.noError)
         view.displayTasks(tasks)

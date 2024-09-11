@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import EffectiveMobileTodoList
 
 public protocol TasksView: AnyObject {
-    func displayTasks(_ viewModel: [TodoTaskViewModel])
+    func displayTasks(_ viewModel: [TodoTask])
 }
