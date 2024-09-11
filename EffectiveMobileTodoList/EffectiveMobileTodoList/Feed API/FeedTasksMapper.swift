@@ -22,8 +22,8 @@ public final class FeedTasksMapper {
         let completed: Bool
         
         var item: TodoTask {
-            let uuid = UUID(uuidString: "\(id)-\(UUID().uuidString)") ?? UUID()
-            
+            let uuid = uuidFromID(id)
+            print(uuid)
             return TodoTask(
                 id: uuid,
                 name: todo,
@@ -33,6 +33,12 @@ public final class FeedTasksMapper {
             )
         }
         
+        // Generate a consistent UUID from an integer ID
+        private func uuidFromID(_ id: Int) -> UUID {
+            // Create a UUID string from the integer ID
+            let uuidString = String(format: "%08x-0000-0000-0000-000000000000", id)
+            return UUID(uuidString: uuidString) ?? UUID()
+        }
     }
     
     public enum Error: Swift.Error {
