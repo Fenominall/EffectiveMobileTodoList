@@ -11,9 +11,22 @@ extension CoreDataFeedStore: FeedStore {
     public func insert(_ tasks: [LocalTodoTask], completion: @escaping InsertionCompletion) {
         performAsync { context in
             completion(Result {
-                let managedCache = try ManagedCache.fetchCache(in: context)
-                try managedCache.updateCache(with: tasks, in: context)
-                try context.save()
+                // Fetch or create the cache
+                let managedCache = try ManagedCache.fetchOrCreateCache(in: context)
+                
+                // Fetch existing task IDs
+                let existingTaskIDs = try ManagedTodoTask.fetchExistingTaskIDs(in: context)
+                
+                // Filter new tasks (skip existing tasks)
+                let newTasks = tasks.filter { task in
+                    !existingTaskIDs.contains(task.id)
+                }
+                
+                // Insert only new tasks into the cache
+                if !newTasks.isEmpty {
+                    try managedCache.updateCache(with: newTasks, in: context)
+                    try context.save()
+                }
             })
         }
     }
