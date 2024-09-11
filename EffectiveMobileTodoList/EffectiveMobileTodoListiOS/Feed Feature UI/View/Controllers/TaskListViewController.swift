@@ -177,6 +177,12 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
         return filteredTasks[indexPath.row]
     }
     
+    private func deleteTransaction(at indexPath: IndexPath) {
+        let cellController = tableModel.remove(at: indexPath.row)
+        tasksTableView.deleteRows(at: [indexPath], with: .automatic)
+        cellController.deleteHandler()
+    }
+    
     private func filterTasks() {
         let allTasksCount = tableModel.count
         let openTasksCount = tableModel.filter { !$0.viewModel.isCompleted }.count

@@ -45,9 +45,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         decoratee: remoteFeedLoader,
                         cache: localFeedLoader),
                     fallback: localFeedLoader),
+                feedRemover: localFeedLoader,
                 selection: {
                     _ in
-                }
+                }, deleteTask: { _ in }
             )
     )
     

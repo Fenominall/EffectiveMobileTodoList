@@ -9,4 +9,5 @@ import Foundation
 
 public protocol TasksInteractorInput {
     func loadTasks()
+    func deleteTask(_ task: TodoTaskViewModel)
 }

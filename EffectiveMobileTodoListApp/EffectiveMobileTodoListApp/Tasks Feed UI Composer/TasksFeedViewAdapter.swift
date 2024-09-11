@@ -12,24 +12,27 @@ import EffectiveMobileTodoListiOS
 final class TasksFeedViewAdapter: TasksView {
     private weak var controller: TaskListViewController?
     private let selection: (TodoTask) -> Void
+    private let onDelete: (TodoTask) -> Void
     
     init(controller: TaskListViewController,
-         selection: @escaping (TodoTask) -> Void) {
+         selection: @escaping (TodoTask) -> Void,
+         onDelete: @escaping (TodoTask) -> Void
+    ) {
         self.controller = controller
         self.selection = selection
+        self.onDelete = onDelete
     }
     
     func displayTasks(_ viewModel: [EffectiveMobileTodoListiOS.TodoTaskViewModel]) {
-        controller?.tableModel = viewModel.map { [weak self] model in
-            guard let self = self else {
-                return TasksTableCellController(viewModel: model,
-                                                selection: {
-                }) }
-            
-            return TasksTableCellController(viewModel: model,
-                                            selection: {
-                [selection] in
-                selection(self.mapToTodoTask(from: model))
+        controller?.tableModel = viewModel.map { model in
+            TasksTableCellController(viewModel: model,
+                                     selection: { [weak self] in
+                guard let self = self else { return }
+                self.selection(self.mapToTodoTask(from: model))
+            },
+                                     deleteHandler: { [weak self] in
+                guard let self = self else { return }
+                self.onDelete(self.mapToTodoTask(from: model))
             })
         }
     }

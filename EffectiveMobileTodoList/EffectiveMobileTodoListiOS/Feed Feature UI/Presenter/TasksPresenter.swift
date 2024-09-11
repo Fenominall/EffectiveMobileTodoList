@@ -28,6 +28,10 @@ public final class TasksPresenter: TasksPresenterDelegate {
     public func viewDidLoad() {
         interactor.loadTasks()
     }
+    
+    public func didRequestTaskDeletion(_ task: TodoTaskViewModel) {
+        interactor.deleteTask(task)
+    }
 }
 
 extension TasksPresenter: TasksInteractorOutput {
@@ -45,5 +49,10 @@ extension TasksPresenter: TasksInteractorOutput {
     public func didFinish(with error: any Error) {
         loadingView.display(TaskLoadingViewModel(isLoading: false))
         errorView.display(.error(message: error.localizedDescription))
+    }
+    
+    public func didFinishOperation() {
+        loadingView.display(TaskLoadingViewModel(isLoading: false))
+        errorView.display(.noError)
     }
 }

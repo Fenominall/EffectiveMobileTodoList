@@ -31,3 +31,11 @@ extension MainQueueDispatchDecorator: TasksLoader where T == TasksLoader {
         }
     }
 }
+
+extension MainQueueDispatchDecorator: TasksRemover where T == TasksRemover {
+    func delete(selected task: TodoTask, completion: @escaping (DeletionResult) -> Void) {
+        return decoratee.delete(selected: task) { [weak self] result in
+            self?.dispatch { completion(result) }
+        }
+    }
+}

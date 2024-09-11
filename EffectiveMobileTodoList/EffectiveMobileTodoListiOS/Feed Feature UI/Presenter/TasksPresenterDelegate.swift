@@ -9,4 +9,5 @@ import Foundation
 
 public protocol TasksPresenterDelegate {
     func viewDidLoad()
+    func didRequestTaskDeletion(_ task: TodoTaskViewModel)
 }

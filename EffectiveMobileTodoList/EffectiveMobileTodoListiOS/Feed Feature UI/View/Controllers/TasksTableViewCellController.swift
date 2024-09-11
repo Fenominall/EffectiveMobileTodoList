@@ -12,10 +12,16 @@ public final class TasksTableCellController {
     private(set) var viewModel: TodoTaskViewModel
     private var cell: TaskTableViewCell?
     private(set) var selection: () -> Void
+    private(set) var deleteHandler: () -> Void
     
-    public init(viewModel: TodoTaskViewModel, selection: @escaping () -> Void) {
+    public init(
+        viewModel: TodoTaskViewModel,
+        selection: @escaping () -> Void,
+        deleteHandler: @escaping () -> Void
+    ) {
         self.viewModel = viewModel
         self.selection = selection
+        self.deleteHandler = deleteHandler
     }
     
     public func view() -> UITableViewCell {

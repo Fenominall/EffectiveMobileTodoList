@@ -41,6 +41,33 @@ extension TasksInteractor {
     }
 }
 
+// Delete Tasks
+extension TasksInteractor {
+    public func deleteTask(_ task: TodoTaskViewModel) {
+        presenter?.didStartOperation()
+        
+        remover.delete(selected: mapToTodoTask(from: task)) { [weak self] result in
+            switch result {
+                
+            case .success:
+                self?.presenter?.didFinishOperation()
+            case let .failure(error):
+                self?.presenter?.didFinish(with: error)
+            }
+        }
+    }
+}
+
+private func mapToTodoTask(from dto: TodoTaskViewModel) -> TodoTask {
+    return TodoTask(
+        id: dto.id,
+        name: dto.name,
+        description: dto.description,
+        dateCreated: dto.dateCreated,
+        status: dto.isCompleted
+    )
+}
+
 private extension Array where Element == TodoTask {
     func toViewModels() -> [TodoTaskViewModel] {
         return map {
