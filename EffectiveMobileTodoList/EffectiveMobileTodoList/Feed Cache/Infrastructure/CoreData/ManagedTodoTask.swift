@@ -52,12 +52,19 @@ extension ManagedTodoTask {
     }
     
     static func fetchExistingTaskIDs(in context: NSManagedObjectContext) throws -> Set<UUID> {
-      let request = NSFetchRequest<ManagedTodoTask>(entityName: ManagedTodoTask.entity().name!)
-      request.resultType = .managedObjectIDResultType
-
-      let results = try context.fetch(request)
-      return Set(results.compactMap { UUID(uuidString: $0.objectID.uriRepresentation().absoluteString) })
-    }
+           let request = NSFetchRequest<NSFetchRequestResult>(entityName: ManagedTodoTask.entity().name!)
+           request.resultType = .dictionaryResultType
+           request.propertiesToFetch = ["id"]
+           
+           let results = try context.fetch(request) as? [[String: Any]]
+           
+           let ids = results?.compactMap { dict in
+               // Extract UUID from dictionary using the key "id"
+               dict["id"] as? UUID
+           }
+           
+           return Set(ids ?? [])
+       }
     
     static func createManagedTodoTasks(
         from localTasks: [LocalTodoTask],
