@@ -24,31 +24,31 @@ extension ManagedCache {
         return cache.compactMap { $0.local }
     }
     
-    static func find(in context: NSManagedObjectContext) throws -> ManagedCache? {
-        let request = NSFetchRequest<ManagedCache>(entityName: ManagedCache.entity().name!)
-        request.returnsObjectsAsFaults = false
-        return try context.fetch(request).first
-    }
-    
-    static func fetchCache(in context: NSManagedObjectContext) throws -> ManagedCache {
+    static func fetchOrCreateCache(in context: NSManagedObjectContext) throws -> ManagedCache {
         guard let cache = try ManagedCache.find(in: context) else {
             return ManagedCache(context: context)
         }
         return cache
     }
     
+    static func find(in context: NSManagedObjectContext) throws -> ManagedCache? {
+        let request = NSFetchRequest<ManagedCache>(entityName: ManagedCache.entity().name!)
+        request.returnsObjectsAsFaults = false
+        return try context.fetch(request).first
+    }
+    
     func updateCache(with tasks: [LocalTodoTask], in context: NSManagedObjectContext) throws {
-        let existingTransactions = feed.mutableCopy() as? NSMutableOrderedSet ?? NSMutableOrderedSet()
-        let newTransactions = ManagedTodoTask.createManagedTodoTasks(from: tasks, in: context)
-        existingTransactions.addObjects(from: newTransactions.array)
+        let existingTasks = feed.mutableCopy() as? NSMutableOrderedSet ?? NSMutableOrderedSet()
+        let newTasks = ManagedTodoTask.createManagedTodoTasks(from: tasks, in: context)
+        existingTasks.addObjects(from: newTasks.array)
         
-        if let updatedCache = existingTransactions.copy() as? NSOrderedSet {
+        if let updatedCache = existingTasks.copy() as? NSOrderedSet {
             feed = updatedCache
         } else {
             throw CacheError.unableToCreateMutableCopy
         }
     }
-    
+
     static func updateTask(_ task: LocalTodoTask, context: NSManagedObjectContext) throws {
         guard let managedTask = try ManagedTodoTask.first(with: task, in: context) else {
             throw CacheError.taskNotFound
