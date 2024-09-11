@@ -64,6 +64,8 @@
 		4FB0520C2C88D503004CEB29 /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB0520B2C88D503004CEB29 /* RemoteFeedLoader.swift */; };
 		4FB0520E2C88D536004CEB29 /* FeedTasksMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB0520D2C88D536004CEB29 /* FeedTasksMapper.swift */; };
 		4FB052132C88E056004CEB29 /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB052122C88E056004CEB29 /* HTTPURLResponse+StatusCode.swift */; };
+		4FC06EC22C902F670034F364 /* AddEditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EC12C902F670034F364 /* AddEditTaskViewController.swift */; };
+		4FC06EC42C90DB2D0034F364 /* TasksRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EC32C90DB2D0034F364 /* TasksRemover.swift */; };
 		4FCAC4862C88E91E002CBBE7 /* LoadFeedFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCAC4852C88E91E002CBBE7 /* LoadFeedFromRemoteUseCaseTests.swift */; };
 		4FCAC4882C88E932002CBBE7 /* FeedTasksMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCAC4872C88E932002CBBE7 /* FeedTasksMapperTests.swift */; };
 		4FCAC48B2C88E9A6002CBBE7 /* LoadFeedFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCAC48A2C88E9A6002CBBE7 /* LoadFeedFromCacheUseCaseTests.swift */; };
@@ -166,6 +168,8 @@
 		4FB0520B2C88D503004CEB29 /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
 		4FB0520D2C88D536004CEB29 /* FeedTasksMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTasksMapper.swift; sourceTree = "<group>"; };
 		4FB052122C88E056004CEB29 /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
+		4FC06EC12C902F670034F364 /* AddEditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTaskViewController.swift; sourceTree = "<group>"; };
+		4FC06EC32C90DB2D0034F364 /* TasksRemover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksRemover.swift; sourceTree = "<group>"; };
 		4FCAC4852C88E91E002CBBE7 /* LoadFeedFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFeedFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 		4FCAC4872C88E932002CBBE7 /* FeedTasksMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTasksMapperTests.swift; sourceTree = "<group>"; };
 		4FCAC48A2C88E9A6002CBBE7 /* LoadFeedFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFeedFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
@@ -210,6 +214,7 @@
 		4F3C7B672C8E0DC500291DCA /* EffectiveMobileTodoListiOS */ = {
 			isa = PBXGroup;
 			children = (
+				4FC06EBE2C902F390034F364 /* Add Edit Task Feature UI */,
 				4F61AB422C8E2B8E0040C357 /* EffectiveMobileTodoListiOS.h */,
 				4F3C7B8A2C8E232600291DCA /* Feed Feature UI */,
 			);
@@ -319,11 +324,11 @@
 			isa = PBXGroup;
 			children = (
 				4F5852742C89F67C00FE2173 /* ManagedCache.swift */,
+				4F5852762C89F67C00FE2173 /* ManagedTodoTask.swift */,
 				4F5852862C8A4D4200FE2173 /* CacheError.swift */,
 				4F58527B2C8A1E5000FE2173 /* CoreDataFeedStore.swift */,
 				4F5852842C8A3E8600FE2173 /* CoreDataFeedStore+FeedStore.swift */,
 				4F58527D2C8A1F5300FE2173 /* CoreDataHelpers.swift */,
-				4F5852762C89F67C00FE2173 /* ManagedTodoTask.swift */,
 				4F5852682C89EBF700FE2173 /* TasksFeedStore.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -422,6 +427,7 @@
 			children = (
 				4FB051CF2C873210004CEB29 /* TasksLoader.swift */,
 				4F58525F2C89A70B00FE2173 /* TasksFeedCache.swift */,
+				4FC06EC32C90DB2D0034F364 /* TasksRemover.swift */,
 				4FB051D12C8732FE004CEB29 /* TodoTask.swift */,
 			);
 			path = "Tasks Feed Feature";
@@ -505,6 +511,30 @@
 				4FCAC4872C88E932002CBBE7 /* FeedTasksMapperTests.swift */,
 			);
 			path = "Feed API";
+			sourceTree = "<group>";
+		};
+		4FC06EBE2C902F390034F364 /* Add Edit Task Feature UI */ = {
+			isa = PBXGroup;
+			children = (
+				4FC06EBF2C902F450034F364 /* View */,
+			);
+			path = "Add Edit Task Feature UI";
+			sourceTree = "<group>";
+		};
+		4FC06EBF2C902F450034F364 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4FC06EC02C902F490034F364 /* Controllers */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4FC06EC02C902F490034F364 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4FC06EC12C902F670034F364 /* AddEditTaskViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		4FCAC4892C88E970002CBBE7 /* Feed Cache */ = {
@@ -729,6 +759,7 @@
 				4F61AB632C8EE0080040C357 /* TaskLoadingViewModel.swift in Sources */,
 				4F61AB5A2C8ECDB00040C357 /* TasksTableViewCellController.swift in Sources */,
 				4F3C7B812C8E0E4F00291DCA /* CustomTitleHeaderView.swift in Sources */,
+				4FC06EC22C902F670034F364 /* AddEditTaskViewController.swift in Sources */,
 				4F3C7B832C8E0E8400291DCA /* TaskTableViewCell.swift in Sources */,
 				4F61AB652C8EE01E0040C357 /* TaskErrorViewModel.swift in Sources */,
 				4F3C7B852C8E10A800291DCA /* TaskListFiltersView.swift in Sources */,
@@ -759,6 +790,7 @@
 				4FB052132C88E056004CEB29 /* HTTPURLResponse+StatusCode.swift in Sources */,
 				4FB051E02C8795A7004CEB29 /* HTTPClient.swift in Sources */,
 				4F5852782C89F67C00FE2173 /* ManagedCache.swift in Sources */,
+				4FC06EC42C90DB2D0034F364 /* TasksRemover.swift in Sources */,
 				4F58527A2C89F67C00FE2173 /* ManagedTodoTask.swift in Sources */,
 				4FB0520C2C88D503004CEB29 /* RemoteFeedLoader.swift in Sources */,
 				4F58525A2C898DC400FE2173 /* LocalTodoTask.swift in Sources */,

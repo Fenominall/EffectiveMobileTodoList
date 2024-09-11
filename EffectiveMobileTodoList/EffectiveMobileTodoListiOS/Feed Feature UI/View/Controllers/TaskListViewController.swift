@@ -72,6 +72,8 @@ public final class TaskListViewController: UIViewController {
     // MARK: Actions
     @objc private func newTaskTapped() {
         addNewTask?()
+        let addEditTaskVC = AddEditTaskViewController()
+        navigationController?.pushViewController(addEditTaskVC, animated: true)
     }
     
     @objc private func refresh() {
