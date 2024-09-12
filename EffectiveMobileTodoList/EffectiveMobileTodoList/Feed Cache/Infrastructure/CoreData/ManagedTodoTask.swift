@@ -16,7 +16,7 @@ public class ManagedTodoTask: NSManagedObject {
     @NSManaged public var descriptionText: String
     @NSManaged public var dateCreated: Date
     @NSManaged public var status: Bool
-    @NSManaged public var cache: ManagedCache
+    @NSManaged public var cache: ManagedCache?
 }
 
 extension ManagedTodoTask {
@@ -52,25 +52,25 @@ extension ManagedTodoTask {
     }
     
     static func fetchExistingTaskIDs(in context: NSManagedObjectContext) throws -> Set<UUID> {
-           let request = NSFetchRequest<NSFetchRequestResult>(entityName: ManagedTodoTask.entity().name!)
-           request.resultType = .dictionaryResultType
-           request.propertiesToFetch = ["id"]
-           
-           let results = try context.fetch(request) as? [[String: Any]]
-           
-           let ids = results?.compactMap { dict in
-               // Extract UUID from dictionary using the key "id"
-               dict["id"] as? UUID
-           }
-           
-           return Set(ids ?? [])
-       }
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: ManagedTodoTask.entity().name!)
+        request.resultType = .dictionaryResultType
+        request.propertiesToFetch = ["id"]
+        
+        let results = try context.fetch(request) as? [[String: Any]]
+        
+        let ids = results?.compactMap { dict in
+            // Extract UUID from dictionary using the key "id"
+            dict["id"] as? UUID
+        }
+        
+        return Set(ids ?? [])
+    }
     
     static func createManagedTodoTasks(
         from localTasks: [LocalTodoTask],
-        in context: NSManagedObjectContext
+        in context: NSManagedObjectContext,
+        cache: ManagedCache
     ) -> NSOrderedSet {
-        
         let tasks = NSOrderedSet(array: localTasks.map { local in
             let managedTask = ManagedTodoTask(context: context)
             managedTask.id = local.id
@@ -78,6 +78,7 @@ extension ManagedTodoTask {
             managedTask.descriptionText = local.description
             managedTask.dateCreated = local.dateCreated
             managedTask.status = local.status
+            managedTask.cache = cache
             
             return managedTask
         })
@@ -85,37 +86,30 @@ extension ManagedTodoTask {
         return tasks
     }
     
-    static func deleteTask(
-        _ task: ManagedTodoTask,
-        in cache: NSOrderedSet,
-        _ context: NSManagedObjectContext) throws {
-            
-            guard let mutableCache = cache.mutableCopy() as? NSMutableOrderedSet else {
-                throw CacheError.unableToCreateMutableCopy
-            }
-            
-            try findAndDelete(task, mutableCache, in: context)
-            
-            do {
-                try context.save()
-            } catch {
-                throw error
-            }
+    static func deleteTask(_ task: LocalTodoTask, in context: NSManagedObjectContext) throws {
+        // Ensure the cache exists before proceeding
+        guard let cache = try ManagedCache.find(in: context) else {
+            throw CacheError.missingManagedObjectContext
         }
-    
-    private static func findAndDelete(
-        _ task: ManagedTodoTask,
-        _ mutableCache: NSMutableOrderedSet,
-        in context: NSManagedObjectContext
-    ) throws {
         
-        mutableCache.remove(task)
-        
-        do {
-            try context.save()
-        } catch {
-            throw error
+        // Find the task to delete
+        guard let managedTask = try ManagedTodoTask.first(with: task, in: context) else {
+            throw CacheError.taskNotFound
         }
+        
+        // Remove the task from the cache feed
+        if let mutableCache = cache.feed.mutableCopy() as? NSMutableOrderedSet {
+            mutableCache.remove(managedTask)
+            cache.feed = mutableCache as NSOrderedSet
+        } else {
+            throw CacheError.unableToCreateMutableCopy
+        }
+        
+        // Delete the task from Core Data context
+        context.delete(managedTask)
+        
+        // Save the context
+        try context.save()
     }
     
     static func update(_ managedTask: ManagedTodoTask, with task: LocalTodoTask) {
