@@ -12,15 +12,17 @@ import EffectiveMobileTodoListiOS
 final class TasksFeedViewAdapter: TasksView {
     private weak var controller: TaskListViewController?
     private let selection: (TodoTask) -> Void
-    private let onDelete: (TodoTask) -> Void
+    private var onDelete: ((TodoTask) -> Void)?
     
     init(controller: TaskListViewController,
-         selection: @escaping (TodoTask) -> Void,
-         onDelete: @escaping (TodoTask) -> Void
+         selection: @escaping (TodoTask) -> Void
     ) {
         self.controller = controller
         self.selection = selection
-        self.onDelete = onDelete
+    }
+    
+    func setOnDeleteHandler(_ handler: @escaping (TodoTask) -> Void) {
+        self.onDelete = handler
     }
     
     func displayTasks(_ viewModel: [TodoTask]) {
@@ -32,7 +34,7 @@ final class TasksFeedViewAdapter: TasksView {
             },
                                      deleteHandler: { [weak self] in
                 guard let self = self else { return }
-                self.onDelete(model)
+                self.onDelete?(model)
             })
         }
     }
