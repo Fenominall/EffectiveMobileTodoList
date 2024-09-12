@@ -15,8 +15,7 @@ final class TasksFeedUIComposer {
     static func tasksFeedComposedWith(
         feedLoader: TasksLoader,
         feedRemover: TasksRemover,
-        selection: @escaping (TodoTask) -> Void,
-        deleteTask: @escaping (TodoTask) -> Void
+        selection: @escaping (TodoTask) -> Void
     ) -> TaskListViewController {
         let view = TaskListViewController()
         let interactor = TasksInteractor(
@@ -24,15 +23,21 @@ final class TasksFeedUIComposer {
             remover: MainQueueDispatchDecorator(decoratee: feedRemover)
         )
         
+        let viewAdapter = TasksFeedViewAdapter(
+            controller: view,
+            selection: selection
+        )
+        
         let presenter = TasksPresenter(
-            view: TasksFeedViewAdapter(
-                    controller: view,
-                    selection: selection, 
-                    onDelete: deleteTask),
+            view: viewAdapter,
             errorView: WeakRefVirtualProxy(view),
             loadingView: WeakRefVirtualProxy(view),
             interactor: interactor
         )
+        
+        viewAdapter.setOnDeleteHandler { task in
+            presenter.didRequestTaskDeletion(task)
+        }
         
         view.onRefresh = presenter.viewDidLoad
         interactor.presenter = presenter
