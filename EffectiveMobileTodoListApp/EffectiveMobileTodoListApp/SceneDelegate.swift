@@ -48,7 +48,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 feedRemover: localFeedLoader,
                 selection: {
                     _ in
-                }, deleteTask: { _ in }
+                }
             )
     )
     
