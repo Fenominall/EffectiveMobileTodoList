@@ -23,7 +23,7 @@ public final class FeedTasksMapper {
         
         var item: TodoTask {
             let uuid = uuidFromID(id)
-            print(uuid)
+            
             return TodoTask(
                 id: uuid,
                 name: todo,
