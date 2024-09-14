@@ -16,6 +16,8 @@ public class ManagedTodoTask: NSManagedObject {
     @NSManaged public var descriptionText: String
     @NSManaged public var dateCreated: Date
     @NSManaged public var status: Bool
+    @NSManaged public var startTime: Date?
+    @NSManaged public var endTime: Date?
     @NSManaged public var cache: ManagedCache?
 }
 
@@ -78,6 +80,8 @@ extension ManagedTodoTask {
             managedTask.descriptionText = local.description
             managedTask.dateCreated = local.dateCreated
             managedTask.status = local.status
+            managedTask.startTime = local.startTime
+            managedTask.endTime = local.endTime
             managedTask.cache = cache
             
             return managedTask
@@ -117,6 +121,8 @@ extension ManagedTodoTask {
         managedTask.name = task.name
         managedTask.descriptionText = task.description
         managedTask.dateCreated = task.dateCreated
+        managedTask.startTime = task.startTime
+        managedTask.endTime = task.endTime
         managedTask.status = task.status
     }
 }
