@@ -12,13 +12,16 @@ public final class TasksInteractor: TasksInteractorInput {
     public weak var presenter: TasksInteractorOutput?
     private let loader: TasksLoader
     private let remover: TasksRemover
+    private let taskSaver: TaskSaver
     
     public init(
         loader: TasksLoader,
-        remover: TasksRemover
+        remover: TasksRemover,
+        taskSaver: TaskSaver
     ) {
         self.loader = loader
         self.remover = remover
+        self.taskSaver = taskSaver
     }
 }
 
@@ -36,6 +39,21 @@ extension TasksInteractor {
                 self.presenter?.didLoadTasks(tasks)
             case let .failure(error):
                 self.presenter?.didFinish(with: error)
+            }
+        }
+    }
+}
+
+// Save Task
+extension TasksInteractor {
+    public func saveTask(_ task: EffectiveMobileTodoList.TodoTask) {
+        taskSaver.save(task) { [weak self] result in
+            switch result {
+                
+            case .success:
+                self?.presenter?.didFinishOperation()
+            case let .failure(error):
+                self?.presenter?.didFinish(with: error)
             }
         }
     }
