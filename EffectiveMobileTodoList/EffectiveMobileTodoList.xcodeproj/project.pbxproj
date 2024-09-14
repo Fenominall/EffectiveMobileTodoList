@@ -226,6 +226,7 @@
 				4F61AB682C8F21350040C357 /* Helpers */,
 				4FC06EBE2C902F390034F364 /* Add Edit Task Feature UI */,
 				4F3C7B8A2C8E232600291DCA /* Feed View Feature UI */,
+				4FC06ED82C95EF980034F364 /* View protocols */,
 				4F3C7B892C8E1E5800291DCA /* Interactor */,
 				4F3C7B8D2C8E236600291DCA /* Presenter */,
 				4F3C7B8E2C8E236E00291DCA /* Entity */,
@@ -241,16 +242,6 @@
 			path = EffectiveMobileTodoListiOSTests;
 			sourceTree = "<group>";
 		};
-		4F3C7B882C8E1E5200291DCA /* View */ = {
-			isa = PBXGroup;
-			children = (
-				4F61AB542C8EAFA80040C357 /* Protocols */,
-				4F3C7B8C2C8E233F00291DCA /* Views */,
-				4F3C7B8B2C8E233C00291DCA /* Controllers */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		4F3C7B892C8E1E5800291DCA /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,7 +255,8 @@
 		4F3C7B8A2C8E232600291DCA /* Feed View Feature UI */ = {
 			isa = PBXGroup;
 			children = (
-				4F3C7B882C8E1E5200291DCA /* View */,
+				4F3C7B8C2C8E233F00291DCA /* Views */,
+				4F3C7B8B2C8E233C00291DCA /* Controllers */,
 			);
 			path = "Feed View Feature UI";
 			sourceTree = "<group>";
@@ -356,14 +348,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		4F61AB542C8EAFA80040C357 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				4F61AB522C8EAF4F0040C357 /* TasksView.swift */,
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		4F61AB682C8F21350040C357 /* Helpers */ = {
@@ -547,6 +531,14 @@
 				4FC06ECD2C957CA80034F364 /* RadioButton.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4FC06ED82C95EF980034F364 /* View protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4F61AB522C8EAF4F0040C357 /* TasksView.swift */,
+			);
+			path = "View protocols";
 			sourceTree = "<group>";
 		};
 		4FCAC4892C88E970002CBBE7 /* Feed Cache */ = {
