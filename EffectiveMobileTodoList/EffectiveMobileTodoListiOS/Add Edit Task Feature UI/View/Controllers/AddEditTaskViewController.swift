@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddEditTaskViewController: UIViewController {
+public class AddEditTaskViewController: UIViewController {
     
     // MARK: - UI Elements
     private let taskNameTextField = makeTextField(with: "Task Name")
@@ -70,7 +70,7 @@ class AddEditTaskViewController: UIViewController {
     }
     
     // MARK: - Lifecycle
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupConstraints()
