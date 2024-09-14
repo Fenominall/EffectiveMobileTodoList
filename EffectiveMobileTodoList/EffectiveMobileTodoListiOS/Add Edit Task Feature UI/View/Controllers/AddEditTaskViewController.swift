@@ -154,12 +154,12 @@ public class AddEditTaskViewController: UIViewController {
             taskNameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             taskNameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             taskNameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            taskNameTextField.heightAnchor.constraint(equalToConstant: 44),
+            taskNameTextField.heightAnchor.constraint(equalToConstant: 40),
             
             taskDescriptionTextField.topAnchor.constraint(equalTo: taskNameTextField.bottomAnchor, constant: 20),
             taskDescriptionTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             taskDescriptionTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            taskDescriptionTextField.heightAnchor.constraint(equalToConstant: 44),
+            taskDescriptionTextField.heightAnchor.constraint(equalToConstant: 40),
             
             statusStackView.topAnchor.constraint(equalTo: taskDescriptionTextField.bottomAnchor, constant: 30),
             statusStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -212,7 +212,6 @@ extension AddEditTaskViewController {
         textField.placeholder = placeholder
         textField.backgroundColor = .systemBackground
         textField.layer.cornerRadius = 12
-        textField.heightAnchor.constraint(equalToConstant: 40).isActive = true
         textField.borderStyle = .roundedRect
         return textField
     }
