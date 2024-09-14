@@ -15,6 +15,7 @@ final class TasksFeedUIComposer {
     static func tasksFeedComposedWith(
         feedLoader: TasksLoader,
         feedRemover: TasksRemover,
+        taskSaver: TaskSaver,
         navigationController: UINavigationController,
         selection: @escaping (TodoTask) -> UIViewController,
         addNeTask: @escaping () -> UIViewController
@@ -28,7 +29,8 @@ final class TasksFeedUIComposer {
         let view = TaskListViewController()
         let interactor = TasksInteractor(
             loader: MainQueueDispatchDecorator(decoratee: feedLoader),
-            remover: MainQueueDispatchDecorator(decoratee: feedRemover)
+            remover: MainQueueDispatchDecorator(decoratee: feedRemover), 
+            taskSaver: MainQueueDispatchDecorator(decoratee: taskSaver)
         )
         
         let viewAdapter = TasksFeedViewAdapter(
