@@ -8,7 +8,10 @@
 import CoreData
 
 extension CoreDataFeedStore: FeedStore {
-    public func insert(_ tasks: [LocalTodoTask], completion: @escaping InsertionCompletion) {
+    public func insert(
+        _ tasks: [LocalTodoTask],
+        completion: @escaping InsertionCompletion
+    ) {
         performAsync { context in
             completion(Result {
                 try ManagedCache.insertTasks(tasks, in: context)
@@ -16,8 +19,13 @@ extension CoreDataFeedStore: FeedStore {
         }
     }
     
-    public func insert(_ task: LocalTodoTask, completion: (InsertionResult) -> Void) {
-        
+    public func insert(
+        _ task: LocalTodoTask,
+        completion: @escaping (InsertionResult) -> Void
+    ) {
+        insert([task]) { result in
+            completion(result)
+        }
     }
     
     public func retrieve(completion: @escaping RetrievalCompletion) {
@@ -30,7 +38,10 @@ extension CoreDataFeedStore: FeedStore {
         }
     }
     
-    public func delete(_ task: LocalTodoTask, completion: @escaping DeletionCompletion) {
+    public func delete(
+        _ task: LocalTodoTask,
+        completion: @escaping DeletionCompletion
+    ) {
         performAsync { context in
             completion(Result {
                 try ManagedTodoTask.deleteTask(task, in: context)
@@ -38,7 +49,10 @@ extension CoreDataFeedStore: FeedStore {
         }
     }
     
-    public func update(_ task: LocalTodoTask, completion: @escaping (UpdatingResult) -> Void) {
+    public func update(
+        _ task: LocalTodoTask,
+        completion: @escaping (UpdatingResult) -> Void
+    ) {
         performAsync { context in
             completion(Result {
                 try ManagedCache.updateTask(task, context: context)
