@@ -109,7 +109,9 @@ private extension Array where Element == LocalTodoTask {
                 name: $0.name,
                 description: $0.description,
                 dateCreated: $0.dateCreated,
-                status: $0.status
+                status: $0.status,
+                startTime: $0.startTime,
+                endTime: $0.endTime
             )
         }
     }
@@ -123,7 +125,9 @@ private extension Array where Element == TodoTask {
                 name: $0.name,
                 description: $0.description,
                 dateCreated: $0.dateCreated,
-                status: $0.status
+                status: $0.status,
+                startTime: $0.startTime,
+                endTime: $0.endTime
             )
         }
     }
