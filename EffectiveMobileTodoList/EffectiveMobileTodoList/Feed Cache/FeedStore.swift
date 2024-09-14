@@ -22,7 +22,7 @@ public protocol FeedStore {
     
     func delete(_ task: LocalTodoTask, completion: @escaping DeletionCompletion)
     func insert(_ tasks: [LocalTodoTask], completion: @escaping InsertionCompletion)
-    func insert(_ task: LocalTodoTask, completion: InsertionCompletion)
+    func insert(_ task: LocalTodoTask, completion: @escaping InsertionCompletion)
     func retrieve(completion: @escaping RetrievalCompletion)
     func update(_ task: LocalTodoTask, completion: @escaping (UpdatingResult) -> Void)
 }
