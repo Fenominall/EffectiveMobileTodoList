@@ -8,7 +8,7 @@
 import UIKit
 
 public class AddEditTaskViewController: UIViewController {
-    var editingTaskViewModel: TodoTaskViewModel?
+    var editingTaskViewModel: FeedTodoTaskViewModel?
     
     // MARK: - UI Elements
     private let taskNameTextField = makeTextField(with: "Task Name")

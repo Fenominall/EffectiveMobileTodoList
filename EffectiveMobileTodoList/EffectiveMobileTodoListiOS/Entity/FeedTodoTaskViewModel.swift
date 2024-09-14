@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct TodoTaskViewModel: Equatable {
+public struct FeedTodoTaskViewModel: Equatable {
     public let id: UUID
     public let name: String
     public let description: String
@@ -26,16 +26,5 @@ public struct TodoTaskViewModel: Equatable {
         self.description = description
         self.dateCreated = dateCreated
         self.isCompleted = isCompleted
-    }
-    
-    public var onSaveAddTransaction: ((TodoTaskViewModel) -> Void)?
-    public var onSaveUpdateTransaction: ((TodoTaskViewModel) -> Void)?
-    
-    public static func == (lhs: TodoTaskViewModel, rhs: TodoTaskViewModel) -> Bool {
-        return lhs.id == rhs.id &&
-        lhs.name == rhs.name &&
-        lhs.description == rhs.description &&
-        lhs.dateCreated == rhs.dateCreated &&
-        lhs.isCompleted == rhs.isCompleted
     }
 }
