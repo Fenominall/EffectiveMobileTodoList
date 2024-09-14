@@ -14,7 +14,7 @@ public final class LocalFeedLoader {
         self.store = store
     }
     
-    // MARK: - Helpers
+    // MARK: Helpers
     private typealias Completion<T> = (T) -> Void
     
     private func execute<T>(_ completion: Completion<T>?, result: T) {
@@ -23,7 +23,7 @@ public final class LocalFeedLoader {
     }
 }
 
-// Load
+// MARK: - Load
 extension LocalFeedLoader: TasksLoader {
     private struct EmptyCacheError: Error {}
     
@@ -45,7 +45,7 @@ extension LocalFeedLoader: TasksLoader {
     }
 }
 
-// Save
+// MARK: - Save Tasks
 extension LocalFeedLoader: TasksFeedCache {
     public func save(_ feed: [TodoTask], completion: @escaping (SaveResult) -> Void) {
         store.insert(feed.toLocals()) { [weak self] insertionError in
@@ -78,7 +78,7 @@ extension LocalFeedLoader {
     }
 }
 
-// Delete
+// MARK: - Delete
 extension LocalFeedLoader: TasksRemover {
     public typealias DeletionResult = Swift.Result<Void, Error>
     
@@ -92,6 +92,7 @@ extension LocalFeedLoader: TasksRemover {
     }
 }
 
+// MARK: - Converting Helpers
 private extension Array where Element == LocalTodoTask {
     func toModels() -> [TodoTask] {
         return map {
