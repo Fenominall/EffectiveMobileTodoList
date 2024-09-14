@@ -39,3 +39,11 @@ extension MainQueueDispatchDecorator: TasksRemover where T == TasksRemover {
         }
     }
 }
+
+extension MainQueueDispatchDecorator: TaskSaver where T == TaskSaver {
+    func save(_ task: TodoTask, completion: @escaping (SaveResult) -> Void) {
+        return decoratee.save(task) { [weak self] result in
+            self?.dispatch { completion(result) }
+        }
+    }
+}
