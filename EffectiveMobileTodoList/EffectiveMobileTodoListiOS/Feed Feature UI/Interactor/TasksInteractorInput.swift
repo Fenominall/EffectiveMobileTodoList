@@ -11,4 +11,5 @@ import EffectiveMobileTodoList
 public protocol TasksInteractorInput {
     func loadTasks()
     func deleteTask(_ task: TodoTask)
+    func saveTask(_ task: TodoTask)
 }
