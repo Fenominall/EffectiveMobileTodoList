@@ -54,7 +54,15 @@ extension LocalFeedLoader: TasksFeedCache {
     }
 }
 
-// Update
+extension LocalFeedLoader: TaskSaver {
+    public func save(selected task: TodoTask, completion: @escaping (SaveResult) -> Void) {
+        store.update(createLocalTodTask(with: task)) { [weak self] insertionError in
+            self?.execute(completion, result: insertionError)
+        }
+    }
+}
+
+// MARK: - Update
 extension LocalFeedLoader {
     public typealias Result = Swift.Result<Void, Error>
     

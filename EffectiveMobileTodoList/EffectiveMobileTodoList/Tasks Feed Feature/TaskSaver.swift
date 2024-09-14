@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+public protocol TaskSaver {
+    typealias SaveResult = Swift.Result<Void, Error>
+    
+    func save(selected task: TodoTask, completion: @escaping (SaveResult) -> Void)
+}

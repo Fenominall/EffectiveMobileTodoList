@@ -16,6 +16,10 @@ extension CoreDataFeedStore: FeedStore {
         }
     }
     
+    public func insert(_ task: LocalTodoTask, completion: (InsertionResult) -> Void) {
+        
+    }
+    
     public func retrieve(completion: @escaping RetrievalCompletion) {
         performAsync { context in
             completion(Result {
