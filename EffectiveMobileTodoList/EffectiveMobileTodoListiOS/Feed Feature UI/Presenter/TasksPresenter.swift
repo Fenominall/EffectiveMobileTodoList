@@ -39,6 +39,10 @@ public final class TasksPresenter: TasksPresenterDelegate {
 }
 
 extension TasksPresenter: TasksInteractorOutput {
+    public func didSaveTask(_ task: EffectiveMobileTodoList.TodoTask) {
+        interactor.saveTask(task)
+    }
+    
     public func didStartOperation() {
         loadingView.display(TaskLoadingViewModel(isLoading: true))
         errorView.display(.noError)
