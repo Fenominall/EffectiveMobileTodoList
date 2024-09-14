@@ -9,13 +9,13 @@ import UIKit
 import Foundation
 
 public final class TasksTableCellController {
-    private(set) var viewModel: TodoTaskViewModel
+    private(set) var viewModel: FeedTodoTaskViewModel
     private var cell: TaskTableViewCell?
     private(set) var selection: () -> Void
     private(set) var deleteHandler: () -> Void
     
     public init(
-        viewModel: TodoTaskViewModel,
+        viewModel: FeedTodoTaskViewModel,
         selection: @escaping () -> Void,
         deleteHandler: @escaping () -> Void
     ) {

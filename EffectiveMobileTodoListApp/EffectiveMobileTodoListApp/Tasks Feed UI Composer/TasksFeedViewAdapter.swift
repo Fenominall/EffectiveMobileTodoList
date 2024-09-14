@@ -39,8 +39,8 @@ final class TasksFeedViewAdapter: TasksView {
         }
     }
     
-    private func mapToTodoViewModel(from dto: TodoTask) -> TodoTaskViewModel {
-        return TodoTaskViewModel(
+    private func mapToTodoViewModel(from dto: TodoTask) -> FeedTodoTaskViewModel {
+        return FeedTodoTaskViewModel(
             id: dto.id,
             name: dto.name,
             description: dto.description,
