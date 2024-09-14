@@ -5,17 +5,17 @@
 //  Created by Fenominall on 9/9/24.
 //
 
-import Foundation
+import UIKit
 import EffectiveMobileTodoList
 import EffectiveMobileTodoListiOS
 
 final class TasksFeedViewAdapter: TasksView {
     private weak var controller: TaskListViewController?
-    private let selection: (TodoTask) -> Void
+    private let selection: (TodoTask) -> UIViewController
     private var onDelete: ((TodoTask) -> Void)?
     
     init(controller: TaskListViewController,
-         selection: @escaping (TodoTask) -> Void
+         selection: @escaping (TodoTask) -> UIViewController
     ) {
         self.controller = controller
         self.selection = selection
@@ -30,7 +30,7 @@ final class TasksFeedViewAdapter: TasksView {
             TasksTableCellController(viewModel: mapToTodoViewModel(from: model),
                                      selection: { [weak self] in
                 guard let self = self else { return }
-                self.selection(model)
+                _ = self.selection(model)
             },
                                      deleteHandler: { [weak self] in
                 guard let self = self else { return }

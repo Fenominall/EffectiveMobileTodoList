@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import EffectiveMobileTodoList
 
 public protocol TasksRouterNavigator {
-    func navigateToTaskAddEditController()
+    func navigateToTaskDetails(for task: TodoTask)
+    func addNewTask()
 }

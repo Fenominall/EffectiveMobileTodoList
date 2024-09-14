@@ -13,17 +13,20 @@ public final class TasksPresenter: TasksPresenterDelegate {
     private let errorView: TaskErrorView
     private let loadingView: TaskLoadingView
     private let interactor: TasksInteractorInput
+    private let router: TasksRouterNavigator
     
     public init(
         view: TasksView,
         errorView: TaskErrorView,
         loadingView: TaskLoadingView,
-        interactor: TasksInteractorInput
+        interactor: TasksInteractorInput,
+        router: TasksRouterNavigator
     ) {
         self.view = view
         self.errorView = errorView
         self.loadingView = loadingView
         self.interactor = interactor
+        self.router = router
     }
     
     public func viewDidLoad() {
@@ -45,6 +48,13 @@ extension TasksPresenter: TasksInteractorOutput {
         loadingView.display(TaskLoadingViewModel(isLoading: false))
         errorView.display(.noError)
         view.displayTasks(tasks)
+    }
+    public func didSelectTask(_ task: TodoTask) {
+        router.navigateToTaskDetails(for: task)
+    }
+    
+    public func didSelectAddNewTask() {
+        router.addNewTask()
     }
     
     public func didFinish(with error: any Error) {

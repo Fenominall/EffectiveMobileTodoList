@@ -36,21 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private lazy var localFeedLoader: LocalFeedLoader = {
         LocalFeedLoader(store: store)
     }()
-    
-    private lazy var navigationController = UINavigationController(
-        rootViewController: TasksFeedUIComposer
-            .tasksFeedComposedWith(
-                feedLoader: TasksFeedLoaderWithFallbackComposite(
-                    primary: TasksFeedLoaderCacheDecorator(
-                        decoratee: remoteFeedLoader,
-                        cache: localFeedLoader),
-                    fallback: localFeedLoader),
-                feedRemover: localFeedLoader,
-                selection: {
-                    _ in
-                }
-            )
-    )
+    private let navigationController = UINavigationController()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
@@ -59,7 +45,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func configureWindow() {
+        let tasksFeedVC = TasksFeedUIComposer.tasksFeedComposedWith(
+            feedLoader: TasksFeedLoaderWithFallbackComposite(
+                primary: TasksFeedLoaderCacheDecorator(
+                    decoratee: remoteFeedLoader,
+                    cache: localFeedLoader),
+                fallback: localFeedLoader),
+            feedRemover: localFeedLoader,
+            navigationController: navigationController,
+            selection: {  [weak self] task in
+                return self?.taskDetailComposer(task) ?? UIViewController()
+                
+            }, addNeTask: addTaskComposer
+        )
+        
+        navigationController.viewControllers = [tasksFeedVC]
+        
+        
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        
+        
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+    }
+    
+    let taskDetailComposer: (TodoTask) -> UIViewController = { task in
+        return AddEditTaskViewController()
+    }
+    
+    private func addTaskComposer() -> UIViewController {
+        return AddTaskUIComposer.composedWith()
     }
 }
