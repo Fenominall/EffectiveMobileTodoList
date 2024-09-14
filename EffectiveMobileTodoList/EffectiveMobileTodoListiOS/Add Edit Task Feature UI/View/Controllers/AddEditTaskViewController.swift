@@ -13,18 +13,27 @@ public class AddEditTaskViewController: UIViewController {
     private let taskNameTextField = makeTextField(with: "Task Name")
     private let taskDescriptionTextField = makeTextField(with: "Task Description")
     
+    private lazy var taskDateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Task date:".capitalized
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        return label
+    }()
+    
     private let datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
-        datePicker.preferredDatePickerStyle = .inline
+        datePicker.preferredDatePickerStyle = .wheels
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         return datePicker
     }()
     
     private let startTimeLabel: UILabel = {
         let label = UILabel()
-        label.text = "Start Time"
+        label.text = "Task start time:"
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
         return label
     }()
     
@@ -37,8 +46,9 @@ public class AddEditTaskViewController: UIViewController {
     
     private let endTimeLabel: UILabel = {
         let label = UILabel()
-        label.text = "End Time"
+        label.text = "Task end time:"
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
         return label
     }()
     
@@ -59,6 +69,74 @@ public class AddEditTaskViewController: UIViewController {
         button.layer.cornerRadius = 12
         button.addTarget(self, action: #selector(deleteTask), for: .touchUpInside)
         return button
+    }()
+    
+    private lazy var statusLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Status:".capitalized
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        return label
+    }() 
+    
+    private lazy var openStatusLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Open".capitalized
+        return label
+    }()
+    
+    private lazy var closedStatusLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Closed".capitalized
+        return label
+    }()
+    
+    private lazy var openStatusButton: RadioButton = {
+        let button = RadioButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = .black
+        button.tag = 0
+        //        button.addTarget(
+        //            self,
+        //            action: #selector(radioButtonTapped(_:)),
+        //            for: .touchUpInside
+        //        )
+        return button
+    }()
+    
+    private lazy var closedStatusButton: RadioButton = {
+        let button = RadioButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = .black
+        button.tag = 1
+        //        button.addTarget(self, action: #selector(radioButtonTapped(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var openStatusStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [openStatusButton, openStatusLabel])
+        stack.axis = .horizontal
+        stack.spacing = 5
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
+    private lazy var closedStatusStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [closedStatusButton, closedStatusLabel])
+        stack.axis = .horizontal
+        stack.spacing = 5
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
+    private lazy var statusStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [statusLabel, openStatusStackView, closedStatusStackView])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.spacing = 30
+        return stack
     }()
     
     // MARK: - Properties
@@ -84,6 +162,8 @@ public class AddEditTaskViewController: UIViewController {
         view.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         view.addSubview(taskNameTextField)
         view.addSubview(taskDescriptionTextField)
+        view.addSubview(statusStackView)
+        view.addSubview(taskDateLabel)
         view.addSubview(datePicker)
         view.addSubview(startTimeLabel)
         view.addSubview(startTimePicker)
@@ -105,7 +185,13 @@ public class AddEditTaskViewController: UIViewController {
             taskDescriptionTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             taskDescriptionTextField.heightAnchor.constraint(equalToConstant: 44),
             
-            datePicker.topAnchor.constraint(equalTo: taskDescriptionTextField.bottomAnchor, constant: 20),
+            statusStackView.topAnchor.constraint(equalTo: taskDescriptionTextField.bottomAnchor, constant: 30),
+            statusStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            
+            taskDateLabel.topAnchor.constraint(equalTo: statusStackView.bottomAnchor, constant: 30),
+            taskDateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+
+            datePicker.topAnchor.constraint(equalTo: taskDateLabel.bottomAnchor),
             datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
@@ -113,7 +199,7 @@ public class AddEditTaskViewController: UIViewController {
             startTimeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             startTimePicker.centerYAnchor.constraint(equalTo: startTimeLabel.centerYAnchor),
             
-            startTimePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            startTimePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             startTimePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             endTimeLabel.topAnchor.constraint(equalTo: startTimePicker.bottomAnchor, constant: 20),

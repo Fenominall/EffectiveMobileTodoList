@@ -67,6 +67,7 @@
 		4FC06EC22C902F670034F364 /* AddEditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EC12C902F670034F364 /* AddEditTaskViewController.swift */; };
 		4FC06EC42C90DB2D0034F364 /* TasksRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EC32C90DB2D0034F364 /* TasksRemover.swift */; };
 		4FC06EC62C94257C0034F364 /* TaskRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EC52C94257C0034F364 /* TaskRouter.swift */; };
+		4FC06ECE2C957CA80034F364 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06ECD2C957CA80034F364 /* RadioButton.swift */; };
 		4FCAC4862C88E91E002CBBE7 /* LoadFeedFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCAC4852C88E91E002CBBE7 /* LoadFeedFromRemoteUseCaseTests.swift */; };
 		4FCAC4882C88E932002CBBE7 /* FeedTasksMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCAC4872C88E932002CBBE7 /* FeedTasksMapperTests.swift */; };
 		4FCAC48B2C88E9A6002CBBE7 /* LoadFeedFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCAC48A2C88E9A6002CBBE7 /* LoadFeedFromCacheUseCaseTests.swift */; };
@@ -172,6 +173,7 @@
 		4FC06EC12C902F670034F364 /* AddEditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTaskViewController.swift; sourceTree = "<group>"; };
 		4FC06EC32C90DB2D0034F364 /* TasksRemover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksRemover.swift; sourceTree = "<group>"; };
 		4FC06EC52C94257C0034F364 /* TaskRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRouter.swift; sourceTree = "<group>"; };
+		4FC06ECD2C957CA80034F364 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		4FCAC4852C88E91E002CBBE7 /* LoadFeedFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFeedFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 		4FCAC4872C88E932002CBBE7 /* FeedTasksMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTasksMapperTests.swift; sourceTree = "<group>"; };
 		4FCAC48A2C88E9A6002CBBE7 /* LoadFeedFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFeedFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 		4FC06EBF2C902F450034F364 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4FC06ECC2C957CA10034F364 /* Views */,
 				4FC06EC02C902F490034F364 /* Controllers */,
 			);
 			path = View;
@@ -538,6 +541,14 @@
 				4FC06EC12C902F670034F364 /* AddEditTaskViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4FC06ECC2C957CA10034F364 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4FC06ECD2C957CA80034F364 /* RadioButton.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		4FCAC4892C88E970002CBBE7 /* Feed Cache */ = {
@@ -750,6 +761,7 @@
 				4F61AB4B2C8EA6880040C357 /* TasksInteractorInput.swift in Sources */,
 				4F61AB6A2C8F21430040C357 /* ErrorView.swift in Sources */,
 				4F61AB612C8EDC9F0040C357 /* TaskLoadingView.swift in Sources */,
+				4FC06ECE2C957CA80034F364 /* RadioButton.swift in Sources */,
 				4F61AB6E2C8F2B2A0040C357 /* UIRefreshControl+Helpers.swift .swift in Sources */,
 				4F61AB4F2C8EABCE0040C357 /* TasksPresenterDelegate.swift in Sources */,
 				4F61AB2F2C8E25F90040C357 /* TasksInteractor.swift in Sources */,
