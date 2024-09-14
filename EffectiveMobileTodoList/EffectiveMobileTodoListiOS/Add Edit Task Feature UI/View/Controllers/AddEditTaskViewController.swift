@@ -14,49 +14,29 @@ public class AddEditTaskViewController: UIViewController {
     private let taskDescriptionTextField = makeTextField(with: "Task Description")
     
     private lazy var taskDateLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Task date:".capitalized
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
-        return label
+        makeLabel(with: "Task date:".capitalized, font: .headline)
     }()
     
-    private let datePicker: UIDatePicker = {
-        let datePicker = UIDatePicker()
-        datePicker.datePickerMode = .date
-        datePicker.preferredDatePickerStyle = .wheels
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-        return datePicker
+    private lazy var datePicker: UIDatePicker = {
+        let picker = makeDatePicker(withMode: .date)
+        picker.preferredDatePickerStyle = .wheels
+        return picker
     }()
     
-    private let startTimeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Task start time:"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
-        return label
+    private lazy var startTimeLabel: UILabel = {
+        makeLabel(with: "Task start time:", font: .headline)
     }()
     
-    private let startTimePicker: UIDatePicker = {
-        let timePicker = UIDatePicker()
-        timePicker.datePickerMode = .time
-        timePicker.translatesAutoresizingMaskIntoConstraints = false
-        return timePicker
+    private lazy var startTimePicker: UIDatePicker = {
+        makeDatePicker(withMode: .time)
     }()
     
-    private let endTimeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Task end time:"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
-        return label
+    private lazy var endTimeLabel: UILabel = {
+        makeLabel(with: "Task end time:", font: .headline)
     }()
     
-    private let endTimePicker: UIDatePicker = {
-        let timePicker = UIDatePicker()
-        timePicker.datePickerMode = .time
-        timePicker.translatesAutoresizingMaskIntoConstraints = false
-        return timePicker
+    private lazy var endTimePicker: UIDatePicker = {
+        makeDatePicker(withMode: .time)
     }()
     
     private lazy var deleteButton: UIButton = {
@@ -72,25 +52,15 @@ public class AddEditTaskViewController: UIViewController {
     }()
     
     private lazy var statusLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Status:".capitalized
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
-        return label
-    }() 
+        makeLabel(with: "Status:".capitalized, font: .headline)
+    }()
     
     private lazy var openStatusLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Open".capitalized
-        return label
+        makeLabel(with: "Open:".capitalized, font: .headline)
     }()
     
     private lazy var closedStatusLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Closed".capitalized
-        return label
+        makeLabel(with: "Closed:".capitalized, font: .headline)
     }()
     
     private lazy var openStatusButton: RadioButton = {
@@ -116,31 +86,31 @@ public class AddEditTaskViewController: UIViewController {
     }()
     
     private lazy var openStatusStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [openStatusButton, openStatusLabel])
-        stack.axis = .horizontal
-        stack.spacing = 5
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
+        makeStackView(
+            withViews: [openStatusButton, openStatusLabel],
+            stackAxis: .horizontal,
+            spacing: 5
+        )
     }()
     
     private lazy var closedStatusStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [closedStatusButton, closedStatusLabel])
-        stack.axis = .horizontal
-        stack.spacing = 5
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
+        makeStackView(
+            withViews: [closedStatusButton, closedStatusLabel],
+            stackAxis: .horizontal,
+            spacing: 5
+        )
     }()
     
     private lazy var statusStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [statusLabel, openStatusStackView, closedStatusStackView])
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .horizontal
-        stack.spacing = 30
-        return stack
+        makeStackView(
+            withViews: [statusLabel, openStatusStackView, closedStatusStackView],
+            stackAxis: .horizontal,
+            spacing: 30
+        )
     }()
     
     // MARK: - Properties
-    var isEditingTask: Bool = false {
+    private var isEditingTask: Bool = false {
         didSet {
             navigationItem.title = isEditingTask ? "Edit Task" : "Add Task"
             deleteButton.isHidden = !isEditingTask
@@ -154,7 +124,12 @@ public class AddEditTaskViewController: UIViewController {
         setupConstraints()
         
         // Configure navigation bar
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveTask))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Save",
+            style: .done,
+            target: self,
+            action: #selector(saveTask)
+        )
     }
     
     // MARK: - UI Setup
@@ -190,7 +165,7 @@ public class AddEditTaskViewController: UIViewController {
             
             taskDateLabel.topAnchor.constraint(equalTo: statusStackView.bottomAnchor, constant: 30),
             taskDateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-
+            
             datePicker.topAnchor.constraint(equalTo: taskDateLabel.bottomAnchor),
             datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
@@ -239,5 +214,35 @@ extension AddEditTaskViewController {
         textField.heightAnchor.constraint(equalToConstant: 40).isActive = true
         textField.borderStyle = .roundedRect
         return textField
+    }
+    
+    private func makeLabel(
+        with title: String,
+        font preferredFont: UIFont.TextStyle
+    ) -> UILabel {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = title
+        label.font = UIFont.preferredFont(forTextStyle: preferredFont)
+        return label
+    }
+    
+    private func makeDatePicker(withMode mode: UIDatePicker.Mode) -> UIDatePicker {
+        let timePicker = UIDatePicker()
+        timePicker.datePickerMode = mode
+        timePicker.translatesAutoresizingMaskIntoConstraints = false
+        return timePicker
+    }
+    
+    private func makeStackView(
+        withViews views:  [UIView],
+        stackAxis axis: NSLayoutConstraint.Axis,
+        spacing space: CGFloat
+    ) -> UIStackView {
+        let stack = UIStackView(arrangedSubviews: views)
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = axis
+        stack.spacing = space
+        return stack
     }
 }
