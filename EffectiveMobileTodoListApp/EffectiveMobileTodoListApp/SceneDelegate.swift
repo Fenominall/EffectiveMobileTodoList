@@ -51,7 +51,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     decoratee: remoteFeedLoader,
                     cache: localFeedLoader),
                 fallback: localFeedLoader),
-            feedRemover: localFeedLoader,
+            feedRemover: localFeedLoader, 
+            taskSaver: localFeedLoader,
             navigationController: navigationController,
             selection: {  [weak self] task in
                 return self?.taskDetailComposer(task) ?? UIViewController()
