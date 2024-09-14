@@ -13,11 +13,28 @@ public struct AddEditTodoTaskViewModel: Equatable {
     public let description: String
     public let dateCreated: Date
     public var isCompleted: Bool
-    public let startTime: Date?
-    public let endTime: Date?
+    public var startTime: Date?
+    public var endTime: Date?
     
-    var selectedStartTime: Date?
-    var selectedEndTime: Date?
+    public var selectedStartTime: Date? {
+        didSet {
+            if selectedStartTime != nil {
+                startTime = selectedStartTime
+            }
+        }
+    }
+    
+    public var selectedEndTime: Date? {
+        didSet {
+            if selectedEndTime != nil {
+                endTime = selectedEndTime
+            }
+        }
+    }
+    
+    var hasSelectedTimes: Bool {
+        return selectedStartTime != nil || selectedEndTime != nil
+    }
     
     public init(
         id: UUID,
