@@ -72,7 +72,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     let taskDetailComposer: (TodoTask) -> UIViewController = { task in
-        return AddEditTaskViewController()
+        return EditTaskUIComposer.composedWith(selectedModel: task)
     }
     
     private func addTaskComposer() -> UIViewController {
