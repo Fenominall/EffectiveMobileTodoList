@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import EffectiveMobileTodoList
 
 public struct AddEditTodoTaskViewModel: Equatable {
+    var taskToEdit: TodoTask?
+    
     public let id: UUID
     public let name: String
     public let description: String
@@ -34,6 +37,20 @@ public struct AddEditTodoTaskViewModel: Equatable {
     
     var hasSelectedTimes: Bool {
         return selectedStartTime != nil || selectedEndTime != nil
+    }
+    
+    public init(
+        viewModel: TodoTask
+    ) {
+        self.taskToEdit = viewModel
+        self.id = viewModel.id
+        self.name = viewModel.name
+        self.description = viewModel.description
+        self.dateCreated = viewModel.dateCreated
+        self.isCompleted = viewModel.status
+        self.startTime = viewModel.startTime
+        self.endTime = viewModel.endTime
+        
     }
     
     public init(

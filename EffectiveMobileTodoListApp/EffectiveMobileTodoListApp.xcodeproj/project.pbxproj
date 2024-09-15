@@ -23,6 +23,7 @@
 		4FC06EBB2C902B920034F364 /* TasksFeedLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EBA2C902B920034F364 /* TasksFeedLoaderWithFallbackComposite.swift */; };
 		4FC06EBD2C902C600034F364 /* TasksFeedLoaderCacheDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EBC2C902C600034F364 /* TasksFeedLoaderCacheDecorator.swift */; };
 		4FC06ECB2C9575260034F364 /* AddTaskUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06ECA2C9575260034F364 /* AddTaskUIComposer.swift */; };
+		4FC06EDB2C96A0830034F364 /* EditTaskUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EDA2C96A0830034F364 /* EditTaskUIComposer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +58,7 @@
 		4FC06EBA2C902B920034F364 /* TasksFeedLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 		4FC06EBC2C902C600034F364 /* TasksFeedLoaderCacheDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedLoaderCacheDecorator.swift; sourceTree = "<group>"; };
 		4FC06ECA2C9575260034F364 /* AddTaskUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskUIComposer.swift; sourceTree = "<group>"; };
+		4FC06EDA2C96A0830034F364 /* EditTaskUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskUIComposer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				4FBB50C02C8F4464002A23E9 /* AppDelegate.swift */,
 				4FBB50C22C8F4464002A23E9 /* SceneDelegate.swift */,
 				4FC06EC72C9574210034F364 /* Add Task UI Composer */,
+				4FC06ED92C96A0700034F364 /* Edit Task UI Composer */,
 				4FC06EB52C8F7F110034F364 /* Tasks Feed UI Composer */,
 				4FBB50C92C8F4465002A23E9 /* Assets.xcassets */,
 				4FBB50CB2C8F4465002A23E9 /* LaunchScreen.storyboard */,
@@ -140,6 +143,14 @@
 				4FC06ECA2C9575260034F364 /* AddTaskUIComposer.swift */,
 			);
 			path = "Add Task UI Composer";
+			sourceTree = "<group>";
+		};
+		4FC06ED92C96A0700034F364 /* Edit Task UI Composer */ = {
+			isa = PBXGroup;
+			children = (
+				4FC06EDA2C96A0830034F364 /* EditTaskUIComposer.swift */,
+			);
+			path = "Edit Task UI Composer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +233,7 @@
 				4FC06EBB2C902B920034F364 /* TasksFeedLoaderWithFallbackComposite.swift in Sources */,
 				4FBB50C32C8F4464002A23E9 /* SceneDelegate.swift in Sources */,
 				4FC06EB72C8F7F280034F364 /* TasksFeedViewAdapter.swift in Sources */,
+				4FC06EDB2C96A0830034F364 /* EditTaskUIComposer.swift in Sources */,
 				4FC06EBD2C902C600034F364 /* TasksFeedLoaderCacheDecorator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
