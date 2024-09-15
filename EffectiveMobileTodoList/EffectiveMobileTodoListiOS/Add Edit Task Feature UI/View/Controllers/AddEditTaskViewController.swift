@@ -13,32 +13,16 @@ public class AddEditTaskViewController: UIViewController {
     // MARK: - UI Elements
     private let taskNameTextField = makeTextField(with: "Task Name")
     private let taskDescriptionTextField = makeTextField(with: "Task Description")
-    
-    private lazy var taskDateLabel: UILabel = {
-        makeLabel(with: "Task date:".capitalized, font: .headline)
-    }()
-    
+    private lazy var taskDateLabel = makeLabel(with: "Task date:".capitalized, font: .headline)
     private lazy var datePicker: UIDatePicker = {
         let picker = makeDatePicker(withMode: .date)
         picker.preferredDatePickerStyle = .wheels
         return picker
     }()
-    
-    private lazy var startTimeLabel: UILabel = {
-        makeLabel(with: "Task start time:", font: .headline)
-    }()
-    
-    private lazy var startTimePicker: UIDatePicker = {
-        makeDatePicker(withMode: .time)
-    }()
-    
-    private lazy var endTimeLabel: UILabel = {
-        makeLabel(with: "Task end time:", font: .headline)
-    }()
-    
-    private lazy var endTimePicker: UIDatePicker = {
-        makeDatePicker(withMode: .time)
-    }()
+    private lazy var startTimeLabel = makeLabel(with: "Task start time:", font: .headline)
+    private lazy var startTimePicker = makeDatePicker(withMode: .time)
+    private lazy var endTimeLabel = makeLabel(with: "Task end time:", font: .headline)
+    private lazy var endTimePicker = makeDatePicker(withMode: .time)
     
     private lazy var deleteButton: UIButton = {
         let button = UIButton(type: .system)
@@ -52,18 +36,9 @@ public class AddEditTaskViewController: UIViewController {
         return button
     }()
     
-    private lazy var statusLabel: UILabel = {
-        makeLabel(with: "Status:".capitalized, font: .headline)
-    }()
-    
-    private lazy var openStatusLabel: UILabel = {
-        makeLabel(with: "Open:".capitalized, font: .headline)
-    }()
-    
-    private lazy var closedStatusLabel: UILabel = {
-        makeLabel(with: "Closed:".capitalized, font: .headline)
-    }()
-    
+    private lazy var statusLabel = makeLabel(with: "Status:".capitalized, font: .headline)
+    private lazy var openStatusLabel = makeLabel(with: "Open:".capitalized, font: .headline)
+    private lazy var closedStatusLabel = makeLabel(with: "Closed:".capitalized, font: .headline)
     private lazy var openStatusButton: RadioButton = {
         let button = RadioButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -86,29 +61,21 @@ public class AddEditTaskViewController: UIViewController {
         return button
     }()
     
-    private lazy var openStatusStackView: UIStackView = {
-        makeStackView(
-            withViews: [openStatusButton, openStatusLabel],
-            stackAxis: .horizontal,
-            spacing: 5
-        )
-    }()
+    private lazy var openStatusStackView = makeStackView(
+        withViews: [openStatusButton, openStatusLabel],
+        stackAxis: .horizontal,
+        spacing: 5)
     
-    private lazy var closedStatusStackView: UIStackView = {
-        makeStackView(
-            withViews: [closedStatusButton, closedStatusLabel],
-            stackAxis: .horizontal,
-            spacing: 5
-        )
-    }()
+    private lazy var closedStatusStackView = makeStackView(
+        withViews: [closedStatusButton, closedStatusLabel],
+        stackAxis: .horizontal,
+        spacing: 5)
     
-    private lazy var statusStackView: UIStackView = {
-        makeStackView(
-            withViews: [statusLabel, openStatusStackView, closedStatusStackView],
-            stackAxis: .horizontal,
-            spacing: 30
-        )
-    }()
+    private lazy var statusStackView = makeStackView(
+        withViews: [statusLabel, openStatusStackView, closedStatusStackView],
+        stackAxis: .horizontal,
+        spacing: 30)
+    
     
     // MARK: - Properties
     private var isEditingTask: Bool = false {
