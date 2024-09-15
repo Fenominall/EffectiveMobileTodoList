@@ -107,6 +107,8 @@ public class AddEditTaskViewController: UIViewController {
             target: self,
             action: #selector(saveTask)
         )
+        
+        configureTask()
     }
     
     // MARK: - UI Setup
@@ -181,6 +183,30 @@ public class AddEditTaskViewController: UIViewController {
 
 extension AddEditTaskViewController {
     // MARK: - Helpers
+    
+    private func configureTask() {
+        isEditingTask = viewModel.isEditing
+        
+        if isEditingTask {
+            // Populate UI with task data
+            taskNameTextField.text = viewModel.name
+            taskDescriptionTextField.text = viewModel.description
+            datePicker.date = viewModel.dateCreated
+            if let startTime = viewModel.startTime {
+                startTimePicker.date = startTime
+            }
+            if let endTime = viewModel.endTime {
+                endTimePicker.date = endTime
+            }
+        } else {
+            // Show empty fields for new task
+            taskNameTextField.text = ""
+            taskDescriptionTextField.text = ""
+            datePicker.date = Date()
+            startTimePicker.date = Date()
+            endTimePicker.date = Date()
+        }
+    }
     
     private static func makeTextField(with placeholder: String) -> UITextField {
         let textField = UITextField()
