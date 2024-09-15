@@ -8,7 +8,7 @@
 import UIKit
 
 public class AddEditTaskViewController: UIViewController {
-    public let editingTaskViewModel: AddEditTodoTaskViewModel
+    public let viewModel: AddEditTodoTaskViewModel
     
     // MARK: - UI Elements
     private let taskNameTextField = makeTextField(with: "Task Name")
@@ -119,8 +119,8 @@ public class AddEditTaskViewController: UIViewController {
     }
     
     // MARK: - Lifecycle
-    public init(editingTaskViewModel: AddEditTodoTaskViewModel) {
-        self.editingTaskViewModel = editingTaskViewModel
+    public init(viewModel: AddEditTodoTaskViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
