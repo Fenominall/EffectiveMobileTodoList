@@ -13,7 +13,8 @@ final class AddTaskUIComposer {
     private init() {}
     
     static func composedWith() -> AddEditTaskViewController {
-        let controller = AddEditTaskViewController()
+        let viewModel = AddEditTodoTaskViewModel()
+        let controller = AddEditTaskViewController(viewModel: viewModel)
         return controller
     }
 }

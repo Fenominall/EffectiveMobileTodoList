@@ -14,7 +14,7 @@ final class EditTaskUIComposer {
     
     static func composedWith(selectedModel: TodoTask) -> AddEditTaskViewController {
         let viewModel = AddEditTodoTaskViewModel(viewModel: selectedModel)
-        let controller = AddEditTaskViewController(editingTaskViewModel: viewModel)
+        let controller = AddEditTaskViewController(viewModel: viewModel)
         return controller
     }
 }
