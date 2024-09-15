@@ -39,6 +39,16 @@ public struct AddEditTodoTaskViewModel: Equatable {
         return selectedStartTime != nil || selectedEndTime != nil
     }
     
+    public init() {
+        self.id = UUID()
+        self.name = ""
+        self.description = ""
+        self.dateCreated = Date()
+        self.isCompleted = false
+        self.startTime = nil
+        self.endTime = nil
+    }
+    
     public init(
         viewModel: TodoTask
     ) {
