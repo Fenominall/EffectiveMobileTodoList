@@ -19,6 +19,10 @@ public struct AddEditTodoTaskViewModel: Equatable {
     public var startTime: Date?
     public var endTime: Date?
     
+    public var isEditing: Bool {
+        return taskToEdit != nil
+    }
+    
     public var selectedStartTime: Date? {
         didSet {
             if selectedStartTime != nil {
@@ -39,28 +43,27 @@ public struct AddEditTodoTaskViewModel: Equatable {
         return selectedStartTime != nil || selectedEndTime != nil
     }
     
-    public init() {
-        self.id = UUID()
-        self.name = ""
-        self.description = ""
-        self.dateCreated = Date()
-        self.isCompleted = false
-        self.startTime = nil
-        self.endTime = nil
-    }
-    
     public init(
-        viewModel: TodoTask
+        task: TodoTask? = nil
     ) {
-        self.taskToEdit = viewModel
-        self.id = viewModel.id
-        self.name = viewModel.name
-        self.description = viewModel.description
-        self.dateCreated = viewModel.dateCreated
-        self.isCompleted = viewModel.status
-        self.startTime = viewModel.startTime
-        self.endTime = viewModel.endTime
-        
+        if let task = task {
+            self.id = task.id
+            self.name = task.name
+            self.description = task.description
+            self.dateCreated = task.dateCreated
+            self.isCompleted = task.status
+            self.startTime = task.startTime
+            self.endTime = task.endTime
+        } else {
+            self.id = UUID()
+            self.name = ""
+            self.description = ""
+            self.dateCreated = Date()
+            self.isCompleted = false
+            self.startTime = nil
+            self.endTime = nil
+        }
+        self.taskToEdit = task
     }
     
     public init(
