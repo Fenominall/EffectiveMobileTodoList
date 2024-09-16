@@ -10,12 +10,12 @@ import EffectiveMobileTodoList
 
 public struct AddEditTodoTaskViewModel: Equatable {
     var taskToEdit: TodoTask?
+    public var status: TaskStatus
     
     public let id: UUID
     public let name: String
     public let description: String
     public let dateCreated: Date
-    public var isCompleted: Bool
     public var startTime: Date?
     public var endTime: Date?
     
@@ -39,6 +39,10 @@ public struct AddEditTodoTaskViewModel: Equatable {
         }
     }
     
+    public var isCompleted: Bool {
+        status.isCompleted
+    }
+    
     var hasSelectedTimes: Bool {
         return selectedStartTime != nil || selectedEndTime != nil
     }
@@ -51,7 +55,8 @@ public struct AddEditTodoTaskViewModel: Equatable {
             self.name = task.name
             self.description = task.description
             self.dateCreated = task.dateCreated
-            self.isCompleted = task.status
+            self.status = task.status ? .closed : .open
+            print(status)
             self.startTime = task.startTime
             self.endTime = task.endTime
         } else {
@@ -59,7 +64,7 @@ public struct AddEditTodoTaskViewModel: Equatable {
             self.name = ""
             self.description = ""
             self.dateCreated = Date()
-            self.isCompleted = false
+            self.status = .open
             self.startTime = nil
             self.endTime = nil
         }
@@ -71,7 +76,7 @@ public struct AddEditTodoTaskViewModel: Equatable {
         name: String,
         description: String,
         dateCreated: Date,
-        isCompleted: Bool,
+        status: TaskStatus,
         startTime: Date? = nil,
         endTime: Date? = nil
     ) {
@@ -79,7 +84,7 @@ public struct AddEditTodoTaskViewModel: Equatable {
         self.name = name
         self.description = description
         self.dateCreated = dateCreated
-        self.isCompleted = isCompleted
+        self.status = status
         self.startTime = startTime
         self.endTime = endTime
     }
