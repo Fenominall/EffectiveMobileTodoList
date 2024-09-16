@@ -112,10 +112,10 @@ public class AddEditTaskViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @objc private func radioButtonTapped(_ sender: RadioButton) {
-        viewModel.status = sender.tag == 0 ? .open : .closed
-        configureTask()
-    }
+        @objc private func radioButtonTapped(_ sender: RadioButton) {
+            viewModel.status = sender.tag == 0 ? .open : .closed
+            configureTask()
+        }
     
     // MARK: - UI Setup
     private func setupUI() {
@@ -191,25 +191,8 @@ extension AddEditTaskViewController {
     // MARK: - Helpers
     
     private func configureTask() {
-        isEditingTask = viewModel.isEditing
-        
-        if isEditingTask {
-            taskNameTextField.text = viewModel.name
-            taskDescriptionTextField.text = viewModel.description
-            
-            datePicker.date = viewModel.dateCreated
-            
-            switch viewModel.status {
-            case .open:
-                selectRadioButton(openStatusButton)
-            case .closed:
-                selectRadioButton(closedStatusButton)
-            }
-            
-            guard let startTime = viewModel.startTime,
-                  let endTime = viewModel.endTime else { return }
-            startTimePicker.date = startTime
-            endTimePicker.date = endTime
+        if viewModel.isEditing {
+            configureExistingTask()
         } else {
             configureNewTask()
         }
@@ -224,7 +207,30 @@ extension AddEditTaskViewController {
         RadioButton.currentlySelectedButton = button
     }
     
+    private func configureExistingTask() {
+        isEditingTask = true
+        
+        taskNameTextField.text = viewModel.name
+        taskDescriptionTextField.text = viewModel.description
+        
+        datePicker.date = viewModel.dateCreated
+        
+        switch viewModel.status {
+        case .open:
+            selectRadioButton(openStatusButton)
+        case .closed:
+            selectRadioButton(closedStatusButton)
+        }
+        
+        guard let startTime = viewModel.startTime,
+              let endTime = viewModel.endTime else { return }
+        startTimePicker.date = startTime
+        endTimePicker.date = endTime
+    }
+    
     private func configureNewTask() {
+        isEditingTask = false
+        
         taskNameTextField.text = ""
         taskDescriptionTextField.text = ""
         datePicker.date = Date()
