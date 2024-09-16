@@ -49,8 +49,8 @@ final class TasksFeedUIComposer {
             router: router
         )
         
-        viewAdapter.setOnDeleteHandler { task in
-            presenter.didRequestTaskDeletion(task)
+        viewAdapter.setOnDeleteHandler { [weak presenter] task in
+            presenter?.didRequestTaskDeletion(task)
         }
         
         view.addNewTask = presenter.didSelectAddNewTask
