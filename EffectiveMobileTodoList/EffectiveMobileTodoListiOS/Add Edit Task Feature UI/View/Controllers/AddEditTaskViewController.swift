@@ -11,6 +11,8 @@ public class AddEditTaskViewController: UIViewController {
     private var viewModel: AddEditTodoTaskViewModel
     
     // MARK: - UI Elements
+    private lazy var nameLabel = makeLabel(with: "Name", font: .headline)
+    private lazy var descriptionLabel = makeLabel(with: "Description", font: .headline)
     private let taskNameTextField = makeTextField(with: "Task Name")
     private let taskDescriptionTextField = makeTextField(with: "Task Description")
     private lazy var taskDateLabel = makeLabel(with: "Task date:".capitalized, font: .headline)
@@ -120,6 +122,8 @@ public class AddEditTaskViewController: UIViewController {
     // MARK: - UI Setup
     private func setupUI() {
         view.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+        view.addSubview(nameLabel)
+        view.addSubview(descriptionLabel)
         view.addSubview(taskNameTextField)
         view.addSubview(taskDescriptionTextField)
         view.addSubview(statusStackView)
@@ -135,12 +139,18 @@ public class AddEditTaskViewController: UIViewController {
     // MARK: - Constraints
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            taskNameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            
+            taskNameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
             taskNameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             taskNameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             taskNameTextField.heightAnchor.constraint(equalToConstant: 40),
             
-            taskDescriptionTextField.topAnchor.constraint(equalTo: taskNameTextField.bottomAnchor, constant: 20),
+            descriptionLabel.topAnchor.constraint(equalTo: taskNameTextField.bottomAnchor, constant: 10),
+            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            
+            taskDescriptionTextField.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10),
             taskDescriptionTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             taskDescriptionTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             taskDescriptionTextField.heightAnchor.constraint(equalToConstant: 40),
