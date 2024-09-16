@@ -8,7 +8,7 @@
 import UIKit
 
 public class AddEditTaskViewController: UIViewController {
-    public let viewModel: AddEditTodoTaskViewModel
+    private var viewModel: AddEditTodoTaskViewModel
     
     // MARK: - UI Elements
     private let taskNameTextField = makeTextField(with: "Task Name")
@@ -44,11 +44,11 @@ public class AddEditTaskViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = .black
         button.tag = 0
-        //        button.addTarget(
-        //            self,
-        //            action: #selector(radioButtonTapped(_:)),
-        //            for: .touchUpInside
-        //        )
+        button.addTarget(
+            self,
+            action: #selector(radioButtonTapped(_:)),
+            for: .touchUpInside
+        )
         return button
     }()
     
@@ -57,7 +57,7 @@ public class AddEditTaskViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = .black
         button.tag = 1
-        //        button.addTarget(self, action: #selector(radioButtonTapped(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(radioButtonTapped(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -108,6 +108,12 @@ public class AddEditTaskViewController: UIViewController {
             action: #selector(saveTask)
         )
         
+        configureTask()
+    }
+    
+    // MARK: - Actions
+    @objc private func radioButtonTapped(_ sender: RadioButton) {
+        viewModel.status = sender.tag == 0 ? .open : .closed
         configureTask()
     }
     
@@ -188,24 +194,43 @@ extension AddEditTaskViewController {
         isEditingTask = viewModel.isEditing
         
         if isEditingTask {
-            // Populate UI with task data
             taskNameTextField.text = viewModel.name
             taskDescriptionTextField.text = viewModel.description
+            
             datePicker.date = viewModel.dateCreated
-            if let startTime = viewModel.startTime {
-                startTimePicker.date = startTime
+            
+            switch viewModel.status {
+            case .open:
+                selectRadioButton(openStatusButton)
+            case .closed:
+                selectRadioButton(closedStatusButton)
             }
-            if let endTime = viewModel.endTime {
-                endTimePicker.date = endTime
-            }
+            
+            guard let startTime = viewModel.startTime,
+                  let endTime = viewModel.endTime else { return }
+            startTimePicker.date = startTime
+            endTimePicker.date = endTime
         } else {
-            // Show empty fields for new task
-            taskNameTextField.text = ""
-            taskDescriptionTextField.text = ""
-            datePicker.date = Date()
-            startTimePicker.date = Date()
-            endTimePicker.date = Date()
+            configureNewTask()
         }
+    }
+    
+    private func selectRadioButton(_ button: RadioButton) {
+        // Deselect the other button
+        openStatusButton.isSelected = (button == openStatusButton)
+        closedStatusButton.isSelected = (button == closedStatusButton)
+        
+        // Set the current selected button
+        RadioButton.currentlySelectedButton = button
+    }
+    
+    private func configureNewTask() {
+        taskNameTextField.text = ""
+        taskDescriptionTextField.text = ""
+        datePicker.date = Date()
+        startTimePicker.date = Date()
+        endTimePicker.date = Date()
+        selectRadioButton(openStatusButton)
     }
     
     private static func makeTextField(with placeholder: String) -> UITextField {
