@@ -67,7 +67,7 @@ extension LocalFeedLoader {
     public typealias Result = Swift.Result<Void, Error>
     
     public func update(
-        selected task: TodoTask,
+        _ task: TodoTask,
         completion: @escaping (Result) -> Void
     ) {
         store.update(createLocalTodTask(with: task)) { [weak self] updatingError in

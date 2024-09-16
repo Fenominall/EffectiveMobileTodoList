@@ -46,4 +46,10 @@ extension MainQueueDispatchDecorator: TaskSaver where T == TaskSaver {
             self?.dispatch { completion(result) }
         }
     }
+    
+    func update(_ task: TodoTask, completion: @escaping (SaveResult) -> Void) {
+        return decoratee.update(task) { [weak self] result in
+            self?.dispatch { completion(result) }
+        }
+    }
 }
