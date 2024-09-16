@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TaskStatus {
+public enum TaskStatus {
     case open
     case closed
     
