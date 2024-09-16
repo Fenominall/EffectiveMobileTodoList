@@ -8,7 +8,7 @@
 import Foundation
 import EffectiveMobileTodoList
 
-class NullStore: FeedStore {
+final class NullStore: FeedStore {
     func insert(_ task: EffectiveMobileTodoList.LocalTodoTask, completion: (InsertionResult) -> Void) {
         completion(.success(()))
     }
