@@ -30,12 +30,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }()
     
     private lazy var remoteURL = URL(string: "https://dummyjson.com/todos")!
-    private lazy var remoteFeedLoader: RemoteFeedLoader = {
-        RemoteFeedLoader(url: remoteURL, client: httpClient)
-    }()
-    private lazy var localFeedLoader: LocalFeedLoader = {
-        LocalFeedLoader(store: store)
-    }()
+    
+    private lazy var launchManager = FirstLaunchManager()
+    private lazy var feedLoaderFactory = FeedLoaderFactory(
+        httpClient: httpClient,
+        store: store,
+        remoteURL: remoteURL,
+        firstLaunchManager: launchManager)
+    
     private let navigationController = UINavigationController()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -46,13 +48,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func configureWindow() {
         let tasksFeedVC = TasksFeedUIComposer.tasksFeedComposedWith(
-            feedLoader: TasksFeedLoaderWithFallbackComposite(
-                primary: TasksFeedLoaderCacheDecorator(
-                    decoratee: remoteFeedLoader,
-                    cache: localFeedLoader),
-                fallback: localFeedLoader),
-            feedRemover: localFeedLoader, 
-            taskSaver: localFeedLoader,
+            feedLoader: feedLoaderFactory.makeFeedLoader(),
+            feedRemover: feedLoaderFactory.makeLocalFeedLoader(),
+            taskSaver: feedLoaderFactory.makeLocalFeedLoader(),
             navigationController: navigationController,
             selection: {  [weak self] task in
                 return self?.taskDetailComposer(task) ?? UIViewController()
