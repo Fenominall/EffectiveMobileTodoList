@@ -43,24 +43,6 @@ public struct AddEditTodoTaskViewModel: Equatable {
         self.taskToEdit = task
     }
     
-    public init(
-        id: UUID,
-        name: String,
-        description: String,
-        dateCreated: Date,
-        status: TaskStatus,
-        startTime: Date? = nil,
-        endTime: Date? = nil
-    ) {
-        self.id = id
-        self.name = name
-        self.description = description
-        self.dateCreated = dateCreated
-        self.status = status
-        self.startTime = startTime
-        self.endTime = endTime
-    }
-    
     public var isEditing: Bool {
         return taskToEdit != nil
     }
