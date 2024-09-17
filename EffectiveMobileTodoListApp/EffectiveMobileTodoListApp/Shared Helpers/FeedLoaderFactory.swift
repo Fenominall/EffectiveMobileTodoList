@@ -47,7 +47,7 @@ final class FeedLoaderFactory {
         }
     }
     
-    func makeCacheDecorator(decoratee: TasksLoader) -> TasksFeedLoaderCacheDecorator {
+    private func makeCacheDecorator(decoratee: TasksLoader) -> TasksFeedLoaderCacheDecorator {
         return TasksFeedLoaderCacheDecorator(decoratee: decoratee, cache: makeLocalFeedLoader())
     }
 }
