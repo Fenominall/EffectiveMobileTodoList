@@ -201,11 +201,9 @@ extension AddEditTaskViewController {
     }
     
     private func selectRadioButton(_ button: RadioButton) {
-        // Deselect the other button
         openStatusButton.isSelected = (button == openStatusButton)
         closedStatusButton.isSelected = (button == closedStatusButton)
-        
-        // Set the current selected button
+
         RadioButton.currentlySelectedButton = button
     }
     
@@ -239,7 +237,6 @@ extension AddEditTaskViewController {
         startTimePicker.date = Date()
         endTimePicker.date = Date()
         
-        // Select the radio button based on the current status
         switch viewModel.status {
         case .open:
             selectRadioButton(openStatusButton)
