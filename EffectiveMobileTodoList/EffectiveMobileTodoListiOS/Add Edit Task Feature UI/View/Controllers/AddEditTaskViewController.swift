@@ -41,6 +41,7 @@ public class AddEditTaskViewController: UIViewController {
     private lazy var statusLabel = makeLabel(with: "Status:".capitalized, font: .headline)
     private lazy var openStatusLabel = makeLabel(with: "Open:".capitalized, font: .headline)
     private lazy var closedStatusLabel = makeLabel(with: "Closed:".capitalized, font: .headline)
+    
     private lazy var openStatusButton: RadioButton = {
         let button = RadioButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -64,12 +65,12 @@ public class AddEditTaskViewController: UIViewController {
     }()
     
     private lazy var openStatusStackView = makeStackView(
-        withViews: [openStatusButton, openStatusLabel],
+        withViews: [openStatusLabel, openStatusButton],
         stackAxis: .horizontal,
         spacing: 5)
     
     private lazy var closedStatusStackView = makeStackView(
-        withViews: [closedStatusButton, closedStatusLabel],
+        withViews: [closedStatusLabel, closedStatusButton],
         stackAxis: .horizontal,
         spacing: 5)
     
@@ -101,23 +102,23 @@ public class AddEditTaskViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupConstraints()
-        
-        // Configure navigation bar
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Save",
-            style: .done,
-            target: self,
-            action: #selector(saveTask)
-        )
-        
+        configureNavBarItems()
         configureTask()
     }
     
     // MARK: - Actions
-        @objc private func radioButtonTapped(_ sender: RadioButton) {
-            viewModel.status = sender.tag == 0 ? .open : .closed
-            configureTask()
-        }
+    @objc private func radioButtonTapped(_ sender: RadioButton) {
+        viewModel.status = sender.tag == 0 ? .open : .closed
+        configureTask()
+    }
+    
+    @objc private func saveTask() {
+        // Logic to save or update the task
+    }
+    
+    @objc private func deleteTask() {
+        // Logic to delete the task
+    }
     
     // MARK: - UI Setup
     private func setupUI() {
@@ -186,15 +187,6 @@ public class AddEditTaskViewController: UIViewController {
             deleteButton.heightAnchor.constraint(equalToConstant: 40),
         ])
     }
-    
-    // MARK: - Actions
-    @objc private func saveTask() {
-        // Logic to save or update the task
-    }
-    
-    @objc private func deleteTask() {
-        // Logic to delete the task
-    }
 }
 
 extension AddEditTaskViewController {
@@ -257,6 +249,15 @@ extension AddEditTaskViewController {
         textField.layer.cornerRadius = 12
         textField.borderStyle = .roundedRect
         return textField
+    }
+    
+    private func configureNavBarItems() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Save",
+            style: .done,
+            target: self,
+            action: #selector(saveTask)
+        )
     }
     
     private func makeLabel(

@@ -9,7 +9,7 @@ import Foundation
 import EffectiveMobileTodoList
 
 public struct AddEditTodoTaskViewModel: Equatable {
-    var taskToEdit: TodoTask?
+    private var taskToEdit: TodoTask?
     public var status: TaskStatus
     
     public let id: UUID
@@ -18,34 +18,6 @@ public struct AddEditTodoTaskViewModel: Equatable {
     public let dateCreated: Date
     public var startTime: Date?
     public var endTime: Date?
-    
-    public var isEditing: Bool {
-        return taskToEdit != nil
-    }
-    
-    public var selectedStartTime: Date? {
-        didSet {
-            if selectedStartTime != nil {
-                startTime = selectedStartTime
-            }
-        }
-    }
-    
-    public var selectedEndTime: Date? {
-        didSet {
-            if selectedEndTime != nil {
-                endTime = selectedEndTime
-            }
-        }
-    }
-    
-    public var isCompleted: Bool {
-        status.isCompleted
-    }
-    
-    var hasSelectedTimes: Bool {
-        return selectedStartTime != nil || selectedEndTime != nil
-    }
     
     public init(
         task: TodoTask? = nil
@@ -87,5 +59,33 @@ public struct AddEditTodoTaskViewModel: Equatable {
         self.status = status
         self.startTime = startTime
         self.endTime = endTime
+    }
+    
+    public var isEditing: Bool {
+        return taskToEdit != nil
+    }
+    
+    public var selectedStartTime: Date? {
+        didSet {
+            if selectedStartTime != nil {
+                startTime = selectedStartTime
+            }
+        }
+    }
+    
+    public var selectedEndTime: Date? {
+        didSet {
+            if selectedEndTime != nil {
+                endTime = selectedEndTime
+            }
+        }
+    }
+    
+    public var isCompleted: Bool {
+        status.isCompleted
+    }
+    
+    var hasSelectedTimes: Bool {
+        return selectedStartTime != nil || selectedEndTime != nil
     }
 }
