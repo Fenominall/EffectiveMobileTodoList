@@ -238,8 +238,16 @@ extension AddEditTaskViewController {
         datePicker.date = Date()
         startTimePicker.date = Date()
         endTimePicker.date = Date()
-        selectRadioButton(openStatusButton)
+        
+        // Select the radio button based on the current status
+        switch viewModel.status {
+        case .open:
+            selectRadioButton(openStatusButton)
+        case .closed:
+            selectRadioButton(closedStatusButton)
+        }
     }
+
     
     private static func makeTextField(with placeholder: String) -> UITextField {
         let textField = UITextField()
