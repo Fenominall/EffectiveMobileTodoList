@@ -8,7 +8,7 @@
 import Foundation
 import EffectiveMobileTodoList
 
-public struct AddEditTodoTaskViewModel: Equatable {
+public struct AddEditTodoTaskViewModel {
     private var taskToEdit: TodoTask?
     public var status: TaskStatus
     
@@ -18,6 +18,9 @@ public struct AddEditTodoTaskViewModel: Equatable {
     public let dateCreated: Date
     public var startTime: Date?
     public var endTime: Date?
+    
+    public var onSaveAddTransaction: ((TodoTask) -> Void)?
+    public var onSaveUpdateTransaction: ((TodoTask) -> Void)?
     
     public init(
         task: TodoTask? = nil
@@ -69,5 +72,28 @@ public struct AddEditTodoTaskViewModel: Equatable {
     
     var hasSelectedTimes: Bool {
         return selectedStartTime != nil || selectedEndTime != nil
+    }
+    
+    func saveTask(
+        name: String,
+        description: String,
+        status: TaskStatus,
+        dateCreated: Date,
+        taskStartTime: Date,
+        taskEndTime: Date
+    ) {
+        let todoTask = TodoTask(
+            id: taskToEdit?.id ?? UUID(),
+            name: name,
+            description: description,
+            dateCreated: dateCreated,
+            status: status.isCompleted,
+            startTime: taskStartTime,
+            endTime: taskEndTime
+        )
+        
+        taskToEdit != nil ?
+        onSaveUpdateTransaction?(todoTask) :
+        onSaveAddTransaction?(todoTask)
     }
 }

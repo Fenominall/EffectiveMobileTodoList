@@ -113,7 +113,25 @@ public class AddEditTaskViewController: UIViewController {
     }
     
     @objc private func saveTask() {
-        // Logic to save or update the task
+        guard let name = taskNameTextField.text, !name.isEmpty,
+              let description = taskDescriptionTextField.text, !description.isEmpty else {
+            showAlert(with: "Error",
+                      message: "Name and Description are required fields to enter!")
+            return
+        }
+        
+        let taskDate = datePicker.date
+        let startTime = startTimePicker.date
+        let endTime = endTimePicker.date
+        
+        viewModel.saveTask(
+            name: name,
+            description: description,
+            status: viewModel.status,
+            dateCreated: taskDate,
+            taskStartTime: startTime,
+            taskEndTime: endTime
+        )
     }
     
     @objc private func deleteTask() {
@@ -191,6 +209,19 @@ public class AddEditTaskViewController: UIViewController {
 
 extension AddEditTaskViewController {
     // MARK: - Helpers
+    private func showAlert(with title: String, message: String) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(
+            UIAlertAction(title: "OK",
+                          style: .destructive,
+                          handler: { _ in })
+        )
+        present(alert, animated: true)
+    }
     
     private func configureTask() {
         if viewModel.isEditing {
@@ -203,7 +234,7 @@ extension AddEditTaskViewController {
     private func selectRadioButton(_ button: RadioButton) {
         openStatusButton.isSelected = (button == openStatusButton)
         closedStatusButton.isSelected = (button == closedStatusButton)
-
+        
         RadioButton.currentlySelectedButton = button
     }
     
@@ -244,7 +275,7 @@ extension AddEditTaskViewController {
             selectRadioButton(closedStatusButton)
         }
     }
-
+    
     private static func makeTextField(with placeholder: String) -> UITextField {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
