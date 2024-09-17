@@ -245,7 +245,6 @@ extension AddEditTaskViewController {
         }
     }
 
-    
     private static func makeTextField(with placeholder: String) -> UITextField {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
