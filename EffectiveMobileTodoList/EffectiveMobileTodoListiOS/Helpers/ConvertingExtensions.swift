@@ -12,7 +12,6 @@ func convertDate(with date: Date?) -> String {
         return "Unknown Date"
     }
     let dateFormatter = DateFormatter()
-    dateFormatter.dateStyle = .medium
     dateFormatter.timeStyle = .short
     return dateFormatter.string(from: validDate)
 }
