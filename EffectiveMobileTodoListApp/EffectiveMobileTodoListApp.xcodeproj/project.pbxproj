@@ -24,6 +24,8 @@
 		4FC06EBD2C902C600034F364 /* TasksFeedLoaderCacheDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EBC2C902C600034F364 /* TasksFeedLoaderCacheDecorator.swift */; };
 		4FC06ECB2C9575260034F364 /* AddTaskUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06ECA2C9575260034F364 /* AddTaskUIComposer.swift */; };
 		4FC06EDB2C96A0830034F364 /* EditTaskUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EDA2C96A0830034F364 /* EditTaskUIComposer.swift */; };
+		4FC06EE22C98B7520034F364 /* FeedLoaderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EE12C98B7520034F364 /* FeedLoaderFactory.swift */; };
+		4FC06EE42C98B7670034F364 /* FirstLaunchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EE32C98B7670034F364 /* FirstLaunchManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -59,6 +61,8 @@
 		4FC06EBC2C902C600034F364 /* TasksFeedLoaderCacheDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedLoaderCacheDecorator.swift; sourceTree = "<group>"; };
 		4FC06ECA2C9575260034F364 /* AddTaskUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskUIComposer.swift; sourceTree = "<group>"; };
 		4FC06EDA2C96A0830034F364 /* EditTaskUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskUIComposer.swift; sourceTree = "<group>"; };
+		4FC06EE12C98B7520034F364 /* FeedLoaderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderFactory.swift; sourceTree = "<group>"; };
+		4FC06EE32C98B7670034F364 /* FirstLaunchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,8 @@
 				4FBB50F02C8F6E33002A23E9 /* WeakRefVirtualProxy.swift */,
 				4FBB50F32C8F7283002A23E9 /* MainQueueDispatchDecorator.swift */,
 				4FC06EB82C8F842A0034F364 /* NullStore.swift */,
+				4FC06EE12C98B7520034F364 /* FeedLoaderFactory.swift */,
+				4FC06EE32C98B7670034F364 /* FirstLaunchManager.swift */,
 			);
 			path = "Shared Helpers";
 			sourceTree = "<group>";
@@ -225,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FBB50F42C8F7283002A23E9 /* MainQueueDispatchDecorator.swift in Sources */,
+				4FC06EE22C98B7520034F364 /* FeedLoaderFactory.swift in Sources */,
 				4FBB50C12C8F4464002A23E9 /* AppDelegate.swift in Sources */,
 				4FC06ECB2C9575260034F364 /* AddTaskUIComposer.swift in Sources */,
 				4FBB50F12C8F6E33002A23E9 /* WeakRefVirtualProxy.swift in Sources */,
@@ -235,6 +242,7 @@
 				4FC06EB72C8F7F280034F364 /* TasksFeedViewAdapter.swift in Sources */,
 				4FC06EDB2C96A0830034F364 /* EditTaskUIComposer.swift in Sources */,
 				4FC06EBD2C902C600034F364 /* TasksFeedLoaderCacheDecorator.swift in Sources */,
+				4FC06EE42C98B7670034F364 /* FirstLaunchManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
