@@ -25,8 +25,9 @@ class TaskTableViewCell: UITableViewCell {
     
     private let titleLabel = UILabel()
     private let descriptionLabel = UILabel()
-    private let timeDateLabel = UILabel()
-    private let specificTimeLabel = UILabel()
+    private let dateLabel = UILabel()
+    private let startTimeLabel = UILabel()
+    private let endTimeLabel = UILabel()
     private lazy var checkmarkButton: UIButton = {
         let checkmarkButton = UIButton(type: .system)
         var config = UIButton.Configuration.plain()
@@ -54,7 +55,7 @@ class TaskTableViewCell: UITableViewCell {
     
     private lazy var timeStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [
-            self.timeDateLabel, self.specificTimeLabel
+            self.dateLabel, self.startTimeLabel
         ])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
@@ -86,13 +87,17 @@ class TaskTableViewCell: UITableViewCell {
         descriptionLabel.font = UIFont.systemFont(ofSize: 14)
         descriptionLabel.textColor = .gray
         
-        timeDateLabel.textColor = .gray
+        dateLabel.textColor = .gray
         titleLabel.alpha = 0.7
-        timeDateLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        dateLabel.font = UIFont.preferredFont(forTextStyle: .body)
         
-        specificTimeLabel.textColor = .secondaryLabel
-        specificTimeLabel.alpha = 0.5
-        specificTimeLabel.font = UIFont.preferredFont(forTextStyle: .callout)
+        startTimeLabel.textColor = .secondaryLabel
+        startTimeLabel.alpha = 0.5
+        startTimeLabel.font = UIFont.preferredFont(forTextStyle: .callout) 
+        
+        endTimeLabel.textColor = .secondaryLabel
+        endTimeLabel.alpha = 0.5
+        endTimeLabel.font = UIFont.preferredFont(forTextStyle: .callout)
         
         checkmarkButton.setImage(UIImage(systemName: "circle"), for: .normal)
         checkmarkButton.tintColor = .systemBlue
@@ -106,6 +111,7 @@ class TaskTableViewCell: UITableViewCell {
         contentView.addSubview(containerView)
         containerView.addSubview(infoStackView)
         containerView.addSubview(timeStack)
+        containerView.addSubview(endTimeLabel)
         containerView.addSubview(checkmarkButton)
         containerView.addSubview(separatorLine)
     }
@@ -113,7 +119,8 @@ class TaskTableViewCell: UITableViewCell {
     private func setupConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        timeDateLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        endTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         checkmarkButton.translatesAutoresizingMaskIntoConstraints = false
         separatorLine.translatesAutoresizingMaskIntoConstraints = false
         
@@ -139,14 +146,17 @@ class TaskTableViewCell: UITableViewCell {
             
             timeStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50),
             timeStack.topAnchor.constraint(equalTo: separatorLine.bottomAnchor, constant: 18),
+            endTimeLabel.leadingAnchor.constraint(equalTo: timeStack.trailingAnchor, constant: 5),
+            endTimeLabel.centerYAnchor.constraint(equalTo: timeStack.centerYAnchor)
         ])
     }
     
-    func configure(withName title: String, description: String, timeDate: String, specificTime: String, isCompleted: Bool) {
+    func configure(withName title: String, description: String, timeDate: String, taskStartTime: String, isCompleted: Bool) {
         titleLabel.text = title
         descriptionLabel.text = description
-        timeDateLabel.text = timeDate
-        specificTimeLabel.text = specificTime
+        dateLabel.text = timeDate
+        startTimeLabel.text = taskStartTime
+        endTimeLabel.text = "- \(taskStartTime)"
         isTaskCompleted = isCompleted
     }
     

@@ -37,7 +37,7 @@ public final class TasksTableCellController {
             withName: viewModel.name,
             description: viewModel.description,
             timeDate: convertDateForShort(with: viewModel.dateCreated),
-            specificTime: convertDate(with: viewModel.dateCreated),
+            taskStartTime: convertDate(with: viewModel.dateCreated),
             isCompleted: viewModel.isCompleted
         )
         return cell
