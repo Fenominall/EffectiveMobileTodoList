@@ -53,6 +53,9 @@
 		4F61AB6E2C8F2B2A0040C357 /* UIRefreshControl+Helpers.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61AB6D2C8F2B2A0040C357 /* UIRefreshControl+Helpers.swift .swift */; };
 		4F620EA42C86F62400F38AC9 /* EffectiveMobileTodoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F620E9B2C86F62400F38AC9 /* EffectiveMobileTodoList.framework */; };
 		4F620EAA2C86F62400F38AC9 /* EffectiveMobileTodoList.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F620E9E2C86F62400F38AC9 /* EffectiveMobileTodoList.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F8ADFCC2C9AF1D000410775 /* TaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8ADFCB2C9AF1D000410775 /* TaskInteractor.swift */; };
+		4F8ADFCE2C9AF1D900410775 /* TaskPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8ADFCD2C9AF1D900410775 /* TaskPresenter.swift */; };
+		4F8ADFD02C9AF1E000410775 /* TaskRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8ADFCF2C9AF1E000410775 /* TaskRouter.swift */; };
 		4FB051D02C873210004CEB29 /* TasksLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051CF2C873210004CEB29 /* TasksLoader.swift */; };
 		4FB051D22C8732FE004CEB29 /* TodoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051D12C8732FE004CEB29 /* TodoTask.swift */; };
 		4FB051D52C8788D1004CEB29 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051D42C8788D1004CEB29 /* URLSessionHTTPClientTests.swift */; };
@@ -66,7 +69,7 @@
 		4FB052132C88E056004CEB29 /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB052122C88E056004CEB29 /* HTTPURLResponse+StatusCode.swift */; };
 		4FC06EC22C902F670034F364 /* AddEditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EC12C902F670034F364 /* AddEditTaskViewController.swift */; };
 		4FC06EC42C90DB2D0034F364 /* TasksRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EC32C90DB2D0034F364 /* TasksRemover.swift */; };
-		4FC06EC62C94257C0034F364 /* TaskRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EC52C94257C0034F364 /* TaskRouter.swift */; };
+		4FC06EC62C94257C0034F364 /* TasksFeedRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06EC52C94257C0034F364 /* TasksFeedRouter.swift */; };
 		4FC06ECE2C957CA80034F364 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06ECD2C957CA80034F364 /* RadioButton.swift */; };
 		4FC06ED02C95BFC70034F364 /* TaskSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06ECF2C95BFC70034F364 /* TaskSaver.swift */; };
 		4FC06ED62C95ECC70034F364 /* AddEditTodoTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC06ED52C95ECC70034F364 /* AddEditTodoTaskViewModel.swift */; };
@@ -162,6 +165,9 @@
 		4F620E9B2C86F62400F38AC9 /* EffectiveMobileTodoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EffectiveMobileTodoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F620E9E2C86F62400F38AC9 /* EffectiveMobileTodoList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EffectiveMobileTodoList.h; sourceTree = "<group>"; };
 		4F620EA32C86F62400F38AC9 /* EffectiveMobileTodoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EffectiveMobileTodoListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F8ADFCB2C9AF1D000410775 /* TaskInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInteractor.swift; sourceTree = "<group>"; };
+		4F8ADFCD2C9AF1D900410775 /* TaskPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPresenter.swift; sourceTree = "<group>"; };
+		4F8ADFCF2C9AF1E000410775 /* TaskRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRouter.swift; sourceTree = "<group>"; };
 		4FB051CF2C873210004CEB29 /* TasksLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksLoader.swift; sourceTree = "<group>"; };
 		4FB051D12C8732FE004CEB29 /* TodoTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTask.swift; sourceTree = "<group>"; };
 		4FB051D42C8788D1004CEB29 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
@@ -175,7 +181,7 @@
 		4FB052122C88E056004CEB29 /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
 		4FC06EC12C902F670034F364 /* AddEditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTaskViewController.swift; sourceTree = "<group>"; };
 		4FC06EC32C90DB2D0034F364 /* TasksRemover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksRemover.swift; sourceTree = "<group>"; };
-		4FC06EC52C94257C0034F364 /* TaskRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRouter.swift; sourceTree = "<group>"; };
+		4FC06EC52C94257C0034F364 /* TasksFeedRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedRouter.swift; sourceTree = "<group>"; };
 		4FC06ECD2C957CA80034F364 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		4FC06ECF2C95BFC70034F364 /* TaskSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSaver.swift; sourceTree = "<group>"; };
 		4FC06ED52C95ECC70034F364 /* AddEditTodoTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTodoTaskViewModel.swift; sourceTree = "<group>"; };
@@ -307,7 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				4F61AB572C8EBBA30040C357 /* TasksFeedRouterNavigator.swift */,
-				4FC06EC52C94257C0034F364 /* TaskRouter.swift */,
+				4FC06EC52C94257C0034F364 /* TasksFeedRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -581,6 +587,7 @@
 		4FEE9EC62C9AC35D00C5D15B /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				4F8ADFCB2C9AF1D000410775 /* TaskInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -588,6 +595,7 @@
 		4FEE9EC72C9AC36100C5D15B /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				4F8ADFCD2C9AF1D900410775 /* TaskPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -603,6 +611,7 @@
 		4FEE9EC92C9AC36800C5D15B /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				4F8ADFCF2C9AF1E000410775 /* TaskRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -711,7 +720,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					4F3C7B652C8E0DC500291DCA = {
 						CreatedOnToolsVersion = 15.4;
@@ -789,6 +798,8 @@
 			files = (
 				4F61AB4D2C8EA77C0040C357 /* TasksFeedInteractorOutput.swift in Sources */,
 				4F61AB672C8F1E6E0040C357 /* UIView+Shimmering.swift in Sources */,
+				4F8ADFCC2C9AF1D000410775 /* TaskInteractor.swift in Sources */,
+				4F8ADFCE2C9AF1D900410775 /* TaskPresenter.swift in Sources */,
 				4F61AB6C2C8F226E0040C357 /* UIView+Container.swift in Sources */,
 				4F3C7B7F2C8E0E0B00291DCA /* TaskListViewController.swift in Sources */,
 				4F61AB4B2C8EA6880040C357 /* TasksFeedInteractorInput.swift in Sources */,
@@ -800,6 +811,7 @@
 				4FC06EDE2C96FC620034F364 /* TaskStatus.swift in Sources */,
 				4F61AB4F2C8EABCE0040C357 /* TasksFeedPresenterDelegate.swift in Sources */,
 				4F61AB2F2C8E25F90040C357 /* TasksFeedInteractor.swift in Sources */,
+				4F8ADFD02C9AF1E000410775 /* TaskRouter.swift in Sources */,
 				4F3C7B922C8E240200291DCA /* FeedTodoTaskViewModel.swift in Sources */,
 				4F61AB5D2C8ECF580040C357 /* ConvertingExtensions.swift in Sources */,
 				4F61AB512C8EAC920040C357 /* TasksFeedPresenter.swift in Sources */,
@@ -811,7 +823,7 @@
 				4F3C7B812C8E0E4F00291DCA /* CustomTitleHeaderView.swift in Sources */,
 				4FC06EC22C902F670034F364 /* AddEditTaskViewController.swift in Sources */,
 				4F3C7B832C8E0E8400291DCA /* TaskTableViewCell.swift in Sources */,
-				4FC06EC62C94257C0034F364 /* TaskRouter.swift in Sources */,
+				4FC06EC62C94257C0034F364 /* TasksFeedRouter.swift in Sources */,
 				4F61AB652C8EE01E0040C357 /* TaskErrorViewModel.swift in Sources */,
 				4F3C7B852C8E10A800291DCA /* TaskListFiltersView.swift in Sources */,
 				4F61AB5F2C8EDC960040C357 /* TaskErrorView.swift in Sources */,
@@ -899,6 +911,7 @@
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = NO;
@@ -941,6 +954,7 @@
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = NO;
@@ -981,7 +995,6 @@
 		4F3C7B772C8E0DC500291DCA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5YJ9NPM7MQ;
@@ -1000,7 +1013,6 @@
 		4F3C7B782C8E0DC500291DCA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5YJ9NPM7MQ;
@@ -1052,6 +1064,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1123,6 +1136,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1156,9 +1170,11 @@
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5YJ9NPM7MQ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1195,9 +1211,11 @@
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5YJ9NPM7MQ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1231,10 +1249,10 @@
 		4F620EB12C86F62400F38AC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5YJ9NPM7MQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -1249,10 +1267,10 @@
 		4F620EB22C86F62400F38AC9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5YJ9NPM7MQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
