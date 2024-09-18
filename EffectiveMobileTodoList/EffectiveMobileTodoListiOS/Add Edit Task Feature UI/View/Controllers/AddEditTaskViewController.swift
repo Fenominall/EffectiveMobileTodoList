@@ -115,8 +115,11 @@ public class AddEditTaskViewController: UIViewController {
     @objc private func saveTask() {
         guard let name = taskNameTextField.text, !name.isEmpty,
               let description = taskDescriptionTextField.text, !description.isEmpty else {
-            showAlert(with: "Error",
-                      message: "Name and Description are required fields to enter!")
+            showAlert(
+                with: "Error",
+                message: "Name and Description are required fields to enter!",
+                actionOneTitle: "OK"
+            )
             return
         }
         
@@ -135,7 +138,13 @@ public class AddEditTaskViewController: UIViewController {
     }
     
     @objc private func deleteTask() {
-        // Logic to delete the task
+        showAlert(
+            with: "Delete",
+            message: "Do you want to delete a task?",
+            actionOneTitle: "Delete",
+            actionTwoTitle: "Canel",
+            withHandler: viewModel.deletetask
+        )
     }
     
     // MARK: - UI Setup
@@ -209,17 +218,33 @@ public class AddEditTaskViewController: UIViewController {
 
 extension AddEditTaskViewController {
     // MARK: - Helpers
-    private func showAlert(with title: String, message: String) {
+    private func showAlert(
+        with title: String? = nil,
+        message: String,
+        actionOneTitle: String,
+        actionTwoTitle: String? = nil,
+        withHandler completionHandler: (() -> Void)? = nil
+    ) {
         let alert = UIAlertController(
             title: title,
             message: message,
             preferredStyle: .alert
         )
         alert.addAction(
-            UIAlertAction(title: "OK",
+            UIAlertAction(title: actionOneTitle,
                           style: .destructive,
-                          handler: { _ in })
+                          handler: { _ in
+                              completionHandler?()
+                          })
         )
+        
+        if let actionTwoTitle = actionTwoTitle {
+            alert.addAction(
+                UIAlertAction(title: actionTwoTitle,
+                              style: .cancel,
+                              handler: { _ in })
+            )
+        }
         present(alert, animated: true)
     }
     
