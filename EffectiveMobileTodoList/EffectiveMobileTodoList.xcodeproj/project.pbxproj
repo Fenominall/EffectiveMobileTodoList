@@ -31,16 +31,16 @@
 		4F5852832C8A388B00FE2173 /* FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5852822C8A388B00FE2173 /* FeedStoreSpecs.swift */; };
 		4F5852852C8A3E8600FE2173 /* CoreDataFeedStore+FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5852842C8A3E8600FE2173 /* CoreDataFeedStore+FeedStore.swift */; };
 		4F5852872C8A4D4200FE2173 /* CacheError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5852862C8A4D4200FE2173 /* CacheError.swift */; };
-		4F61AB2F2C8E25F90040C357 /* TasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61AB2E2C8E25F90040C357 /* TasksInteractor.swift */; };
+		4F61AB2F2C8E25F90040C357 /* TasksFeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61AB2E2C8E25F90040C357 /* TasksFeedInteractor.swift */; };
 		4F61AB3B2C8E29B50040C357 /* EffectiveMobileTodoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F620E9B2C86F62400F38AC9 /* EffectiveMobileTodoList.framework */; };
 		4F61AB3C2C8E29B50040C357 /* EffectiveMobileTodoList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F620E9B2C86F62400F38AC9 /* EffectiveMobileTodoList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F61AB432C8E2B8E0040C357 /* EffectiveMobileTodoListiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F61AB422C8E2B8E0040C357 /* EffectiveMobileTodoListiOS.h */; };
-		4F61AB4B2C8EA6880040C357 /* TasksInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61AB4A2C8EA6880040C357 /* TasksInteractorInput.swift */; };
-		4F61AB4D2C8EA77C0040C357 /* TasksInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61AB4C2C8EA77C0040C357 /* TasksInteractorOutput.swift */; };
-		4F61AB4F2C8EABCE0040C357 /* TasksPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61AB4E2C8EABCE0040C357 /* TasksPresenterDelegate.swift */; };
-		4F61AB512C8EAC920040C357 /* TasksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61AB502C8EAC920040C357 /* TasksPresenter.swift */; };
-		4F61AB532C8EAF4F0040C357 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61AB522C8EAF4F0040C357 /* TasksView.swift */; };
-		4F61AB582C8EBBA30040C357 /* TasksRouterNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61AB572C8EBBA30040C357 /* TasksRouterNavigator.swift */; };
+		4F61AB4B2C8EA6880040C357 /* TasksFeedInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61AB4A2C8EA6880040C357 /* TasksFeedInteractorInput.swift */; };
+		4F61AB4D2C8EA77C0040C357 /* TasksFeedInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61AB4C2C8EA77C0040C357 /* TasksFeedInteractorOutput.swift */; };
+		4F61AB4F2C8EABCE0040C357 /* TasksFeedPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61AB4E2C8EABCE0040C357 /* TasksFeedPresenterDelegate.swift */; };
+		4F61AB512C8EAC920040C357 /* TasksFeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61AB502C8EAC920040C357 /* TasksFeedPresenter.swift */; };
+		4F61AB532C8EAF4F0040C357 /* TasksFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61AB522C8EAF4F0040C357 /* TasksFeedView.swift */; };
+		4F61AB582C8EBBA30040C357 /* TasksFeedRouterNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61AB572C8EBBA30040C357 /* TasksFeedRouterNavigator.swift */; };
 		4F61AB5A2C8ECDB00040C357 /* TasksTableViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61AB592C8ECDB00040C357 /* TasksTableViewCellController.swift */; };
 		4F61AB5D2C8ECF580040C357 /* ConvertingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61AB5C2C8ECF580040C357 /* ConvertingExtensions.swift */; };
 		4F61AB5F2C8EDC960040C357 /* TaskErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61AB5E2C8EDC960040C357 /* TaskErrorView.swift */; };
@@ -141,14 +141,14 @@
 		4F5852822C8A388B00FE2173 /* FeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreSpecs.swift; sourceTree = "<group>"; };
 		4F5852842C8A3E8600FE2173 /* CoreDataFeedStore+FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataFeedStore+FeedStore.swift"; sourceTree = "<group>"; };
 		4F5852862C8A4D4200FE2173 /* CacheError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheError.swift; sourceTree = "<group>"; };
-		4F61AB2E2C8E25F90040C357 /* TasksInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksInteractor.swift; sourceTree = "<group>"; };
+		4F61AB2E2C8E25F90040C357 /* TasksFeedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedInteractor.swift; sourceTree = "<group>"; };
 		4F61AB422C8E2B8E0040C357 /* EffectiveMobileTodoListiOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectiveMobileTodoListiOS.h; sourceTree = "<group>"; };
-		4F61AB4A2C8EA6880040C357 /* TasksInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksInteractorInput.swift; sourceTree = "<group>"; };
-		4F61AB4C2C8EA77C0040C357 /* TasksInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksInteractorOutput.swift; sourceTree = "<group>"; };
-		4F61AB4E2C8EABCE0040C357 /* TasksPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksPresenterDelegate.swift; sourceTree = "<group>"; };
-		4F61AB502C8EAC920040C357 /* TasksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksPresenter.swift; sourceTree = "<group>"; };
-		4F61AB522C8EAF4F0040C357 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
-		4F61AB572C8EBBA30040C357 /* TasksRouterNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksRouterNavigator.swift; sourceTree = "<group>"; };
+		4F61AB4A2C8EA6880040C357 /* TasksFeedInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedInteractorInput.swift; sourceTree = "<group>"; };
+		4F61AB4C2C8EA77C0040C357 /* TasksFeedInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedInteractorOutput.swift; sourceTree = "<group>"; };
+		4F61AB4E2C8EABCE0040C357 /* TasksFeedPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedPresenterDelegate.swift; sourceTree = "<group>"; };
+		4F61AB502C8EAC920040C357 /* TasksFeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedPresenter.swift; sourceTree = "<group>"; };
+		4F61AB522C8EAF4F0040C357 /* TasksFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedView.swift; sourceTree = "<group>"; };
+		4F61AB572C8EBBA30040C357 /* TasksFeedRouterNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFeedRouterNavigator.swift; sourceTree = "<group>"; };
 		4F61AB592C8ECDB00040C357 /* TasksTableViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewCellController.swift; sourceTree = "<group>"; };
 		4F61AB5C2C8ECF580040C357 /* ConvertingExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertingExtensions.swift; sourceTree = "<group>"; };
 		4F61AB5E2C8EDC960040C357 /* TaskErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskErrorView.swift; sourceTree = "<group>"; };
@@ -225,14 +225,9 @@
 			isa = PBXGroup;
 			children = (
 				4F61AB422C8E2B8E0040C357 /* EffectiveMobileTodoListiOS.h */,
-				4F61AB682C8F21350040C357 /* Helpers */,
+				4F61AB682C8F21350040C357 /* Shared Helpers */,
 				4FC06EBE2C902F390034F364 /* Add Edit Task Feature UI */,
 				4F3C7B8A2C8E232600291DCA /* Feed View Feature UI */,
-				4FC06ED82C95EF980034F364 /* View protocols */,
-				4F3C7B892C8E1E5800291DCA /* Interactor */,
-				4F3C7B8D2C8E236600291DCA /* Presenter */,
-				4F3C7B8E2C8E236E00291DCA /* Entity */,
-				4F3C7B8F2C8E237500291DCA /* Router */,
 			);
 			path = EffectiveMobileTodoListiOS;
 			sourceTree = "<group>";
@@ -247,9 +242,9 @@
 		4F3C7B892C8E1E5800291DCA /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				4F61AB2E2C8E25F90040C357 /* TasksInteractor.swift */,
-				4F61AB4C2C8EA77C0040C357 /* TasksInteractorOutput.swift */,
-				4F61AB4A2C8EA6880040C357 /* TasksInteractorInput.swift */,
+				4F61AB2E2C8E25F90040C357 /* TasksFeedInteractor.swift */,
+				4F61AB4C2C8EA77C0040C357 /* TasksFeedInteractorOutput.swift */,
+				4F61AB4A2C8EA6880040C357 /* TasksFeedInteractorInput.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -257,8 +252,11 @@
 		4F3C7B8A2C8E232600291DCA /* Feed View Feature UI */ = {
 			isa = PBXGroup;
 			children = (
-				4F3C7B8C2C8E233F00291DCA /* Views */,
-				4F3C7B8B2C8E233C00291DCA /* Controllers */,
+				4FC06ED82C95EF980034F364 /* View */,
+				4F3C7B892C8E1E5800291DCA /* Interactor */,
+				4F3C7B8D2C8E236600291DCA /* Presenter */,
+				4F3C7B8E2C8E236E00291DCA /* Entity */,
+				4F3C7B8F2C8E237500291DCA /* Router */,
 			);
 			path = "Feed View Feature UI";
 			sourceTree = "<group>";
@@ -291,8 +289,8 @@
 				4F61AB602C8EDC9F0040C357 /* TaskLoadingView.swift */,
 				4F61AB5E2C8EDC960040C357 /* TaskErrorView.swift */,
 				4F61AB642C8EE01E0040C357 /* TaskErrorViewModel.swift */,
-				4F61AB4E2C8EABCE0040C357 /* TasksPresenterDelegate.swift */,
-				4F61AB502C8EAC920040C357 /* TasksPresenter.swift */,
+				4F61AB4E2C8EABCE0040C357 /* TasksFeedPresenterDelegate.swift */,
+				4F61AB502C8EAC920040C357 /* TasksFeedPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -301,7 +299,6 @@
 			isa = PBXGroup;
 			children = (
 				4F3C7B912C8E240200291DCA /* FeedTodoTaskViewModel.swift */,
-				4FC06ED52C95ECC70034F364 /* AddEditTodoTaskViewModel.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -309,7 +306,7 @@
 		4F3C7B8F2C8E237500291DCA /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				4F61AB572C8EBBA30040C357 /* TasksRouterNavigator.swift */,
+				4F61AB572C8EBBA30040C357 /* TasksFeedRouterNavigator.swift */,
 				4FC06EC52C94257C0034F364 /* TaskRouter.swift */,
 			);
 			path = Router;
@@ -352,7 +349,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4F61AB682C8F21350040C357 /* Helpers */ = {
+		4F61AB682C8F21350040C357 /* Shared Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				4F61AB5C2C8ECF580040C357 /* ConvertingExtensions.swift */,
@@ -361,7 +358,7 @@
 				4F61AB6B2C8F226E0040C357 /* UIView+Container.swift */,
 				4FC06EDD2C96FC620034F364 /* TaskStatus.swift */,
 			);
-			path = Helpers;
+			path = "Shared Helpers";
 			sourceTree = "<group>";
 		};
 		4F620E912C86F62400F38AC9 = {
@@ -507,6 +504,10 @@
 			isa = PBXGroup;
 			children = (
 				4FC06EBF2C902F450034F364 /* View */,
+				4FEE9EC62C9AC35D00C5D15B /* Interactor */,
+				4FEE9EC72C9AC36100C5D15B /* Presenter */,
+				4FEE9EC82C9AC36500C5D15B /* Entity */,
+				4FEE9EC92C9AC36800C5D15B /* Router */,
 			);
 			path = "Add Edit Task Feature UI";
 			sourceTree = "<group>";
@@ -536,12 +537,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		4FC06ED82C95EF980034F364 /* View protocols */ = {
+		4FC06ED82C95EF980034F364 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4F61AB522C8EAF4F0040C357 /* TasksView.swift */,
+				4FEE9EC52C9AC30200C5D15B /* Protocols */,
+				4F3C7B8C2C8E233F00291DCA /* Views */,
+				4F3C7B8B2C8E233C00291DCA /* Controllers */,
 			);
-			path = "View protocols";
+			path = View;
 			sourceTree = "<group>";
 		};
 		4FCAC4892C88E970002CBBE7 /* Feed Cache */ = {
@@ -565,6 +568,43 @@
 				4F58525D2C8993EE00FE2173 /* FeedCacheTestHelpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4FEE9EC52C9AC30200C5D15B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4F61AB522C8EAF4F0040C357 /* TasksFeedView.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		4FEE9EC62C9AC35D00C5D15B /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		4FEE9EC72C9AC36100C5D15B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4FEE9EC82C9AC36500C5D15B /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				4FC06ED52C95ECC70034F364 /* AddEditTodoTaskViewModel.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		4FEE9EC92C9AC36800C5D15B /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -747,24 +787,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F61AB4D2C8EA77C0040C357 /* TasksInteractorOutput.swift in Sources */,
+				4F61AB4D2C8EA77C0040C357 /* TasksFeedInteractorOutput.swift in Sources */,
 				4F61AB672C8F1E6E0040C357 /* UIView+Shimmering.swift in Sources */,
 				4F61AB6C2C8F226E0040C357 /* UIView+Container.swift in Sources */,
 				4F3C7B7F2C8E0E0B00291DCA /* TaskListViewController.swift in Sources */,
-				4F61AB4B2C8EA6880040C357 /* TasksInteractorInput.swift in Sources */,
+				4F61AB4B2C8EA6880040C357 /* TasksFeedInteractorInput.swift in Sources */,
 				4F61AB6A2C8F21430040C357 /* ErrorView.swift in Sources */,
 				4F61AB612C8EDC9F0040C357 /* TaskLoadingView.swift in Sources */,
 				4FC06ECE2C957CA80034F364 /* RadioButton.swift in Sources */,
 				4FC06ED62C95ECC70034F364 /* AddEditTodoTaskViewModel.swift in Sources */,
 				4F61AB6E2C8F2B2A0040C357 /* UIRefreshControl+Helpers.swift .swift in Sources */,
 				4FC06EDE2C96FC620034F364 /* TaskStatus.swift in Sources */,
-				4F61AB4F2C8EABCE0040C357 /* TasksPresenterDelegate.swift in Sources */,
-				4F61AB2F2C8E25F90040C357 /* TasksInteractor.swift in Sources */,
+				4F61AB4F2C8EABCE0040C357 /* TasksFeedPresenterDelegate.swift in Sources */,
+				4F61AB2F2C8E25F90040C357 /* TasksFeedInteractor.swift in Sources */,
 				4F3C7B922C8E240200291DCA /* FeedTodoTaskViewModel.swift in Sources */,
 				4F61AB5D2C8ECF580040C357 /* ConvertingExtensions.swift in Sources */,
-				4F61AB512C8EAC920040C357 /* TasksPresenter.swift in Sources */,
-				4F61AB582C8EBBA30040C357 /* TasksRouterNavigator.swift in Sources */,
-				4F61AB532C8EAF4F0040C357 /* TasksView.swift in Sources */,
+				4F61AB512C8EAC920040C357 /* TasksFeedPresenter.swift in Sources */,
+				4F61AB582C8EBBA30040C357 /* TasksFeedRouterNavigator.swift in Sources */,
+				4F61AB532C8EAF4F0040C357 /* TasksFeedView.swift in Sources */,
 				4F3C7B872C8E10E800291DCA /* TaskListFilterButton.swift in Sources */,
 				4F61AB632C8EE0080040C357 /* TaskLoadingViewModel.swift in Sources */,
 				4F61AB5A2C8ECDB00040C357 /* TasksTableViewCellController.swift in Sources */,

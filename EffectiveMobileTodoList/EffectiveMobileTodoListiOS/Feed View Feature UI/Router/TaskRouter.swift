@@ -8,7 +8,7 @@
 import UIKit
 import EffectiveMobileTodoList
 
-public class TaskRouter: TasksRouterNavigator {
+public class TaskRouter: TasksFeedRouterNavigator {
     private weak var navigationController: UINavigationController?
     private let taskDetailComposer: (TodoTask) -> UIViewController
     private let addTaskComposer: () -> UIViewController

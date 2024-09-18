@@ -9,7 +9,7 @@ import UIKit
 import EffectiveMobileTodoList
 import EffectiveMobileTodoListiOS
 
-final class TasksFeedViewAdapter: TasksView {
+final class TasksFeedViewAdapter: TasksFeedView {
     private weak var controller: TaskListViewController?
     private let selection: (TodoTask) -> UIViewController
     private var onDelete: ((TodoTask) -> Void)?

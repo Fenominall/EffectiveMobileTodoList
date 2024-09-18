@@ -8,19 +8,19 @@
 import Foundation
 import EffectiveMobileTodoList
 
-public final class TasksPresenter: TasksPresenterDelegate {
-    private let view: TasksView
+public final class TasksFeedPresenter: TasksFeedPresenterDelegate {
+    private let view: TasksFeedView
     private let errorView: TaskErrorView
     private let loadingView: TaskLoadingView
-    private let interactor: TasksInteractorInput
-    private let router: TasksRouterNavigator
+    private let interactor: TasksFeedInteractorInput
+    private let router: TasksFeedRouterNavigator
     
     public init(
-        view: TasksView,
+        view: TasksFeedView,
         errorView: TaskErrorView,
         loadingView: TaskLoadingView,
-        interactor: TasksInteractorInput,
-        router: TasksRouterNavigator
+        interactor: TasksFeedInteractorInput,
+        router: TasksFeedRouterNavigator
     ) {
         self.view = view
         self.errorView = errorView
@@ -38,11 +38,7 @@ public final class TasksPresenter: TasksPresenterDelegate {
     }
 }
 
-extension TasksPresenter: TasksInteractorOutput {
-    public func didSaveTask(_ task: EffectiveMobileTodoList.TodoTask) {
-        interactor.saveTask(task)
-    }
-    
+extension TasksFeedPresenter: TasksFeedInteractorOutput {
     public func didStartOperation() {
         loadingView.display(TaskLoadingViewModel(isLoading: true))
         errorView.display(.noError)
@@ -55,6 +51,10 @@ extension TasksPresenter: TasksInteractorOutput {
     }
     public func didSelectTask(_ task: TodoTask) {
         router.navigateToTaskDetails(for: task)
+    }
+    
+    public func didSaveTask(_ task: EffectiveMobileTodoList.TodoTask) {
+        interactor.saveTask(task)
     }
     
     public func didSelectAddNewTask() {

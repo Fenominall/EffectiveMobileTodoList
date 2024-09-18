@@ -8,8 +8,8 @@
 import Foundation
 import EffectiveMobileTodoList
 
-public final class TasksInteractor: TasksInteractorInput {
-    public weak var presenter: TasksInteractorOutput?
+public final class TasksFeedInteractor: TasksFeedInteractorInput {
+    public weak var presenter: TasksFeedInteractorOutput?
     private let loader: TasksLoader
     private let remover: TasksRemover
     private let taskSaver: TaskSaver
@@ -26,7 +26,7 @@ public final class TasksInteractor: TasksInteractorInput {
 }
 
 // Load Tasks
-extension TasksInteractor {
+extension TasksFeedInteractor {
     public func loadTasks() {
         presenter?.didStartOperation()
         
@@ -45,7 +45,7 @@ extension TasksInteractor {
 }
 
 // Save Task
-extension TasksInteractor {
+extension TasksFeedInteractor {
     public func saveTask(_ task: EffectiveMobileTodoList.TodoTask) {
         taskSaver.save(task) { [weak self] result in
             switch result {
@@ -60,7 +60,7 @@ extension TasksInteractor {
 }
 
 // Delete Tasks
-extension TasksInteractor {
+extension TasksFeedInteractor {
     public func deleteTask(_ task: TodoTask) {
         presenter?.didStartOperation()
         

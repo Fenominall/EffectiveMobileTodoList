@@ -8,7 +8,7 @@
 import Foundation
 import EffectiveMobileTodoList
 
-public protocol TasksRouterNavigator {
+public protocol TasksFeedRouterNavigator {
     func navigateToTaskDetails(for task: TodoTask)
     func addNewTask()
 }

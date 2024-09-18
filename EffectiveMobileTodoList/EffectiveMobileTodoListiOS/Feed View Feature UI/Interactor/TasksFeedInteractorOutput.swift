@@ -8,7 +8,7 @@
 import Foundation
 import EffectiveMobileTodoList
 
-public protocol TasksInteractorOutput: AnyObject {
+public protocol TasksFeedInteractorOutput: AnyObject {
     func didStartOperation()
     func didLoadTasks(_ tasks: [TodoTask])
     func didSelectTask(_ task: TodoTask)

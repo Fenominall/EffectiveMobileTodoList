@@ -27,7 +27,7 @@ final class TasksFeedUIComposer {
             addTaskComposer: addNeTask
         )
         let view = TaskListViewController()
-        let interactor = TasksInteractor(
+        let interactor = TasksFeedInteractor(
             loader: MainQueueDispatchDecorator(decoratee: feedLoader),
             remover: MainQueueDispatchDecorator(decoratee: feedRemover), 
             taskSaver: MainQueueDispatchDecorator(decoratee: taskSaver)
@@ -41,7 +41,7 @@ final class TasksFeedUIComposer {
             }
         )
         
-        let presenter = TasksPresenter(
+        let presenter = TasksFeedPresenter(
             view: viewAdapter,
             errorView: WeakRefVirtualProxy(view),
             loadingView: WeakRefVirtualProxy(view),

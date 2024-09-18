@@ -8,6 +8,6 @@
 import Foundation
 import EffectiveMobileTodoList
 
-public protocol TasksView: AnyObject {
+public protocol TasksFeedView: AnyObject {
     func displayTasks(_ viewModel: [TodoTask])
 }
