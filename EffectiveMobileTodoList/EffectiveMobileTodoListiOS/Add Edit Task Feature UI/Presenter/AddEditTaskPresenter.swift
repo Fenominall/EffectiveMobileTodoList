@@ -24,14 +24,17 @@ public final class AddEditTaskPresenter {
 extension AddEditTaskPresenter: AddEditTaskInteractorOutput {
     public func didSaveTask(_ task: EffectiveMobileTodoList.TodoTask) {
         interactor.deleteTask(task)
+        router.routeToTasksFeed()
     }
     
     public func didDeleteTask(_ task: EffectiveMobileTodoList.TodoTask) {
         interactor.deleteTask(task)
+        router.routeToTasksFeed()
     }
     
     public func didUpdateTask(_ task: EffectiveMobileTodoList.TodoTask) {
         interactor.update(task)
+        router.routeToTasksFeed()
     }
     
     public func didFinishWithError(_ error: any Error) {
