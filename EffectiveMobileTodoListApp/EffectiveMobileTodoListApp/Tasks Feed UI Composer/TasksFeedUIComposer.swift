@@ -21,7 +21,7 @@ final class TasksFeedUIComposer {
         addNeTask: @escaping () -> UIViewController
     ) -> TaskListViewController {
         
-        let router = TaskRouter(
+        let router = TasksFeedRouter(
             navigationController: navigationController,
             taskDetailComposer: selection,
             addTaskComposer: addNeTask

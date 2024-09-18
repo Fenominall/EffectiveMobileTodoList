@@ -32,7 +32,6 @@ public struct AddEditTodoTaskViewModel {
             self.description = task.description
             self.dateCreated = task.dateCreated
             self.status = task.status ? .closed : .open
-            print(status)
             self.startTime = task.startTime
             self.endTime = task.endTime
         } else {
