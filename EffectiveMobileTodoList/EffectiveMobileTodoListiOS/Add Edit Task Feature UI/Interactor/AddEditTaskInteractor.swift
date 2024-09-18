@@ -9,7 +9,7 @@ import Foundation
 import EffectiveMobileTodoList
 
 public final class AddEditTaskInteractor {
-    public weak var presenter: TodoTaskInteractorOutput?
+    public weak var presenter: AddEditTaskInteractorOutput?
     private let taskSaver: TaskSaver
     private let taskRemover: TasksRemover
     
@@ -22,7 +22,7 @@ public final class AddEditTaskInteractor {
     }
 }
 
-extension AddEditTaskInteractor: TodoTaskInteractorInput {
+extension AddEditTaskInteractor: AddEditTaskInteractorInput {
     public func saveTask(_ task: EffectiveMobileTodoList.TodoTask) {
         taskSaver.save(task) { [weak self] result in
             switch result {
@@ -31,7 +31,7 @@ extension AddEditTaskInteractor: TodoTaskInteractorInput {
                 break
             case let .failure(error):
                 self?.presenter?.didFinishWithError(error)
-                }
+            }
         }
     }
     
