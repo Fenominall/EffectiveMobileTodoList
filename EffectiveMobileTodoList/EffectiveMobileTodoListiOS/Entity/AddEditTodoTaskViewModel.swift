@@ -19,6 +19,7 @@ public struct AddEditTodoTaskViewModel {
     public var startTime: Date?
     public var endTime: Date?
     
+    public var deletionHandler: (() -> Void)?
     public var onSaveAddTransaction: ((TodoTask) -> Void)?
     public var onSaveUpdateTransaction: ((TodoTask) -> Void)?
     
@@ -95,5 +96,9 @@ public struct AddEditTodoTaskViewModel {
         taskToEdit != nil ?
         onSaveUpdateTransaction?(todoTask) :
         onSaveAddTransaction?(todoTask)
+    }
+    
+    func deletetask() {
+        deletionHandler?()
     }
 }
