@@ -12,9 +12,9 @@ import EffectiveMobileTodoListiOS
 final class EditTaskUIComposer {
     private init() {}
     
-    static func composedWith(selectedModel: TodoTask) -> AddEditTaskViewController {
+    static func composedWith(selectedModel: TodoTask) -> AddEditTodoTaskViewController {
         let viewModel = AddEditTodoTaskViewModel(task: selectedModel)
-        let controller = AddEditTaskViewController(viewModel: viewModel)
+        let controller = AddEditTodoTaskViewController(viewModel: viewModel)
         return controller
     }
 }

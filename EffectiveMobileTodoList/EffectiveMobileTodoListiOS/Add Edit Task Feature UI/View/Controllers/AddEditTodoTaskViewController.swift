@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class AddEditTaskViewController: UIViewController {
+public class AddEditTodoTaskViewController: UIViewController {
     private var viewModel: AddEditTodoTaskViewModel
     
     // MARK: - UI Elements
@@ -216,7 +216,7 @@ public class AddEditTaskViewController: UIViewController {
     }
 }
 
-extension AddEditTaskViewController {
+extension AddEditTodoTaskViewController {
     // MARK: - Helpers
     private func showAlert(
         with title: String? = nil,
