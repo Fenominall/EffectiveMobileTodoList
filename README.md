@@ -9,6 +9,8 @@ Welcome to the EffectiveMobileTodoList App! This iOS application is designed to 
 - Edit Tasks: Make quick edits to existing tasks to keep your list up to date.
 - Delete Tasks: Remove tasks that you've completed or no longer need.
 
+![TodoTasksApp](https://github.com/Fenominall/EffectiveMobileTodoList/blob/main/TodoTasksApp.png)
+
 #
 ### BDD Specs
 
