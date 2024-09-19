@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F8ADFEF2C9C541800410775 /* FeedUIUpdateNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8ADFEE2C9C541800410775 /* FeedUIUpdateNotifier.swift */; };
+		4F8ADFF12C9C58A100410775 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8ADFF02C9C58A100410775 /* SubscriptionManager.swift */; };
 		4FBB50C12C8F4464002A23E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB50C02C8F4464002A23E9 /* AppDelegate.swift */; };
 		4FBB50C32C8F4464002A23E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB50C22C8F4464002A23E9 /* SceneDelegate.swift */; };
 		4FBB50CA2C8F4465002A23E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB50C92C8F4465002A23E9 /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4F8ADFEE2C9C541800410775 /* FeedUIUpdateNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIUpdateNotifier.swift; sourceTree = "<group>"; };
+		4F8ADFF02C9C58A100410775 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
 		4FBB50BD2C8F4464002A23E9 /* EffectiveMobileTodoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EffectiveMobileTodoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FBB50C02C8F4464002A23E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FBB50C22C8F4464002A23E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 				4FC06EB82C8F842A0034F364 /* NullStore.swift */,
 				4FC06EE12C98B7520034F364 /* FeedLoaderFactory.swift */,
 				4FC06EE32C98B7670034F364 /* FirstLaunchManager.swift */,
+				4F8ADFEE2C9C541800410775 /* FeedUIUpdateNotifier.swift */,
+				4F8ADFF02C9C58A100410775 /* SubscriptionManager.swift */,
 			);
 			path = "Shared Helpers";
 			sourceTree = "<group>";
@@ -232,6 +238,7 @@
 			files = (
 				4FBB50F42C8F7283002A23E9 /* MainQueueDispatchDecorator.swift in Sources */,
 				4FC06EE22C98B7520034F364 /* FeedLoaderFactory.swift in Sources */,
+				4F8ADFEF2C9C541800410775 /* FeedUIUpdateNotifier.swift in Sources */,
 				4FBB50C12C8F4464002A23E9 /* AppDelegate.swift in Sources */,
 				4FC06ECB2C9575260034F364 /* AddTaskUIComposer.swift in Sources */,
 				4FBB50F12C8F6E33002A23E9 /* WeakRefVirtualProxy.swift in Sources */,
@@ -240,6 +247,7 @@
 				4FC06EBB2C902B920034F364 /* TasksFeedLoaderWithFallbackComposite.swift in Sources */,
 				4FBB50C32C8F4464002A23E9 /* SceneDelegate.swift in Sources */,
 				4FC06EB72C8F7F280034F364 /* TasksFeedViewAdapter.swift in Sources */,
+				4F8ADFF12C9C58A100410775 /* SubscriptionManager.swift in Sources */,
 				4FC06EDB2C96A0830034F364 /* EditTaskUIComposer.swift in Sources */,
 				4FC06EBD2C902C600034F364 /* TasksFeedLoaderCacheDecorator.swift in Sources */,
 				4FC06EE42C98B7670034F364 /* FirstLaunchManager.swift in Sources */,

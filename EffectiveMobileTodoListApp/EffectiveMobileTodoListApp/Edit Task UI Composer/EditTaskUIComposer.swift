@@ -15,9 +15,10 @@ final class EditTaskUIComposer {
     static func composedWith(
         selectedModel: TodoTask,
         taskSaver: TaskSaver,
-        taskRemover: TasksRemover
+        taskRemover: TasksRemover,
+        updateNotifier: FeedUIUpdateNotifier
     ) -> AddEditTodoTaskViewController {
-        var viewModel = AddEditTodoTaskViewModel(task: selectedModel)
+        let viewModel = AddEditTodoTaskViewModel(task: selectedModel)
         let controller = AddEditTodoTaskViewController(viewModel: viewModel)
         let router = AddEditTaskRouter(controller: controller)
         
@@ -26,11 +27,15 @@ final class EditTaskUIComposer {
         
         interactor.presenter = presenter
     
-        viewModel.onSaveUpdateTransaction = presenter.didUpdateTask
-        viewModel.deletionHandler = { [weak presenter] in
-            presenter?.didDeleteTask(selectedModel)
+        viewModel.onSaveUpdateTransaction = { task in
+            presenter.didDeleteTask(task)
+            updateNotifier.notifyTransactionUpdated()
         }
         
+        viewModel.deletionHandler = {
+            presenter.didDeleteTask(selectedModel)
+            updateNotifier.notifyTransactionUpdated()
+        }
         
         return controller
     }

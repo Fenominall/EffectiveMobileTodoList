@@ -31,6 +31,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private lazy var remoteURL = URL(string: "https://dummyjson.com/todos")!
     
+    private let updateNotifier = FeedUIUpdateNotifier()
+    private let subscriptionManager = SubscriptionManager()
+    
     private lazy var launchManager = FirstLaunchManager()
     private lazy var feedLoaderFactory = FeedLoaderFactory(
         httpClient: httpClient,
@@ -52,6 +55,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             feedRemover: feedLoaderFactory.makeLocalFeedLoader(),
             taskSaver: feedLoaderFactory.makeLocalFeedLoader(),
             navigationController: navigationController,
+            updateNotifier: updateNotifier,
+            subscriptionManager: subscriptionManager,
+            
             selection: {  [weak self] task in
                 return self?.taskDetailComposer(task) ?? UIViewController()
                 
@@ -75,11 +81,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return EditTaskUIComposer.composedWith(
             selectedModel: task,
             taskSaver: self.feedLoaderFactory.makeLocalFeedLoader(),
-            taskRemover: self.feedLoaderFactory.makeLocalFeedLoader()
+            taskRemover: self.feedLoaderFactory.makeLocalFeedLoader(),
+            updateNotifier: updateNotifier
         )
     }
     
     private func addTaskComposer() -> UIViewController {
-        return AddTaskUIComposer.composedWith(taskSaver: feedLoaderFactory.makeLocalFeedLoader(), taskRemover: feedLoaderFactory.makeLocalFeedLoader())
+        return AddTaskUIComposer.composedWith(
+            taskSaver: feedLoaderFactory.makeLocalFeedLoader(),
+            taskRemover: feedLoaderFactory.makeLocalFeedLoader(),
+            updateNotifier: updateNotifier
+        )
     }
 }

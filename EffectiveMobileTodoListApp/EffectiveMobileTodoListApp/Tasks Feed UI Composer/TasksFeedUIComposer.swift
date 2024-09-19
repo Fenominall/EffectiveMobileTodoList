@@ -17,6 +17,8 @@ final class TasksFeedUIComposer {
         feedRemover: TasksRemover,
         taskSaver: TaskSaver,
         navigationController: UINavigationController,
+        updateNotifier: FeedUIUpdateNotifier,
+        subscriptionManager: SubscriptionManager,
         selection: @escaping (TodoTask) -> UIViewController,
         addNeTask: @escaping () -> UIViewController
     ) -> TaskListViewController {
@@ -48,6 +50,11 @@ final class TasksFeedUIComposer {
             interactor: interactor, 
             router: router
         )
+        
+        let updateCancellable = updateNotifier.updateTransactionPublisher.sink { _ in
+            view.onRefresh?()
+        }
+        subscriptionManager.store(updateCancellable)
         
         viewAdapter.setOnDeleteHandler { [weak presenter] task in
             presenter?.didRequestTaskDeletion(task)

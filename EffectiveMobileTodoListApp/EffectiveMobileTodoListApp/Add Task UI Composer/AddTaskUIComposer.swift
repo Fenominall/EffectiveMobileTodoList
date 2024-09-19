@@ -12,8 +12,12 @@ import EffectiveMobileTodoListiOS
 final class AddTaskUIComposer {
     private init() {}
     
-    static func composedWith(taskSaver: TaskSaver, taskRemover: TasksRemover) -> AddEditTodoTaskViewController {
-        var viewModel = AddEditTodoTaskViewModel()
+    static func composedWith(
+        taskSaver: TaskSaver,
+        taskRemover: TasksRemover,
+        updateNotifier: FeedUIUpdateNotifier
+    ) -> AddEditTodoTaskViewController {
+        let viewModel = AddEditTodoTaskViewModel()
         let controller = AddEditTodoTaskViewController(viewModel: viewModel)
         let router = AddEditTaskRouter(controller: controller)
         
@@ -25,7 +29,10 @@ final class AddTaskUIComposer {
         
         interactor.presenter = presenter
         
-        viewModel.onSaveAddTransaction = presenter.didSaveTask
+        viewModel.onSaveAddTransaction = { task in
+            presenter.didSaveTask(task)
+            updateNotifier.notifyTransactionUpdated()
+        }
         
         return controller
     }
