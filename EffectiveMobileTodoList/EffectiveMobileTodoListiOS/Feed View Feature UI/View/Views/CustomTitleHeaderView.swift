@@ -31,7 +31,7 @@ class CustomTitleHeaderView: UIView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)
         
-        subtitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        subtitleLabel.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         subtitleLabel.textColor = .gray
         subtitleLabel.alpha = 0.9
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
