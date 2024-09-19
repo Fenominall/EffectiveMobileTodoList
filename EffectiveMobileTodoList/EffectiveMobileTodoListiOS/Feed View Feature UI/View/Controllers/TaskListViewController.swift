@@ -123,7 +123,7 @@ extension TaskListViewController {
     }
     
     private func setupUI() {
-        customTitleView.configure(title: "Today’s Task", subtitle: "Wednesday, 11 May")
+        customTitleView.configure(title: "Today’s Task", subtitle: convertDateToString(date: Date.now))
         view.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         
         addSubviews()
