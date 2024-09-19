@@ -125,6 +125,14 @@ public class AddEditTodoTaskViewController: UIViewController {
         let taskDate = datePicker.date
         let startTime = startTimePicker.date
         let endTime = endTimePicker.date
+
+        guard startTime < endTime else {
+            showAlert(
+                with: "Error",
+                message: "Start time should be less then End time!",
+                actionOneTitle: "OK"
+            )
+            return }
         
         viewModel.saveTask(
             name: name,
