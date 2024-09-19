@@ -28,7 +28,7 @@ final class EditTaskUIComposer {
         interactor.presenter = presenter
     
         viewModel.onSaveUpdateTransaction = { task in
-            presenter.didDeleteTask(task)
+            presenter.didUpdateTask(task)
             updateNotifier.notifyTransactionUpdated()
         }
         
