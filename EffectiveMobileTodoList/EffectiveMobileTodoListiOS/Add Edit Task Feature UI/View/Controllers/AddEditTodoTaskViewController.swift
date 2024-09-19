@@ -11,6 +11,18 @@ public class AddEditTodoTaskViewController: UIViewController {
     private var viewModel: AddEditTodoTaskViewModel
     
     // MARK: - UI Elements
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
+    private lazy var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private lazy var nameLabel = makeLabel(with: "Name", font: .headline)
     private lazy var descriptionLabel = makeLabel(with: "Description", font: .headline)
     private let taskNameTextField = makeTextField(with: "Task Name")
@@ -125,7 +137,7 @@ public class AddEditTodoTaskViewController: UIViewController {
         let taskDate = datePicker.date
         let startTime = startTimePicker.date
         let endTime = endTimePicker.date
-
+        
         guard startTime < endTime else {
             showAlert(
                 with: "Error",
@@ -157,70 +169,102 @@ public class AddEditTodoTaskViewController: UIViewController {
     // MARK: - UI Setup
     private func setupUI() {
         view.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
-        view.addSubview(nameLabel)
-        view.addSubview(descriptionLabel)
-        view.addSubview(taskNameTextField)
-        view.addSubview(taskDescriptionTextField)
-        view.addSubview(statusStackView)
-        view.addSubview(taskDateLabel)
-        view.addSubview(datePicker)
-        view.addSubview(startTimeLabel)
-        view.addSubview(startTimePicker)
-        view.addSubview(endTimeLabel)
-        view.addSubview(endTimePicker)
-        view.addSubview(deleteButton)
+        
+        taskNameTextField.delegate = self
+        taskDescriptionTextField.delegate = self
+        
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(descriptionLabel)
+        contentView.addSubview(taskNameTextField)
+        contentView.addSubview(taskDescriptionTextField)
+        contentView.addSubview(statusStackView)
+        contentView.addSubview(taskDateLabel)
+        contentView.addSubview(datePicker)
+        contentView.addSubview(startTimeLabel)
+        contentView.addSubview(startTimePicker)
+        contentView.addSubview(endTimeLabel)
+        contentView.addSubview(endTimePicker)
+        contentView.addSubview(deleteButton)
     }
     
     // MARK: - Constraints
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            
+            // ScrollView constraints
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            // ContentView Constraints
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            
+            // Name Label and TextField constraints
+            nameLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 20),
+            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             
             taskNameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
-            taskNameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            taskNameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            taskNameTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            taskNameTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             taskNameTextField.heightAnchor.constraint(equalToConstant: 40),
             
+            // Description label and text field
             descriptionLabel.topAnchor.constraint(equalTo: taskNameTextField.bottomAnchor, constant: 10),
-            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             
             taskDescriptionTextField.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10),
-            taskDescriptionTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            taskDescriptionTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            taskDescriptionTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            taskDescriptionTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             taskDescriptionTextField.heightAnchor.constraint(equalToConstant: 40),
             
+            // Status Stack View
             statusStackView.topAnchor.constraint(equalTo: taskDescriptionTextField.bottomAnchor, constant: 30),
-            statusStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            statusStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             
+            // Date Picker
             taskDateLabel.topAnchor.constraint(equalTo: statusStackView.bottomAnchor, constant: 30),
-            taskDateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            taskDateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             
             datePicker.topAnchor.constraint(equalTo: taskDateLabel.bottomAnchor),
-            datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            datePicker.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            datePicker.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
+            // Start Time Picker
             startTimeLabel.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 20),
-            startTimeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            startTimeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             startTimePicker.centerYAnchor.constraint(equalTo: startTimeLabel.centerYAnchor),
             
-            startTimePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            startTimePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            startTimePicker.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
+            startTimePicker.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
+            // End Time Picker
             endTimeLabel.topAnchor.constraint(equalTo: startTimePicker.bottomAnchor, constant: 20),
-            endTimeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            endTimeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             
             endTimePicker.centerYAnchor.constraint(equalTo: endTimeLabel.centerYAnchor),
-            endTimePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            endTimePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            endTimePicker.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            endTimePicker.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
-            deleteButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            deleteButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            deleteButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            deleteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            // Delete Button
+            deleteButton.topAnchor.constraint(equalTo: endTimePicker.bottomAnchor, constant: 40),
+            deleteButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            deleteButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            deleteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             deleteButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            // Ensure contentView bottom is bound properly
+            deleteButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
     }
+
 }
 
 extension AddEditTodoTaskViewController {
