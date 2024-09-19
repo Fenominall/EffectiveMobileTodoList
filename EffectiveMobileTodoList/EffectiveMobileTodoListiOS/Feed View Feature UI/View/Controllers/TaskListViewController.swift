@@ -123,7 +123,10 @@ extension TaskListViewController {
     }
     
     private func setupUI() {
-        customTitleView.configure(title: "Today’s Task", subtitle: convertDateToString(date: Date.now))
+        customTitleView.configure(
+            title: "Today’s Task",
+            subtitle: convertDateToString(date: Date.now)
+        )
         view.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         
         addSubviews()
@@ -169,9 +172,11 @@ extension TaskListViewController {
     }
     
     private func filterTasks() {
-        let allTasksCount = tableModel.count
-        let openTasksCount = tableModel.filter { !$0.viewModel.isCompleted }.count
-        let closedTasksCount = tableModel.filter { $0.viewModel.isCompleted }.count
+        let sortedTasks = tableModel.sorted { $0.viewModel.dateCreated > $1.viewModel.dateCreated }
+        
+        let allTasksCount = sortedTasks.count
+        let openTasksCount = sortedTasks.filter { !$0.viewModel.isCompleted }.count
+        let closedTasksCount = sortedTasks.filter { $0.viewModel.isCompleted }.count
         
         filterView.updateFilterCounts(
             allCount: "\(allTasksCount)",
@@ -181,11 +186,11 @@ extension TaskListViewController {
         
         switch selectedFilter {
         case .all:
-            filteredTasks = tableModel
+            filteredTasks = sortedTasks
         case .open:
-            filteredTasks = tableModel.filter { !$0.viewModel.isCompleted }
+            filteredTasks = sortedTasks.filter { !$0.viewModel.isCompleted }
         case .closed:
-            filteredTasks = tableModel.filter { $0.viewModel.isCompleted }
+            filteredTasks = sortedTasks.filter { $0.viewModel.isCompleted }
         }
         
         tasksTableView.reloadData()
