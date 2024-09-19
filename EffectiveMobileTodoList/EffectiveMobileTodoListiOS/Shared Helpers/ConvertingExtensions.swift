@@ -26,3 +26,10 @@ func convertDateForShort(with date: Date) -> String {
         return dateFormatter.string(from: date)
     }
 }
+
+func convertDateToString(date: Date) -> String {
+  let formatter = DateFormatter()
+  formatter.dateFormat = "EEEE, d MMMM" // EEEE for full weekday name, d for day, MMMM for full month name
+  return formatter.string(from: date)
+}
+
