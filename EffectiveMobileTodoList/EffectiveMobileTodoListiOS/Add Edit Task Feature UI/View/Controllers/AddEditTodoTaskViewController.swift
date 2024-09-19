@@ -109,7 +109,6 @@ public class AddEditTodoTaskViewController: UIViewController {
     // MARK: - Actions
     @objc private func radioButtonTapped(_ sender: RadioButton) {
         viewModel.status = sender.tag == 0 ? .open : .closed
-        configureTask()
     }
     
     @objc private func saveTask() {
