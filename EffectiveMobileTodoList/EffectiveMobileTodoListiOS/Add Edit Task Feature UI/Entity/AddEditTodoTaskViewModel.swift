@@ -8,7 +8,7 @@
 import Foundation
 import EffectiveMobileTodoList
 
-public struct AddEditTodoTaskViewModel {
+public final class AddEditTodoTaskViewModel {
     private var taskToEdit: TodoTask?
     public var status: TaskStatus
     
