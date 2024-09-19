@@ -69,11 +69,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
     
-    let taskDetailComposer: (TodoTask) -> UIViewController = { task in
-        return EditTaskUIComposer.composedWith(selectedModel: task)
+    private lazy var taskDetailComposer: (TodoTask) -> UIViewController = { [weak self] task in
+        guard let self = self else { return UIViewController()
+        }
+        return EditTaskUIComposer.composedWith(
+            selectedModel: task,
+            taskSaver: self.feedLoaderFactory.makeLocalFeedLoader(),
+            taskRemover: self.feedLoaderFactory.makeLocalFeedLoader()
+        )
     }
     
     private func addTaskComposer() -> UIViewController {
-        return AddTaskUIComposer.composedWith()
+        return AddTaskUIComposer.composedWith(taskSaver: feedLoaderFactory.makeLocalFeedLoader(), taskRemover: feedLoaderFactory.makeLocalFeedLoader())
     }
 }
