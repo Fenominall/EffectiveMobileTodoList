@@ -8,7 +8,6 @@
 import UIKit
 
 final class TaskListFilterButton: UIButton {
-    
     // MARK: - UI Elements
     private lazy var textLabel: UILabel = {
         let textLabel = UILabel()
