@@ -81,7 +81,9 @@ extension LocalFeedLoader {
             name: task.name,
             description: task.description,
             dateCreated: task.dateCreated,
-            status: task.status
+            status: task.status,
+            startTime: task.startTime,
+            endTime: task.endTime
         )
     }
 }
