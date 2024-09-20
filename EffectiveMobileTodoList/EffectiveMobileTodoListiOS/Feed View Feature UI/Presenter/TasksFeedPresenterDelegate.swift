@@ -11,4 +11,5 @@ import EffectiveMobileTodoList
 public protocol TasksFeedPresenterDelegate {
     func viewDidLoad()
     func didRequestTaskDeletion(_ task: TodoTask)
+    func didRequestTaskUpdate(_ task: TodoTask)
 }

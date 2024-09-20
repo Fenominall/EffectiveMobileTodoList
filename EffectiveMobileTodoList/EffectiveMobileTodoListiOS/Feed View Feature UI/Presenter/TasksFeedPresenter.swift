@@ -36,6 +36,10 @@ public final class TasksFeedPresenter: TasksFeedPresenterDelegate {
     public func didRequestTaskDeletion(_ task: TodoTask) {
         interactor.deleteTask(task)
     }
+    
+    public func didRequestTaskUpdate(_ task: EffectiveMobileTodoList.TodoTask) {
+        interactor.updateTask(task)
+    }
 }
 
 extension TasksFeedPresenter: TasksFeedInteractorOutput {
