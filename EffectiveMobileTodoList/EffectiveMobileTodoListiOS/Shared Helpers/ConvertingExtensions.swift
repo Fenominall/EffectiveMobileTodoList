@@ -9,7 +9,7 @@ import Foundation
 
 func convertDate(with date: Date?) -> String {
     guard let validDate = date else {
-        return "Unknown Date"
+        return ""
     }
     let dateFormatter = DateFormatter()
     dateFormatter.timeStyle = .short
