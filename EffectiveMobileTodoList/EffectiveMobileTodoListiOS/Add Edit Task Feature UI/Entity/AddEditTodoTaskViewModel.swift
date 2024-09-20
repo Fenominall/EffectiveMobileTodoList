@@ -91,7 +91,7 @@ public final class AddEditTodoTaskViewModel {
             startTime: taskStartTime,
             endTime: taskEndTime
         )
-        
+    
         taskToEdit != nil ?
         onSaveUpdateTransaction?(todoTask) :
         onSaveAddTransaction?(todoTask)
