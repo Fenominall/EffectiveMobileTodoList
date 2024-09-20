@@ -60,6 +60,11 @@ final class TasksFeedUIComposer {
             presenter?.didRequestTaskDeletion(task)
         }
         
+        viewAdapter.setOnUpdateHandler { [weak presenter] updatedTask in
+            presenter?.didRequestTaskUpdate(updatedTask)
+            view.onRefresh = presenter?.viewDidLoad
+        }
+        
         view.addNewTask = presenter.didSelectAddNewTask
         view.onRefresh = presenter.viewDidLoad
         interactor.presenter = presenter
