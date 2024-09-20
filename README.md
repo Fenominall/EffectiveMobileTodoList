@@ -65,11 +65,17 @@ Given the customer doesn't have connectivity
 - URL
 
 #### Primary course (happy path):
-1. Execute "Load Tasks Feed" command with above data.
+1. Execute "Load Tasks Feed" command with the above data on the first app launch.
 2. System downloads data from the URL.
 3. System validates downloaded data.
-4. System creates tasks feed from valid data.
-5. System delivers tasks feed.
+4. System creates a tasks feed from valid data.
+5. System caches the feed for future offline use.
+6. System delivers the tasks feed.
+
+### Subsequent Launches:
+1. On app subsequent launches, system skips loading from the remote URL.
+2. System retrieves tasks feed from cache.
+
 
 #### Invalid data – error course (sad path):
 1. System delivers invalid data error.
