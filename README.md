@@ -90,6 +90,9 @@ Given the customer doesn't have connectivity
 | 'description' | 'String'                  |
 | 'dateCreated' | 'Date'                    |
 | 'status'      | 'Bool'                    |
+| 'startTime'   | 'Date' Optional           |
+| 'endTime'     | 'Date' Optional           |
+
 
 ### Load Feed From Cache Use Case
 
