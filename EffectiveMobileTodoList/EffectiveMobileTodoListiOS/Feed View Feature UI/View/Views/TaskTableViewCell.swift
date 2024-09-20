@@ -164,7 +164,7 @@ class TaskTableViewCell: UITableViewCell {
         descriptionLabel.text = description
         dateLabel.text = timeDate
         startTimeLabel.text = taskStartTime
-        endTimeLabel.text = taskEndTime != nil ? "- \(taskEndTime ?? "")" : ""
+        endTimeLabel.text = taskEndTime.flatMap { "- \($0)" } ?? ""
         isTaskCompleted = isCompleted
     }
     
@@ -173,21 +173,13 @@ class TaskTableViewCell: UITableViewCell {
         checkmarkButton.setImage(UIImage(systemName: imageName), for: .normal)
     }
     
+    private func applyTextAttributes(for completed: Bool) -> [NSAttributedString.Key: Any] {
+        return completed ? [.strikethroughStyle: NSUnderlineStyle.single.rawValue] : [:]
+    }
+
     private func updateCellText() {
         let text = titleLabel.text ?? ""
-        let attributedText: NSAttributedString
-        
-        if isTaskCompleted {
-            attributedText = NSAttributedString(string: text, attributes: [
-                .strikethroughStyle: NSUnderlineStyle.single.rawValue,
-            ])
-        } else {
-            attributedText = NSAttributedString(string: text, attributes: [
-                .strikethroughStyle: 0,
-                
-            ])
-        }
-        
+        let attributedText = NSAttributedString(string: text, attributes: applyTextAttributes(for: isTaskCompleted))
         titleLabel.attributedText = attributedText
     }
     
