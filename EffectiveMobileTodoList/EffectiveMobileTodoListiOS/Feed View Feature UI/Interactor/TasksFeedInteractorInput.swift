@@ -12,4 +12,5 @@ public protocol TasksFeedInteractorInput {
     func loadTasks()
     func deleteTask(_ task: TodoTask)
     func saveTask(_ task: TodoTask)
+    func updateTask(_ task: TodoTask)
 }

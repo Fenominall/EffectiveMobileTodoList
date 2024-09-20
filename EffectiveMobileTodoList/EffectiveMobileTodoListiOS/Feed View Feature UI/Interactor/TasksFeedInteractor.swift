@@ -59,6 +59,21 @@ extension TasksFeedInteractor {
     }
 }
 
+// Update Task
+extension TasksFeedInteractor {
+    public func updateTask(_ task: TodoTask) {
+        taskSaver.update(task) { [weak self] result in
+            switch result {
+                
+            case .success:
+                self?.presenter?.didFinishOperation()
+            case let .failure(error):
+                self?.presenter?.didFinish(with: error)
+            }
+        }
+    }
+}
+
 // Delete Tasks
 extension TasksFeedInteractor {
     public func deleteTask(_ task: TodoTask) {
