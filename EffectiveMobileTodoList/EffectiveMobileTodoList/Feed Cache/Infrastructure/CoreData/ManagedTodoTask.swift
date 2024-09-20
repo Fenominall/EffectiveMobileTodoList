@@ -29,7 +29,9 @@ extension ManagedTodoTask {
             name: name,
             description: descriptionText,
             dateCreated: dateCreated,
-            status: status
+            status: status,
+            startTime: startTime,
+            endTime: endTime
         )
     }
     
