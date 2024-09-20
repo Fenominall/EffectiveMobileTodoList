@@ -9,6 +9,7 @@ import UIKit
 
 class TaskTableViewCell: UITableViewCell {
     static let reuseIdentifier = "TaskCell"
+    var checkmarkTappedHandler: ((Bool) -> Void)?
     
     lazy var containerView: UIView = {
         let view = UIView()
@@ -37,6 +38,9 @@ class TaskTableViewCell: UITableViewCell {
         config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 22)
         checkmarkButton.configuration = config
         checkmarkButton.tintColor = .systemBlue
+        checkmarkButton.setImage(UIImage(systemName: "circle"), for: .normal)
+        checkmarkButton.imageView?.contentMode = .scaleAspectFit
+        checkmarkButton.imageView?.clipsToBounds = true
         checkmarkButton.addTarget(self, action: #selector(checkmarkTapped), for: .touchUpInside)
         return checkmarkButton
         
@@ -66,6 +70,7 @@ class TaskTableViewCell: UITableViewCell {
     var isTaskCompleted: Bool = false {
         didSet {
             updateCheckmarkState()
+            updateCellText()
         }
     }
     
@@ -93,17 +98,11 @@ class TaskTableViewCell: UITableViewCell {
         
         startTimeLabel.textColor = .secondaryLabel
         startTimeLabel.alpha = 0.5
-        startTimeLabel.font = UIFont.preferredFont(forTextStyle: .callout) 
+        startTimeLabel.font = UIFont.preferredFont(forTextStyle: .callout)
         
         endTimeLabel.textColor = .secondaryLabel
         endTimeLabel.alpha = 0.5
         endTimeLabel.font = UIFont.preferredFont(forTextStyle: .callout)
-        
-        checkmarkButton.setImage(UIImage(systemName: "circle"), for: .normal)
-        checkmarkButton.tintColor = .systemBlue
-        checkmarkButton.imageView?.contentMode = .scaleAspectFit
-        checkmarkButton.imageView?.clipsToBounds = true
-        checkmarkButton.addTarget(self, action: #selector(checkmarkTapped), for: .touchUpInside)
         
         separatorLine.backgroundColor = .lightGray
         separatorLine.alpha = 0.3
@@ -151,19 +150,30 @@ class TaskTableViewCell: UITableViewCell {
         ])
     }
     
-    func configure(withName title: String, description: String, timeDate: String, taskStartTime: String, isCompleted: Bool) {
+    func configure(
+        withName title: String,
+        description: String,
+        timeDate: String,
+        taskStartTime: String?,
+        taskEndTime: String?,
+        isCompleted: Bool,
+        checkmarkTappedHandler: @escaping (Bool) -> Void
+    ) {
+        self.checkmarkTappedHandler = checkmarkTappedHandler
         titleLabel.text = title
         descriptionLabel.text = description
         dateLabel.text = timeDate
         startTimeLabel.text = taskStartTime
-        endTimeLabel.text = "- \(taskStartTime)"
+        endTimeLabel.text = taskEndTime != nil ? "- \(taskEndTime ?? "")" : ""
         isTaskCompleted = isCompleted
     }
     
     private func updateCheckmarkState() {
         let imageName = isTaskCompleted ? "checkmark.circle.fill" : "circle"
         checkmarkButton.setImage(UIImage(systemName: imageName), for: .normal)
-        
+    }
+    
+    private func updateCellText() {
         let text = titleLabel.text ?? ""
         let attributedText: NSAttributedString
         
@@ -174,7 +184,7 @@ class TaskTableViewCell: UITableViewCell {
         } else {
             attributedText = NSAttributedString(string: text, attributes: [
                 .strikethroughStyle: 0,
-
+                
             ])
         }
         
@@ -183,5 +193,7 @@ class TaskTableViewCell: UITableViewCell {
     
     @objc private func checkmarkTapped() {
         isTaskCompleted.toggle()
+        updateCheckmarkState()
+        checkmarkTappedHandler?(isTaskCompleted)
     }
 }
