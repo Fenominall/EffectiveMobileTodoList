@@ -11,8 +11,6 @@ import EffectiveMobileTodoList
 public protocol TasksFeedInteractorOutput: AnyObject {
     func didStartOperation()
     func didLoadTasks(_ tasks: [TodoTask])
-    func didSelectTask(_ task: TodoTask)
-    func didSaveTask(_ task: TodoTask)
     func didSelectAddNewTask()
     func didFinish(with error: Error)
     func didFinishOperation()

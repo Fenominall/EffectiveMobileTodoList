@@ -49,13 +49,6 @@ extension TasksFeedPresenter: TasksFeedInteractorOutput {
         errorView.display(.noError)
         view.displayTasks(tasks)
     }
-    public func didSelectTask(_ task: TodoTask) {
-        router.navigateToTaskDetails(for: task)
-    }
-    
-    public func didSaveTask(_ task: EffectiveMobileTodoList.TodoTask) {
-        interactor.saveTask(task)
-    }
     
     public func didSelectAddNewTask() {
         router.addNewTask()
