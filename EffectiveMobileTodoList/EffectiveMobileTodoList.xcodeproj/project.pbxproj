@@ -211,10 +211,18 @@
 			);
 			target = 4F3C7B652C8E0DC500291DCA /* EffectiveMobileTodoListiOS */;
 		};
+		4F8ADFF52C9F4F2900410775 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"XCTestCase+SnapShotTestHelpers.swift",
+			);
+			target = 4F3C7B6C2C8E0DC500291DCA /* EffectiveMobileTodoListiOSTests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		4F8ADFD72C9AFC4C00410775 /* Shared Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4F8ADFD82C9AFC6E00410775 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 4F8ADFD92C9AFC6E00410775 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Shared Presentation"; sourceTree = "<group>"; };
+		4F8ADFF22C9F4EFE00410775 /* Helpers */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4F8ADFF52C9F4F2900410775 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Helpers; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +274,7 @@
 		4F3C7B712C8E0DC500291DCA /* EffectiveMobileTodoListiOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				4F8ADFF22C9F4EFE00410775 /* Helpers */,
 			);
 			path = EffectiveMobileTodoListiOSTests;
 			sourceTree = "<group>";
@@ -756,6 +765,7 @@
 					};
 					4F3C7B6C2C8E0DC500291DCA = {
 						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1600;
 					};
 					4F620E9A2C86F62400F38AC9 = {
 						CreatedOnToolsVersion = 15.4;
@@ -1022,6 +1032,7 @@
 		4F3C7B772C8E0DC500291DCA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5YJ9NPM7MQ;
@@ -1032,6 +1043,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1040,6 +1052,7 @@
 		4F3C7B782C8E0DC500291DCA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5YJ9NPM7MQ;
