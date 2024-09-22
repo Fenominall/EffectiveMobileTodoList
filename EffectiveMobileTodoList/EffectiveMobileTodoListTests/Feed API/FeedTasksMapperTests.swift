@@ -47,6 +47,7 @@ class FeedTasksMapperTests: XCTestCase {
     
     func test_map_deliverFeedItemsOn200HTTPResponseWithValidJSONItems() throws {
         let item1 =  makeTask(
+            id: 1,
             name: "Author1",
             description: "Description1",
             dateCreated: ISO8601DateFormatter().date(from: "2024-07-06T10:38:44Z")!,
@@ -54,6 +55,7 @@ class FeedTasksMapperTests: XCTestCase {
         )
         
         let item2 = makeTask(
+            id: 2,
             name: "Author2",
             description: "Description1",
             dateCreated: ISO8601DateFormatter().date(from: "2024-07-06T10:39:44Z")!,
