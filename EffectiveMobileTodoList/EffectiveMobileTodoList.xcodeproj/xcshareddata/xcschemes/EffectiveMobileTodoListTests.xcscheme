@@ -14,7 +14,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:../EffectiveMobileTodoListTestTargets/EffectiveMobileTodoListTests.xctestplan"
+            reference = "container:EffectiveMobileTodoList.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
