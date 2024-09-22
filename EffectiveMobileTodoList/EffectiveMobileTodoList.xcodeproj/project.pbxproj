@@ -57,6 +57,7 @@
 		4F8ADFDD2C9B4FED00410775 /* AddEditTaskNavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8ADFDC2C9B4FED00410775 /* AddEditTaskNavigationRouter.swift */; };
 		4F8AE0002C9FFBD900410775 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051DC2C878E9B004CEB29 /* XCTestCase+MemoryLeakTracking.swift */; };
 		4F8AE0012C9FFCB300410775 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051DA2C878B09004CEB29 /* SharedTestHelpers.swift */; };
+		4F8AE0022CA004FC00410775 /* FeedCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F58525D2C8993EE00FE2173 /* FeedCacheTestHelpers.swift */; };
 		4FB051D02C873210004CEB29 /* TasksLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051CF2C873210004CEB29 /* TasksLoader.swift */; };
 		4FB051D22C8732FE004CEB29 /* TodoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051D12C8732FE004CEB29 /* TodoTask.swift */; };
 		4FB051D52C8788D1004CEB29 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051D42C8788D1004CEB29 /* URLSessionHTTPClientTests.swift */; };
@@ -168,6 +169,7 @@
 		4F8ADFD52C9AFAE700410775 /* AddEditTaskInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTaskInteractorInput.swift; sourceTree = "<group>"; };
 		4F8ADFDA2C9B47D000410775 /* AddEditTaskInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTaskInteractorOutput.swift; sourceTree = "<group>"; };
 		4F8ADFDC2C9B4FED00410775 /* AddEditTaskNavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTaskNavigationRouter.swift; sourceTree = "<group>"; };
+		4F8AE0032CA0365F00410775 /* EffectiveMobileTodoList.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EffectiveMobileTodoList.xctestplan; sourceTree = SOURCE_ROOT; };
 		4FB051CF2C873210004CEB29 /* TasksLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksLoader.swift; sourceTree = "<group>"; };
 		4FB051D12C8732FE004CEB29 /* TodoTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTask.swift; sourceTree = "<group>"; };
 		4FB051D42C8788D1004CEB29 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 			children = (
 				4F61AB4E2C8EABCE0040C357 /* TasksFeedPresenterDelegate.swift */,
 				4F61AB502C8EAC920040C357 /* TasksFeedPresenter.swift */,
+				4F61AB522C8EAF4F0040C357 /* TasksFeedView.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 			children = (
 				4FCAC4852C88E91E002CBBE7 /* LoadFeedFromRemoteUseCaseTests.swift */,
 				4FCAC4872C88E932002CBBE7 /* FeedTasksMapperTests.swift */,
+				4F8AE0032CA0365F00410775 /* EffectiveMobileTodoList.xctestplan */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -590,7 +594,6 @@
 		4FC06ED82C95EF980034F364 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4FEE9EC52C9AC30200C5D15B /* Protocols */,
 				4F3C7B8C2C8E233F00291DCA /* Views */,
 				4F3C7B8B2C8E233C00291DCA /* Controllers */,
 			);
@@ -618,14 +621,6 @@
 				4F58525D2C8993EE00FE2173 /* FeedCacheTestHelpers.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		4FEE9EC52C9AC30200C5D15B /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				4F61AB522C8EAF4F0040C357 /* TasksFeedView.swift */,
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		4FEE9EC62C9AC35D00C5D15B /* Interactor */ = {
@@ -884,6 +879,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F8AE0022CA004FC00410775 /* FeedCacheTestHelpers.swift in Sources */,
 				4F8AE0012C9FFCB300410775 /* SharedTestHelpers.swift in Sources */,
 				4F8AE0002C9FFBD900410775 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);

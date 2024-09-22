@@ -1,0 +1,45 @@
+{
+  "configurations" : [
+    {
+      "id" : "CBD63363-47ED-48CB-83B3-2CF4DBAD5ECC",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:EffectiveMobileTodoListApp.xcodeproj",
+          "identifier" : "4FBB50BC2C8F4464002A23E9",
+          "name" : "EffectiveMobileTodoListApp"
+        }
+      ]
+    },
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:EffectiveMobileTodoListApp.xcodeproj",
+      "identifier" : "4FBB50BC2C8F4464002A23E9",
+      "name" : "EffectiveMobileTodoListApp"
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:EffectiveMobileTodoListApp.xcodeproj",
+        "identifier" : "4FBB50D22C8F4465002A23E9",
+        "name" : "EffectiveMobileTodoListAppTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:EffectiveMobileTodoListApp.xcodeproj",
+        "identifier" : "4FBB50DC2C8F4465002A23E9",
+        "name" : "EffectiveMobileTodoListAppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

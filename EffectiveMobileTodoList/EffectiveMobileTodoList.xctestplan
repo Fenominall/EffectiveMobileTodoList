@@ -9,10 +9,77 @@
     }
   ],
   "defaultOptions" : {
-
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:EffectiveMobileTodoList.xcodeproj",
+          "identifier" : "4F620E9A2C86F62400F38AC9",
+          "name" : "EffectiveMobileTodoList"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
   },
   "testTargets" : [
-
+    {
+      "parallelizable" : true,
+      "selectedTests" : [
+        "CacheFeedUseCaseTests\/test_init_doesNotMessageStoreUponCreation()",
+        "CacheFeedUseCaseTests\/test_save_failsOnInsertionError()",
+        "CacheFeedUseCaseTests\/test_save_succeedsOnSuccessfulCacheInsertion()",
+        "CoreDataFeedStoreTests\/test_delete_deliversErrorOnDeletionError()",
+        "CoreDataFeedStoreTests\/test_delete_deliversNoErrorOnEmptyCache()",
+        "CoreDataFeedStoreTests\/test_delete_deliversNoErrorOnNonEmptyCache()",
+        "CoreDataFeedStoreTests\/test_delete_emptiesPreviouslyInsertedCache()",
+        "CoreDataFeedStoreTests\/test_delete_hasNoSideEffectsOnEmptyCache()",
+        "CoreDataFeedStoreTests\/test_insert_deliversNoErrorOnEmptyCache()",
+        "CoreDataFeedStoreTests\/test_insert_deliversNoErrorOnNonEmptyCache()",
+        "CoreDataFeedStoreTests\/test_insert_overridesPreviouslyInsertedCacheValues()",
+        "CoreDataFeedStoreTests\/test_retrieve_deliversEmptyOnEmptyCache()",
+        "CoreDataFeedStoreTests\/test_retrieve_deliversFoundValuesOnNonEmptyCache()",
+        "CoreDataFeedStoreTests\/test_retrieve_hasNoSideEffectsOnEmptyCache()",
+        "CoreDataFeedStoreTests\/test_retrieve_hasNoSideEffectsOnNonEmptyCache()",
+        "CoreDataFeedStoreTests\/test_update_deliversNoErrorOnExistingTask()",
+        "CoreDataFeedStoreTests\/test_update_failsIfTaskDoesNotExist()",
+        "CoreDataFeedStoreTests\/test_update_hasNoSideEffectsOnUpdate()",
+        "CoreDataFeedStoreTests\/test_update_overridesPreviouslyUpdatedTask()",
+        "DeleteFeedUseCaseTests\/test_delete_doesNotDeleteCacheOnDeletionError()",
+        "DeleteFeedUseCaseTests\/test_delete_successfullyDeletesCache()",
+        "DeleteFeedUseCaseTests\/test_init_doesNotMessageStoreUponCreation()",
+        "FeedTasksMapperTests\/test_map_deliverFeedItemsOn200HTTPResponseWithValidJSONItems()",
+        "FeedTasksMapperTests\/test_map_deliversNoItemsOn200HTTPResponseWithEmptyList()",
+        "FeedTasksMapperTests\/test_map_throwsErrorOn200HTTPResponseWithInvalidJSON()",
+        "FeedTasksMapperTests\/test_map_throwsErrorOnNon200HTTPResponse()",
+        "LoadFeedFromCacheUseCaseTests\/test_init_doesNotMessageStoreUponCreation()",
+        "LoadFeedFromCacheUseCaseTests\/test_load_deliversNoTasksOnEmptyCache()",
+        "LoadFeedFromCacheUseCaseTests\/test_load_failsOnRetrievalError()",
+        "LoadFeedFromCacheUseCaseTests\/test_load_hasNoSideEffectsOnEmptyCache()",
+        "LoadFeedFromCacheUseCaseTests\/test_load_hasNoSideEffectsOnRetrievalError()",
+        "LoadFeedFromCacheUseCaseTests\/test_load_requestsCacheRetrieval()",
+        "LoadFeedFromRemoteUseCaseTests\/test_init_doesNotRequestDataFromURL()",
+        "LoadFeedFromRemoteUseCaseTests\/test_loadTwice_requestsDataFromURL()",
+        "LoadFeedFromRemoteUseCaseTests\/test_load_deliversErrorOn200HTTPResponseWithInvalidJSON()",
+        "LoadFeedFromRemoteUseCaseTests\/test_load_deliversErrorOnClientError()",
+        "LoadFeedFromRemoteUseCaseTests\/test_load_deliversErrorOnNon200HTTPResponse()",
+        "LoadFeedFromRemoteUseCaseTests\/test_load_deliversItemsOn200HTTPResponseWithJSONItems()",
+        "LoadFeedFromRemoteUseCaseTests\/test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList()",
+        "LoadFeedFromRemoteUseCaseTests\/test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated()",
+        "LoadFeedFromRemoteUseCaseTests\/test_load_requestsDataFromURL()",
+        "URLSessionHTTPClientTests\/test_getFromURL_failsOnAllInvalidRepresentationCases()",
+        "URLSessionHTTPClientTests\/test_getFromURL_failsOnRequestError()",
+        "URLSessionHTTPClientTests\/test_getFromURL_performsGET()",
+        "URLSessionHTTPClientTests\/test_getFromURL_succeedsOnHTTPURLResponseWithData()",
+        "URLSessionHTTPClientTests\/test_getFromURL_succeedsWithEmptyDataOnHTTPURLResponseWithNilData()",
+        "UpdateFeedUseCaseTests\/test_init_doesNotMessageStoreUponCreation()",
+        "UpdateFeedUseCaseTests\/test_update_failsOnUpdatingError()",
+        "UpdateFeedUseCaseTests\/test_update_succeedsOnSuccessfulCacheUpdating()"
+      ],
+      "target" : {
+        "containerPath" : "container:EffectiveMobileTodoList.xcodeproj",
+        "identifier" : "4F620EA22C86F62400F38AC9",
+        "name" : "EffectiveMobileTodoListTests"
+      }
+    }
   ],
   "version" : 1
 }
