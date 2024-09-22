@@ -55,6 +55,8 @@
 		4F8ADFD62C9AFAE700410775 /* AddEditTaskInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8ADFD52C9AFAE700410775 /* AddEditTaskInteractorInput.swift */; };
 		4F8ADFDB2C9B47D000410775 /* AddEditTaskInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8ADFDA2C9B47D000410775 /* AddEditTaskInteractorOutput.swift */; };
 		4F8ADFDD2C9B4FED00410775 /* AddEditTaskNavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8ADFDC2C9B4FED00410775 /* AddEditTaskNavigationRouter.swift */; };
+		4F8AE0002C9FFBD900410775 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051DC2C878E9B004CEB29 /* XCTestCase+MemoryLeakTracking.swift */; };
+		4F8AE0012C9FFCB300410775 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051DA2C878B09004CEB29 /* SharedTestHelpers.swift */; };
 		4FB051D02C873210004CEB29 /* TasksLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051CF2C873210004CEB29 /* TasksLoader.swift */; };
 		4FB051D22C8732FE004CEB29 /* TodoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051D12C8732FE004CEB29 /* TodoTask.swift */; };
 		4FB051D52C8788D1004CEB29 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB051D42C8788D1004CEB29 /* URLSessionHTTPClientTests.swift */; };
@@ -214,7 +216,16 @@
 		4F8ADFF52C9F4F2900410775 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				MockLoaderSpy.swift,
+				MockPresenterSpy.swift,
 				"XCTestCase+SnapShotTestHelpers.swift",
+			);
+			target = 4F3C7B6C2C8E0DC500291DCA /* EffectiveMobileTodoListiOSTests */;
+		};
+		4F8ADFFF2C9FFA3500410775 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				TaskFeedInteractorTestCase.swift,
 			);
 			target = 4F3C7B6C2C8E0DC500291DCA /* EffectiveMobileTodoListiOSTests */;
 		};
@@ -223,6 +234,7 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		4F8ADFD72C9AFC4C00410775 /* Shared Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4F8ADFD82C9AFC6E00410775 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 4F8ADFD92C9AFC6E00410775 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Shared Presentation"; sourceTree = "<group>"; };
 		4F8ADFF22C9F4EFE00410775 /* Helpers */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4F8ADFF52C9F4F2900410775 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Helpers; sourceTree = "<group>"; };
+		4F8ADFFB2C9FFA1300410775 /* InteracgotTestCase */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4F8ADFFF2C9FFA3500410775 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = InteracgotTestCase; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				4F8ADFF22C9F4EFE00410775 /* Helpers */,
+				4F8ADFFB2C9FFA1300410775 /* InteracgotTestCase */,
 			);
 			path = EffectiveMobileTodoListiOSTests;
 			sourceTree = "<group>";
@@ -871,6 +884,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F8AE0012C9FFCB300410775 /* SharedTestHelpers.swift in Sources */,
+				4F8AE0002C9FFBD900410775 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
