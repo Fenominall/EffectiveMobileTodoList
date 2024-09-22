@@ -27,25 +27,25 @@ func makeItemsJSON(_ items: [[String: Any]]) -> Data {
 }
 
 func makeTask(
-    id: UUID = UUID(),
+    id: Int,
     name: String,
     description: String,
     dateCreated: Date,
     status: Bool
 ) -> (model: TodoTask, json: [String: Any]) {
     
-    // Create the TodoTask model
+    let taskID = uuidFromID(id)
+    
     let task = TodoTask(
-        id: id,
+        id: taskID,
         name: name,
         description: description,
         dateCreated: dateCreated,
         status: status
     )
     
-    // Create the corresponding JSON dictionary
     let json: [String: Any] = [
-        "id": id.uuidString,
+        "id": id,
         "todo": name,
         "description": description,
         "createdDate": ISO8601DateFormatter().string(from: dateCreated),
@@ -54,6 +54,28 @@ func makeTask(
     
     return (task, json)
 }
+
+
+private func uuidFromID(_ id: Int, existingUUID: UUID? = nil) -> UUID {
+    if let uuid = existingUUID {
+        return uuid // Use the existing UUID if provided
+    }
+    let uuidString = String(format: "%08x-0000-0000-0000-000000000000", id)
+    return UUID(uuidString: uuidString) ?? UUID()
+}
+
+
+private func idFromInt(_ id: Int) -> Int {
+    // Create a UUID-like string from the integer ID
+    let uuidString = String(format: "%08x-0000-0000-0000-000000000000", id)
+    
+    // Extract the first 8 characters (the original integer portion)
+    let intString = String(uuidString.prefix(8))
+    
+    // Convert the extracted string back to an integer
+    return Int(intString, radix: 16) ?? 0
+}
+
 
 extension HTTPURLResponse {
     convenience init(statusCode: Int) {
