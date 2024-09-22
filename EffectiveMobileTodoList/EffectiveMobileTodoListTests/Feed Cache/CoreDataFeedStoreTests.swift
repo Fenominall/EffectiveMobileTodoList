@@ -214,6 +214,10 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
 
 
 class FailingFeedStore: FeedStore {
+    func insert(_ task: EffectiveMobileTodoList.LocalTodoTask, completion: @escaping InsertionCompletion) {
+        completion(.success(()))
+    }
+    
     func update(_ task: EffectiveMobileTodoList.LocalTodoTask, completion: @escaping (UpdatingResult) -> Void) {
         completion(.success(()))
     }

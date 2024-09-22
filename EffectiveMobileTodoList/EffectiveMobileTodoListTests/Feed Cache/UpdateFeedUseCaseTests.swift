@@ -52,7 +52,7 @@ final class UpdateFeedUseCaseTests: XCTestCase {
         file: StaticString = #filePath,
         line: UInt = #line) {
             
-            sut.update(selected: uniqueTodoTask()) { result in
+            sut.update(uniqueTodoTask()) { result in
                 switch result {
                 case .success:
                     XCTAssertNil(expectedError, "Expected error \(String(describing: expectedError)) but got success instead", file: file, line: line)

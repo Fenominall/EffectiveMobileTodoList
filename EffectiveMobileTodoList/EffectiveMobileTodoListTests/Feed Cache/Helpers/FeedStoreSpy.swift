@@ -15,7 +15,7 @@ class FeedStoreSpy: FeedStore {
         case retrieve
         case update(LocalTodoTask)
     }
-    private (set) var receivedMessages = [ReceivedMessages]()
+    private(set) var receivedMessages = [ReceivedMessages]()
     
     private var deletionResult: FeedStore.DeletionResult?
     private var insertionResult: FeedStore.InsertionResult?
@@ -49,6 +49,12 @@ class FeedStoreSpy: FeedStore {
         }
     }
     
+    func insert(_ task: EffectiveMobileTodoList.LocalTodoTask, completion: @escaping InsertionCompletion) {
+        receivedMessages.append(.insert([task]))
+        if let result = insertionResult {
+            completion(result)
+        }
+    }
     
     func completeInsertion(with error: Error, at index: Int = 0) {
         insertionResult = .failure(error)
