@@ -22,7 +22,7 @@ public final class FeedTasksMapper {
         let completed: Bool
         
         var item: TodoTask {
-            let uuid = uuidFromID(id)
+            let uuid = uuidFromID(id, existingUUID: nil)
             
             return TodoTask(
                 id: uuid,
@@ -33,9 +33,10 @@ public final class FeedTasksMapper {
             )
         }
         
-        // Generate a consistent UUID from an integer ID
-        private func uuidFromID(_ id: Int) -> UUID {
-            // Create a UUID string from the integer ID
+        private func uuidFromID(_ id: Int, existingUUID: UUID? = nil) -> UUID {
+            if let uuid = existingUUID {
+                return uuid // Use the existing UUID if provided
+            }
             let uuidString = String(format: "%08x-0000-0000-0000-000000000000", id)
             return UUID(uuidString: uuidString) ?? UUID()
         }
