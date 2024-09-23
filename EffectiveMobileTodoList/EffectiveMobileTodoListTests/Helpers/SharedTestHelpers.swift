@@ -55,7 +55,6 @@ func makeTask(
     return (task, json)
 }
 
-
 private func uuidFromID(_ id: Int, existingUUID: UUID? = nil) -> UUID {
     if let uuid = existingUUID {
         return uuid // Use the existing UUID if provided
