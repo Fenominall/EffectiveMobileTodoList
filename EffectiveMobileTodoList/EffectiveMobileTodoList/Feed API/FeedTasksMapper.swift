@@ -20,8 +20,7 @@ public final class FeedTasksMapper {
         let id: Int
         let todo: String
         let completed: Bool
-        let dateCreated: Date
-        
+                
         var item: TodoTask {
             let uuid = uuidFromID(id, existingUUID: nil)
             
@@ -29,7 +28,7 @@ public final class FeedTasksMapper {
                 id: uuid,
                 name: todo,
                 description: todo,
-                dateCreated: dateCreated,
+                dateCreated: Date(),
                 status: completed
             )
         }

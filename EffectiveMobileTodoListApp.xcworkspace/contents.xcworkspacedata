@@ -7,7 +7,4 @@
    <FileRef
       location = "group:EffectiveMobileTodoListApp/EffectiveMobileTodoListApp.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:../EffectiveMobileTodoListiOSApp.xctestplan">
-   </FileRef>
 </Workspace>

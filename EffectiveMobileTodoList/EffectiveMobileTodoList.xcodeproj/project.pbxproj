@@ -220,7 +220,6 @@
 			membershipExceptions = (
 				MockLoaderSpy.swift,
 				MockPresenterSpy.swift,
-				"XCTestCase+SnapShotTestHelpers.swift",
 			);
 			target = 4F3C7B6C2C8E0DC500291DCA /* EffectiveMobileTodoListiOSTests */;
 		};
